@@ -14,9 +14,11 @@ if (!isset($_GET['msg'])) {
     $_GET['msg'] = "";
 }
 echo $_GET['msg']; ?>
-    <p><label for="user"><input type="text" name="user" id="user" value="admin"></label></p>
+    <p><label for="user"><input type="text" name="user" id="user" value="josemari"></label></p>
     <p><label for="passw"><input type= "password" name="passw" id="passw" value="1234" ></label></p>
     <input type="submit" value="Acceder">
+    <p><a href="registro.php">Registro</a></p>
+
     </form>
 </body>
 </html>
