@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['saldo'])) {
@@ -23,27 +22,27 @@ if (isset($_POST['recarga']) ) {
 </head>
 
 <body>
-  <h1>Bienvenido a tragaperras</h1>
-  <h2>Tu saldo es <?php echo $saldo ?></h2>
+    <h1>Bienvenido a tragaperras</h1>
+    <h2>Tu saldo es <?php echo $saldo ?></h2>
 
-  <!-- Habilitar desabilitar botón -->
-  <?php
+    <!-- Habilitar desabilitar botón -->
+    <?php
   if ($_SESSION["saldo"] <= 0) {
       echo "<input type='button' disabled value = 'Jugar'>";
+      echo "<p>Debes recargar el saldo</p>";
     }
   else{
-      echo "<input type='button' value = 'Jugar' onclick = window.location='jugar.php'>";
+      echo "<input type='button' value = 'Jugar' onclick = window.location='jugar.php'><br>";
     } 
     if (isset($_POST['recarga']) ) {
-        echo "Recarga de ".$_POST['recarga']." realizada";
+        echo "<p>Recarga de ".$_POST['recarga']." realizada</p>";
     }
     ?>
     <h2>Recargar saldo</h2>
     <form action="index.php" method="post">
-    <input type="number" id = "recarga" name = "recarga" min="10"/>
-    <input type="submit" id = "enviar_recarga" value = "Recargar">
-
-  </form>
+        <input type="number" id="recarga" name="recarga" min="10" />
+        <input type="submit" id="enviar_recarga" value="Recargar">
+    </form>
 </body>
 
 </html>
