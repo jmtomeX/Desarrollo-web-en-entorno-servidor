@@ -1,5 +1,5 @@
 <?php
-require 'global.php';
+require '../global.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +11,14 @@ require 'global.php';
 </head>
 <body>
 <?php
-    include 'menu.php';
+    include '../menu.php';
     ?>
     <h2>Has accedido a Intranet</h2>
     <?php 
-require "conection.php";
+    if (isset($_GET['msg'])) {
+        echo "<p>".$_GET['msg']."</p>";
+    }
+require "../conection.php";
 
 //generar la consulta
 $sql = "SELECT * FROM usuarios";
@@ -27,7 +30,7 @@ $datos = mysqli_query($conx,$sql);
 while($fila = mysqli_fetch_assoc($datos)) {
     $id = $fila["id"];
    echo "Usuario: ".$fila["nombre"]." id: ".$fila["id"]."</>
-   <a href='delete_user.php?id= $id '>Borrar</a>
+   <a href='delete_user.php?id=$id'>Borrar</a>
    <br>";
 }
 // cerramos conexión
