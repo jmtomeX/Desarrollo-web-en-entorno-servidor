@@ -31,7 +31,7 @@ mysqli_close($conx);
 $message = "El usuario o contraseña son incorrectos";
 if($id>0) {
     $_SESSION['user'] = $_POST['user'];
-    header("Location:intranet.php");
+    header("Location:intranet/intranet.php");
 }else{
     session_unset();
     header("Location:index.php?msg=$message");

@@ -1,5 +1,5 @@
 <?php
-require 'global.php';
+require '../global.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +11,9 @@ require 'global.php';
 </head>
 <body>
 <?php
-    include 'menu.php';
+    include '../menu.php';
     ?>
-    <h2>Pag 2</h2>
+    <h2>Pag 3</h2>
     
     
 </body>

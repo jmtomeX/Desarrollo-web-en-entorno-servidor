@@ -15,8 +15,11 @@ if($fila = mysqli_fetch_assoc($datos) || $reg_user== "" || $reg_passw == "") {
 }else {
     $sql_insert = "INSERT INTO usuarios (nombre, password) VALUES ('$reg_user','$reg_passw')";
     mysqli_query($conx,$sql_insert);
-    header("Location:index.php?msg=$message_exito");
-     }
+    $id = mysqli_insert_id($conx);
+    if($id > 0){
+        header("Location:index.php?msg=$message_exito");
+    }
+}
 // cerramos conexión
 mysqli_close($conx);
 ?>
