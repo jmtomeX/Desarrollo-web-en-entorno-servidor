@@ -1,0 +1,93 @@
+@media screen and (min-width: 35.5em){
+    
+}
+@media screen and (min-width: 48em){
+
+}
+@media screen and (min-width: 64em){
+
+}
+@media screen and (min-width: 80em){
+
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap');
+
+    body {
+        margin-right: auto;
+        margin-left: auto;
+        width:80vw;
+        height:100vh;
+    }  
+    *, ::before, ::after {
+        box-sizing: border-box;
+        margin: 0;
+        list-style: none;
+        padding:1rem;
+    }
+    .orange {
+        background:orange;
+    }
+    .blue {
+        color: #228ed5;
+    }
+    .title {
+        font-family: 'Montserrat Subrayada', sans-serif;
+        font-size:4em;
+    }
+    .title2 {
+        font-family: 'Montserrat Subrayada', sans-serif;
+        font-size: 4em;
+        display: block;
+        width: 100%;
+        padding: .3em 0;
+        margin-bottom: .3em;
+        color: #333;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    a {
+        color:black;
+    }
+    a:hover {
+        color: rgb(223, 117, 20);
+    }
+    .input--large {
+        width: 70%;
+        float: right;
+    }
+    .margin {
+        margin-left:2em;
+    }
+    .content-rigth {
+        text-align:right;
+    }
+    .capitalize {
+text-transform: capitalize;
+margin: 0;
+padding: 0;
+    }
+    /*buttons*/
+    .button-success,
+    .button-error,
+    .button-warning,
+    .button-secondary {
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-success {
+        background: rgb(28, 184, 65); 
+    }
+
+    .button-error {
+        background: rgb(202, 60, 60);
+    }
+
+    .button-warning {
+        background: rgb(223, 117, 20); 
+        color: white;
+    }
+
+    .button-secondary {
+        background: rgb(66, 184, 221);
+    }

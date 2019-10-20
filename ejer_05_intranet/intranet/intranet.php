@@ -7,14 +7,19 @@ require '../global.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php include '../includes/enlaces.txt'?>
     <title>Intranet</title>
 </head>
 <body>
-<?php
-    include '../menu.php';
-    ?>
-    <h2>Has accedido a Intranet</h2>
-    <?php 
+<div class="pure-g">
+<article class="pure-u-1">
+<?php include '../includes/menu.txt'?>
+</article>
+</div>
+    <h2 class="title2">Has accedido a Intranet</h2>
+    <fieldset>
+        <legend class="title">Lista de usuarios</legend>
+        <?php 
     if (isset($_GET['msg'])) {
         echo "<p>".$_GET['msg']."</p>";
     }
@@ -29,12 +34,14 @@ $datos = mysqli_query($conx,$sql);
 //mostramos la consulta
 while($fila = mysqli_fetch_assoc($datos)) {
     $id = $fila["id"];
-   echo "Usuario: ".$fila["nombre"]." id: ".$fila["id"]."</>
-   <a href='delete_user.php?id=$id'>Borrar</a>
-   <br>";
+   echo "<div class='pure-u-1'><div class='pure-u-5-24'><i class='fas fa-user'></i>
+   ".$fila["nombre"]."</div> <div class='pure-u-3-24'>id: ".$fila["id"]."
+   <a href='delete_user.php?id=$id' ><i class='fas fa-trash-alt'></i></a></div></div>";
 }
 // cerramos conexión
 mysqli_close($conx);
     ?>
+</fieldset>
+   
 </body>
 </html>
