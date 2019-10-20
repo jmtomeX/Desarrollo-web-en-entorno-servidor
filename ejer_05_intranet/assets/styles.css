@@ -1,8 +1,9 @@
+
 @media screen and (min-width: 35.5em){
-    
+  
 }
 @media screen and (min-width: 48em){
-
+  
 }
 @media screen and (min-width: 64em){
 
@@ -46,6 +47,7 @@
     }
     a {
         color:black;
+        min-width: 100px;
     }
     a:hover {
         color: rgb(223, 117, 20);
@@ -59,11 +61,12 @@
     }
     .content-rigth {
         text-align:right;
+        width: var(--column-left);
     }
     .capitalize {
-text-transform: capitalize;
-margin: 0;
-padding: 0;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
     }
     /*buttons*/
     .button-success,

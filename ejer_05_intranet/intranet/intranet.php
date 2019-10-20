@@ -11,8 +11,8 @@ require '../global.php';
     <title>Intranet</title>
 </head>
 <body>
-<div class="pure-g">
-<article class="pure-u-1">
+<div class="pure-g main">
+<article class="pure-u-md-1">
 <?php include '../includes/menu.txt'?>
 </article>
 </div>

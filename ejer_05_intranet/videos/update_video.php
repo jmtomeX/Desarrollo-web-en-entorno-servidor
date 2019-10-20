@@ -22,16 +22,19 @@ require '../global.php';
         <legend class="title">Actualizar video</legend>
 <?php
     require "../conection.php";
-//generar la consulta: si existe el usuario
-$id = $_GET['id'];
-$sql = "SELECT * FROM videos WHERE id = '$id'";
+    if (!isset($_SESSION['id'])) {
+        $_SESSION['id'] = $_GET['id'];
+    }
+    //$id = $_GET['id'];
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM videos WHERE id = '$id'";
 
-//ejecutar la consulta
-$datos = mysqli_query($conx,$sql);
-$fila = mysqli_fetch_assoc($datos);   
-    ?>
+    //ejecutar la consulta
+    $datos = mysqli_query($conx,$sql);
+    $fila = mysqli_fetch_assoc($datos);   
+?>
 
-<form action="update.php" method="POST" class="pure-form">
+<form action="update.php?id=$id" method="POST" class="pure-form">
 <?php
 if (!isset($_GET['msg'])) {
     $_GET['msg'] = "";
@@ -41,5 +44,6 @@ if (!isset($_GET['msg'])) {
     <input type="submit" value="Actualizar Video" class="pure-button pure-button-primary margin">
     </form>
     <?php mysqli_close($conx); ?>
+    <?php echo "<p>Id del video ha modificar ". $id."</p>";?>
 </body>
 </html>

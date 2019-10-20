@@ -14,7 +14,7 @@ require '../global.php';
 <body>
 <?php include '../includes/menu.txt'?>
 <div class="pure-g">
-<article class="pure-u-2-5">
+<article class="pure-u-md-2-5">
 <fieldset>
 <legend class="title">Insertar video</legend>   
 <form action="insertar_video.php" method="POST" class="pure-form box--flex">
@@ -35,7 +35,7 @@ if (!isset($_GET['msg'])) {
 </article>
 
 
-<article class="pure-u-3-5">
+<article class="pure-u-md-3-5">
 <fieldset>
         <legend class="title">Biblioteca de videos</legend>
     <?php 
@@ -51,9 +51,9 @@ if (!isset($_GET['msg'])) {
     while($fila = mysqli_fetch_assoc($datos)) {
         $id = $fila["id"];
     //echo "Video: ".$fila["titulo"]." url: ".$fila["vid_url"]."<br>";
-    echo "<h3>Video: ".$fila["titulo"]."</h3>".$fila["vid_url"]."<div src='".$fila['vid_url']."'></div>
-    <a href='delete_video.php?id=$id'>Borrar video</a> 
-    <a href='update_video.php?id=$id'>Acualizar video</a> 
+    echo "<h3><i class='fas fa-video'></i> ".$fila["titulo"]."</h3>".$fila["vid_url"]."<div src='".$fila['vid_url']."'>
+    <a href='delete_video.php?id=$id'><i class='fas fa-trash-alt'></i></a></a> 
+    <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a> </div>
     <br>";
     }
     // cerramos conexión

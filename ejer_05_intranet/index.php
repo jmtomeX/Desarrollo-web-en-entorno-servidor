@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="pure-g">
-    <article class="pure-u-2-5">
+    <article class="pure-u-md-2-5" id = "article_left">
     <form action="comprobar.php" method="POST" class="pure-form">
     <fieldset>
         <legend class="title">Acceso a Intranet</legend>
@@ -32,7 +32,7 @@ echo $_GET['msg']; ?>
     </fieldset>
     </form>
    
-    <article class="pure-u-3-5" id="logos">
+    <article class="pure-u-md-3-5" id="logos">
       <aside class="content-rigth">
            <img src="./img/html-css-php-mysql-logo.png" alt="logos html css php mysql" width="300px" >
            <img src="./img/pure-css.png" alt="logo pure css" width="300px" >
