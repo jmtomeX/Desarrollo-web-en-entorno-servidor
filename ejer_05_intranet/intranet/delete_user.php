@@ -20,3 +20,5 @@ else
 mysqli_close($conx);
 
 header("Location:intranet.php?msg=$msg");
+
+?>

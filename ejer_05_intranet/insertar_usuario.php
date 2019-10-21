@@ -13,11 +13,13 @@ $datos = mysqli_query($conx,$sql);
 if($fila = mysqli_fetch_assoc($datos) || $reg_user== "" || $reg_passw == "") {
     header("Location:registro.php?msg=$message");
 }else {
-    $sql_insert = "INSERT INTO usuarios (nombre, password) VALUES ('$reg_user','$reg_passw')";
+    $fecha = date('Y-m-d H:i:s');
+
+    $sql_insert = "INSERT INTO usuarios (nombre, password,date_insert) VALUES ('$reg_user','$reg_passw', '$fecha')";
     mysqli_query($conx,$sql_insert);
     $id = mysqli_insert_id($conx);
     if($id > 0){
-        header("Location:index.php?msg=$message_exito");
+        header("Location:index.php?msg=$message_exito&fecha=$fecha");
     }
 }
 // cerramos conexión
