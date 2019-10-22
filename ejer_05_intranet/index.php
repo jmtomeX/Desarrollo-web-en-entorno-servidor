@@ -18,7 +18,7 @@
 <body>
 <div class="pure-g">
     <article class="pure-u-md-2-5" id = "article_left">
-    <form action="comprobar.php" method="POST" class="pure-form form-acces" >
+    <form action="./usuarios/controler.php?op=2" method="POST" class="pure-form form-acces" >
     <fieldset>
         <legend class="title">Acceso a Intranet</legend>
 <?php
@@ -36,7 +36,7 @@ echo "<br>fecha entrada $fecha";
     <p><label for="user"><input type="text" name="user" id="user" value="josemari"></label></p>
     <p><label for="passw"><input type= "password" name="passw" id="passw" value="1234" ></label></p>
     <button type="submit" value="Acceder" class="pure-button margin"><i class="fas fa-sign-in-alt"></i></button>
-    <a type= "button" href="registro.php"  class=" pure-button margin "><i class="fas fa-plus"></i><i class="fas fa-user"></i></a> </article>
+    <a type= "button" href="./usuarios/registro.php"  class=" pure-button margin "><i class="fas fa-plus"></i><i class="fas fa-user"></i></a> </article>
     </fieldset>
     </form>
    
