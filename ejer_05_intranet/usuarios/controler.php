@@ -1,8 +1,5 @@
 <?php
 session_start(); 
-
-
-
 $msg = "Operacion desconocida";
 $operation = $_GET["op"];
 switch ($operation) {
@@ -36,16 +33,15 @@ switch ($operation) {
 } 
     ;
         break;
-    case 3: //Delete *********************************************************************
-   
+    case 3: //Unlogin *********************************************************************
+    session_start();
+    session_unset();
+    header("Location:../index.php");
     ;
     break;
 }
 
-
 // Funciones ***********************************************************
-
-
 function insertUser($reg_user, $reg_passw) {
 //generar la consulta: existe el usuario?
 $sql = "SELECT nombre FROM usuarios WHERE nombre = '$reg_user'";
@@ -57,19 +53,16 @@ if($fila = mysqli_fetch_assoc($datos) || $reg_user== "" || $reg_passw == "") {
   return false;
 }else {
     $fecha = date('Y-m-d H:i:s');
-
     $sql_insert = "INSERT INTO usuarios (nombre, password,date_insert) VALUES ('$reg_user','$reg_passw', '$fecha')";
     mysqli_query($conx,$sql_insert);
     $id = mysqli_insert_id($conx);
    return ($id > 0);
-
 }
 // cerramos conexión
 mysqli_close($conx);
 }
 
 // login
- 
 function login($usuario,$passw) {
 //generar la consulta
 $sql = "SELECT id FROM usuarios WHERE nombre = '$usuario' AND password = '$passw' ";
@@ -91,8 +84,6 @@ if($id>0) {
     session_unset();
     $id = 0;
 }
-
 return $id;
 }
-
 ?>

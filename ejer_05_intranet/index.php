@@ -50,7 +50,5 @@ echo "<br>fecha entrada $fecha";
          <div class="capitalize">
          create<br> read<br> update<br> delete</div><span class="blue">pure.css</span></h2></article>
     </div>
-
-  
 </body>
 </html>

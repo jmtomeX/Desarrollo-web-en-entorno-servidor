@@ -21,8 +21,8 @@ require '../global.php';
 if (!isset($_GET['msg'])) {
     $_GET['msg'] = "";
 } ?>
-    <p><label for="reg_passw">Título</label><input type= "text" name="titulo" id="titulo" class="input--large"></p>
-    <p><label for="reg_passw">Url video</label><input type= "text" name="url_vid" id="url_vid" class="input--large"></p>
+    <p><label for="titulo">Título</label><input type= "text" name="titulo" id="titulo" class="input--large"></p>
+    <p><label for="url_vid">Url video</label><input type= "text" name="url_vid" id="url_vid" class="input--large"></p>
     <br><br>
     <input type="submit" value="Registro Video" class="pure-button pure-button-primary margin">
     <?php   if (isset($_GET['msg'])) {
@@ -51,7 +51,8 @@ if (!isset($_GET['msg'])) {
     echo "<h3><i class='fas fa-video'></i> ".$fila["titulo"]."</h3>".$fila["vid_url"]."<div src='".$fila['vid_url']."'>
     <img src='https://img.youtube.com/vi/". $fila['vid_url'] ."/0.jpg' width= '200'/>
     <a href='controller.php?id=$id&op=3' onclick = \"return confirm('¿Desea eliminar?')\"><i class='fas fa-trash-alt'></i></a> 
-    <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a> </div>
+    <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a>
+    <a href='../enlaces_interes/controler.php?id=$id&op=4'><i class='fas fa-info-circle'></i></a></div>
     <br>";
     }
     // cerramos conexión

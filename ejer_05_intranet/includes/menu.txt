@@ -1,10 +1,10 @@
 <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-<a href='../unlogin.php' class="pure-menu-link pure-menu-heading">Cerrar Sesión</a>
+<a href='../usuarios/controler.php?op=3' class="pure-menu-link pure-menu-heading">Cerrar Sesión</a>
     <ul class="pure-menu-list"> 
         <li class="pure-menu-item">
     <?php echo "<i class='fas fa-user'></i> $user";?></li>
         <li class="pure-menu-item"><a href='../intranet/intranet.php' class="pure-menu-link">Inicio </a> </li>
         <li class="pure-menu-item"><a href='../videos/intranet2.php' class="pure-menu-link"> Videos </a> </li>
-        <li class="pure-menu-item"><a href='../seccion3/intranet3.php' class="pure-menu-link"> Página 3</a></li>
+        <li class="pure-menu-item"><a href='../enlaces_interes/enlaces_vista.php' class="pure-menu-link">Enlaces de interes videos</a></li>
     </ul>
 </nav>
