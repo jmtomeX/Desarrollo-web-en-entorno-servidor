@@ -20,24 +20,30 @@ require '../global.php';
 <?php
 if (!isset($_GET['msg'])) {
     $_GET['msg'] = "";
-} ?>
-    <p><label for="titulo_enlace">Título del enlace</label><input type= "text" name="titulo_enlace" id="titulo_enlace" class="input--large"></p>
-    <p><label for="enlace">Url video</label><input type= "text" name="enlace" id="enlace" class="input--large"></p>
-    <p><label for="enlaces">Enlaces video</label><select name="enlaces" id="enlaces" class="input--large">
-   <option value="1"><a href="#">Google</a></option> 
-   <option value="2">Windows 7</option> 
-   <option value="3">Windows XP</option>
-   <option value="10">Fedora</option> 
-   <option value="11">Debian</option> 
-   <option value="12">Suse</option> 
-</select>
+} 
+$id = 0;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} 
+require "../conection.php";
+if ($id>0) {
+    $sql = "SELECT titulo FROM videos WHERE id = '$id'";
+    $datos = mysqli_query($conx,$sql);
+    if($fila = mysqli_fetch_assoc($datos)) {
+        $titulo = $fila["titulo"];
+    }
+} else {
+    $sql = "SELECT titulo FROM videos order by titulo Asc";
+}
+
+?>
+    <p><label for="titulo_enlace">Título del enlace</label><input type= "text" name="titulo_enlace" id="titulo_enlace"  value="" class="input--large"></p>
+    <p><label for="enlace">Url enlace</label><input type= "text" name="enlace" id="enlace" value="" class="input--large"></p>
+    <p><label for="enlaces">Video</label><input type= "text" name="enlace" id="enlace" class="input--large" value="<?php echo  $titulo;?>" disabled></p>
+    
 </p>
     <br><br>
     <input type="submit" value="Registro Enlace" class="pure-button pure-button-primary margin">
-    <?php   if (isset($_GET['msg'])) {
-        echo "<p>".$_GET['msg']."</p>";
-    }
-    ?>
     </form>
 </fieldset>
     
