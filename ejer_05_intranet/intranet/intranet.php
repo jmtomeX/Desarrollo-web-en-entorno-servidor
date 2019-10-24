@@ -34,9 +34,19 @@ $datos = mysqli_query($conx,$sql);
 //mostramos la consulta
 while($fila = mysqli_fetch_assoc($datos)) {
     $id = $fila["id"];
-   echo "<div class='pure-u-1'><div class='pure-u-5-24'><i class='fas fa-user'></i>
-   ".$fila["nombre"]."</div> <div class='pure-u-3-24'>id: ".$fila["id"]."
-   <a href='delete_user.php?id=$id' ><i class='fas fa-trash-alt'></i></a></div></div>";
+   echo "
+   <div class='pure-u-1'>
+   <div class='pure-u-md-5-24'><i class='fas fa-user'></i>
+   ".$fila["nombre"]."
+   </div>
+   <div class='pure-u-md-5-24'>id: 
+   ".$fila["id"]."
+   <a href='delete_user.php?id=$id'><i class='fas fa-trash-alt'></i></a>
+   </div>
+   <div class='pure-u-md-5-24'><i class='fas fa-calendar-alt'></i>
+   ".$fila["date_insert"]."
+   </div>
+   </div>";
 }
 // cerramos conexión
 mysqli_close($conx);
