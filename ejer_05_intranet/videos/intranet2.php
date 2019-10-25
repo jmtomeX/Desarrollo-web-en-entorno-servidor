@@ -59,13 +59,13 @@ if (!isset($_GET['msg'])) {
         $id = $fila["id"];
     //echo "Video: ".$fila["titulo"]." url: ".$fila["vid_url"]."<br>";
     echo "<h3><i class='fas fa-video'></i> ".$fila["titulo"]."</h3>".$fila["vid_url"]."<div src='".$fila['vid_url']."'>
-    <a href='delete_video.php?id=$id'><i class='fas fa-trash-alt'></i></a></a> 
+    <a href='delete_video.php?id=$id'><i class='fas fa-trash-alt'></i></a>
 
     <img src='https://img.youtube.com/vi/". $fila['vid_url'] ."/0.jpg' width= '200'/>
     <a href='controller.php?id=$id&op=3' onclick = \"return confirm('¿Desea eliminar?')\"><i class='fas fa-trash-alt'></i></a> 
 
     <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a>
-    <a href='../enlaces_interes/enlaces_vista.php?id=$id&op=4'><i class='fas fa-info-circle'></i></a>
+    <a href='../enlaces_interes/enlaces_vista.php?id=$id'><i class='fas fa-info-circle'></i></a>
 </div>
 
     <br>";
