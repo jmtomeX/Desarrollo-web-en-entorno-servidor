@@ -52,7 +52,6 @@ switch ($operation) {
     
     //generar la consulta
     $sql = "DELETE FROM videos WHERE id = '$video_id'";
-    echo $sql;
     //ejecutar la consulta
     mysqli_query($conx,$sql);
     $cont = mysqli_affected_rows($conx);

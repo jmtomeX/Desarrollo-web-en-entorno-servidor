@@ -17,7 +17,7 @@ if ($id>0) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,10 +77,8 @@ if ($id>0) {
                        $enl_id = $linea['enl_id'];
                        $enl_titulo = $linea['enl_titulo'];
                        $enl_url = $linea['enl_url'];
-                      echo "<li><a href='$enl_url' target='_blank'>$enl_titulo</a></li>
-                      <a href='delete_video.php?id=$id'><i class='fas fa-trash-alt'></i></a></a> ";
-                     
-                     
+                      echo "<li><a href='$enl_url' target='_blank'>$enl_titulo</a>
+                      <a href='./controler.php?op=3&id=$enl_id&enl_video_id=$id'><i class='fas fa-trash-alt'></i></a></li>";
                     };
                     echo "</ul>";
                 ?>
