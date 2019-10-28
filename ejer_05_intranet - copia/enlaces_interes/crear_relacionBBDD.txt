@@ -1,5 +1,0 @@
-ALTER TABLE `enlaces_videos`
-ADD CONSTRAINT `FK_enl_video_id`
-FOREIGN KEY (`enl_video_id`)
-REFERENCES videos (`id`)
-ON DELETE CASCADE ON UPDATE CASCADE;
