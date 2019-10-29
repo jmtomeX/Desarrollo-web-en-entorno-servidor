@@ -62,6 +62,14 @@ switch ($operation) {
         $msg = MSG_FALLO;
     ;
     break;
+    case 4; // Contador de videos
+    $vid_id = $_GET['vid_id'];
+    $vid_url = $_GET['vid_url'];
+    $usu_id = $_SESSION['user_id'];
+    contadorVistas($vid_id,$usu_id);
+    header("Location:intranet2.php");
+    exit;
+    break;
 }
 
 header("Location:intranet2.php?msg=$msg");
@@ -92,5 +100,27 @@ function insert($title, $vid_url) {
     }
     mysqli_close($conx);
     return $msg;
+}
+// Contador para guardar las vistas de las peliculas
+function contadorVistas($vid_id,$usu_id) {
+    $sql = "SELECT cont_vistas FROM usuarios_videos WHERE id_user= '$usu_id' AND id_video = '$vid_id'";
+    require "../conection.php";
+    $datos = mysqli_query($conx,$sql);
+    // si nos nos devuelve algo continua, si no añade 1
+    if($fila = mysqli_fetch_assoc($datos)) {
+        $cont_vistas = $fila["cont_vistas"];
+        $cont_vistas++;
+        //ejecutar la consulta
+        $sql_update = "UPDATE usuarios_videos SET cont_vistas = '$cont_vistas' WHERE id_user= '$usu_id' AND id_video = '$vid_id'";
+        mysqli_query($conx,$sql_update);
+        $cont = mysqli_affected_rows($conx);
+        return ($cont > 0);
+    } else {
+        $sql_insert = "INSERT INTO usuarios_videos (id_user ,id_video, cont_vistas ) VALUES ('$usu_id','$vid_id',1)";
+        mysqli_query($conx,$sql_insert);
+        $id = mysqli_insert_id($conx);
+    }
+    return ($id > 0);
+    mysqli_close($conx);
 }
 ?>

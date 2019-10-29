@@ -79,7 +79,8 @@ mysqli_close($conx);
 
 if($id>0) {
     $_SESSION['user'] = $_POST['user'];
-    $id = 1;
+    $_SESSION['user_id'] = $id;
+
 }else{
     session_unset();
     $id = 0;

@@ -68,23 +68,30 @@ if ($id>0) {
 <fieldset>
         <legend class="title">Enlaces de interes</legend>
                 <?php
-                    $sql = "SELECT * FROM enlaces_videos WHERE enl_video_id = '$id'";
+                if ($id>0) {
+                    // Si entras desde el botón enlace modificar
+                    $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id WHERE videos.id = '$id' ";
+                }else {
+                    // si entras desde el link del menu
+                    $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id";
+                }
+
                     require "../conection.php";
                     $datos = mysqli_query($conx,$sql);
+                    $sqlTituloDatos = mysqli_query($conx,$sql);
                     echo "<ul>";
                     while($linea = mysqli_fetch_assoc($datos)){
-                        //enl_id	enl_titulo	enl_url	
                        $enl_id = $linea['enl_id'];
                        $enl_titulo = $linea['enl_titulo'];
                        $enl_url = $linea['enl_url'];
-                      echo "<li><a href='$enl_url' target='_blank'>$enl_titulo</a>
+                       $tituloVideo = $linea['titulo'];
+
+                      echo "<li> $tituloVideo  -- <a href='$enl_url' target='_blank'>$enl_titulo</a>
                       <a href='./controler.php?op=3&id=$enl_id&enl_video_id=$id'><i class='fas fa-trash-alt'></i></a></li>";
                     };
                     echo "</ul>";
                 ?>
         </fieldset>
 </article>
-    
-    
 </body>
 </html>

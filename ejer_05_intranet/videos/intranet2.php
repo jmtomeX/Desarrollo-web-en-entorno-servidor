@@ -53,27 +53,33 @@ if (!isset($_GET['msg'])) {
 
     //recogemos la consulta
     $datos = mysqli_query($conx,$sql);
-
+    $vid_url ="";
     //mostramos la consulta
     while($fila = mysqli_fetch_assoc($datos)) {
         $id = $fila["id"];
     //echo "Video: ".$fila["titulo"]." url: ".$fila["vid_url"]."<br>";
-    echo "<h3><i class='fas fa-video'></i> ".$fila["titulo"]."</h3>".$fila["vid_url"]."<div src='".$fila['vid_url']."'>
-    <a href='delete_video.php?id=$id'><i class='fas fa-trash-alt'></i></a>
+    $vid_url = $fila['vid_url'];
+    echo "<h3><i class='fas fa-video'></i> ".$fila['titulo']."</h3>";
+    echo "<a href = './controller.php?op=4&vid_id=$id&vid_url=$vid_url' onclick=\"showVideo('$vid_url')\">".$vid_url."</a><div src='".$vid_url."'>";
+    echo "<a href='delete_video.php?id=$id'></a>";
 
-    <img src='https://img.youtube.com/vi/". $fila['vid_url'] ."/0.jpg' width= '200'/>
-    <a href='controller.php?id=$id&op=3' onclick = \"return confirm('¿Desea eliminar?')\"><i class='fas fa-trash-alt'></i></a> 
+    echo "<img src='https://img.youtube.com/vi/".$vid_url."/0.jpg' width= '200'/>";
+    echo "<a href='controller.php?id=$id&op=3' onclick = \"return confirm('¿Desea eliminar?')\"><i class='fas fa-trash-alt'></i></a>";
 
-    <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a>
-    <a href='../enlaces_interes/enlaces_vista.php?id=$id'><i class='fas fa-info-circle'></i></a>
-</div>
-
-    <br>";
+    echo "<a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a>";
+    echo "<a href='../enlaces_interes/enlaces_vista.php?id=$id'><i class='fas fa-info-circle'></i></a></div><br>";
     }
     // cerramos conexión
     mysqli_close($conx);
     ?>   
     </fieldset>
     </article>
+    <script>
+    function showVideo(vid_url) {
+        var url = "https://www.youtube.com/watch?v=" + vid_url;
+        console.log(url);
+        window.open(url,"_blank");
+    }
+ </script>
 </body>
 </html>

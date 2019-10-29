@@ -28,7 +28,7 @@ switch ($operation) {
         $message_fracaso = "Error al borrar el enlace, compruebe los campos.";
         $message_exito = "Se ha borrado el enlace con éxito";
         $enlace_id = $_GET['id'];
-        // $enl_video_id = $_GET['enl_video_id'];
+        $enl_video_id = $_GET['enl_video_id'];
         if (deleteLinks($enlace_id)) {
             $msg = $message_exito;
         } else {
@@ -40,7 +40,7 @@ switch ($operation) {
         ;
         break;
 }
-header("Location:./enlaces_vista.php?msg=$msg");
+header("Location:./enlaces_vista.php?msg=$msg&id=$enl_video_id");
 // Funciones ***********************************************************
 
 // Insertar el link
@@ -64,8 +64,9 @@ function deleteLinks($enl_id)
     require "../conection.php";
     mysqli_query($conx, $sql_delete);
     $cont = mysqli_affected_rows($conx);
-    return ($cont > 0);
+    
     mysqli_close($conx);
+    return ($cont > 0);
 }
 // Mostrar videos
 function showLinks($enl_id)
@@ -81,8 +82,9 @@ function showLinks($enl_id)
             $enl_url = $linea['enl_url']
         ];
     };
-    return $arrayLinks;
     mysqli_close($conx);
+    return $arrayLinks;
+    
 }
 // Modificar el link
 function UpdateLink()
