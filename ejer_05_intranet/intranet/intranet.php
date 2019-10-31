@@ -7,6 +7,7 @@ require '../global.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <?php include '../includes/enlaces.txt'?>
     <title>Intranet</title>
 </head>
@@ -26,7 +27,13 @@ require '../global.php';
 require "../conection.php";
 
 //generar la consulta
-$sql = "SELECT * FROM usuarios";
+/*
+$sql="SELECT usuarios.id,nombre, videos.titulo, usuarios_videos.cont_vistas FROM usuarios 
+INNER JOIN usuarios_videos ON usuarios.id = usuarios_videos.id_user
+INNER JOIN videos ON videos.id = usuarios_videos.id_video
+where usuarios.id=1";
+*/
+$sql = "SELECT id,nombre, date_insert,SUM(usuarios_videos.cont_vistas) AS contador FROM usuarios INNER JOIN usuarios_videos ON usuarios.id = usuarios_videos.id_user GROUP BY usuarios.id ";
 
 //recogemos la consulta
 $datos = mysqli_query($conx,$sql);
@@ -45,6 +52,10 @@ while($fila = mysqli_fetch_assoc($datos)) {
    </div>
    <div class='pure-u-md-5-24'><i class='fas fa-calendar-alt'></i>
    ".$fila["date_insert"]."
+   </div>
+   <div class='pure-u-md-5-24'>
+   <a href='detalle.php?id=$id'><i class='far fa-eye'></i></a>
+   ".$fila["contador"]."
    </div>
    </div>";
 }

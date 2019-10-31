@@ -86,10 +86,3 @@ function showLinks($enl_id)
     return $arrayLinks;
     
 }
-// Modificar el link
-function UpdateLink()
-{
-    //
-    // cerramos conexión
-    // mysqli_close($conx);
-}

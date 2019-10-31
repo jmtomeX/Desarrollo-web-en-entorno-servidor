@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2019 a las 22:26:36
--- Versión del servidor: 10.1.19-MariaDB
--- Versión de PHP: 5.5.38
+-- Tiempo de generación: 31-10-2019 a las 19:36:18
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,23 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `enlaces_videos` (
   `enl_id` int(11) NOT NULL,
-  `enl_titulo` varchar(60) NOT NULL,
-  `enl_url` varchar(60) NOT NULL,
+  `enl_titulo` varchar(50) NOT NULL,
+  `enl_url` varchar(150) NOT NULL,
   `enl_video_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `enlaces_videos`
 --
 
 INSERT INTO `enlaces_videos` (`enl_id`, `enl_titulo`, `enl_url`, `enl_video_id`) VALUES
-(1, 'DEF CON DOS', 'https://www.mondosonoro.com/artistas-musica/def-con-dos/', 3),
-(2, '', '', 3),
-(3, 'yrklylr', 'ylrlry', 3),
-(6, 'tkeek', 'kettek', 3),
-(8, 'gvf', 'iugiugi', 4),
-(9, 'o8yiughiu', 'kmbgkgjkg', 3),
-(11, '', '', 3);
+(1, 'la familia adams', 'https://www.espinof.com/criticas/familia-addams-divertido-reboot-que-deja-ganas-aventuras-mitico-clan', 25),
+(6, 'Trailer', 'https://www.youtube.com/watch?v=3ftA5qklI4M', 25),
+(9, 'LA familia afams 3', 'https://as.com/meristation/2019/08/08/noticias/1565259021_910121.html', 25),
+(10, 'paco', 'http://www.google.es', 27);
 
 -- --------------------------------------------------------
 
@@ -53,11 +52,11 @@ INSERT INTO `enlaces_videos` (`enl_id`, `enl_titulo`, `enl_url`, `enl_video_id`)
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(8) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `date_insert` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -65,10 +64,15 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `password`, `date_insert`) VALUES
 (1, 'josemari', '1234', '0000-00-00 00:00:00'),
-(4, 'Aitor', '1111', '0000-00-00 00:00:00'),
-(8, 'jdyjd', 'djydjy', '0000-00-00 00:00:00'),
-(9, 'fhydj', 'djyj', '0000-00-00 00:00:00'),
-(10, 'erueu', 'rjejhu', '0000-00-00 00:00:00');
+(15, 'aaaa', 'aaaa', '0000-00-00 00:00:00'),
+(17, 'peperi', '1111', '2019-10-21 16:56:41'),
+(19, 'rdh', 'hd', '2019-10-22 19:27:11'),
+(20, 'trht', 'trhrth', '2019-10-22 19:34:52'),
+(21, 'tryr', 'rtrytr', '2019-10-22 19:35:21'),
+(22, 'trhtr', 'trhtrhr', '2019-10-22 19:35:55'),
+(23, 'sdfsfd', 'sdfsdf', '2019-10-22 19:36:50'),
+(24, 'carlos', 'carlos', '2019-10-22 20:06:44'),
+(25, '6754', '5474', '2019-10-22 20:09:10');
 
 -- --------------------------------------------------------
 
@@ -80,7 +84,17 @@ CREATE TABLE `usuarios_videos` (
   `id_user` int(11) NOT NULL,
   `id_video` int(11) NOT NULL,
   `cont_vistas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios_videos`
+--
+
+INSERT INTO `usuarios_videos` (`id_user`, `id_video`, `cont_vistas`) VALUES
+(1, 25, 16),
+(1, 27, 3),
+(24, 25, 2),
+(24, 27, 2);
 
 -- --------------------------------------------------------
 
@@ -89,19 +103,18 @@ CREATE TABLE `usuarios_videos` (
 --
 
 CREATE TABLE `videos` (
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `titulo` varchar(40) NOT NULL,
-  `vid_url` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `vid_url` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `videos`
 --
 
 INSERT INTO `videos` (`id`, `titulo`, `vid_url`) VALUES
-(2, 'Pink Floyd,Dire Straits, bgfdsfadfa', '<iframe width="560" height="315" src="https://www.youtube.com/embed/_tQerMEpbn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'),
-(3, 'CLÃSSICOS DO ROCK - MELHORES MÃšSICAS D', '<iframe width="560" height="315" src="https://www.youtube.com/embed/BWcmD_de99g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'),
-(4, 'Def Con Dos - Mamarrachismo Power (Video', '<iframe width="560" height="315" src="https://www.youtube.com/embed/PkI31FumiUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+(25, 'Familia Adams', 'pDgn0IrXOVk'),
+(27, 'Rambo ultima', '3WcrgWJXCHg');
 
 --
 -- Índices para tablas volcadas
@@ -124,7 +137,9 @@ ALTER TABLE `usuarios`
 -- Indices de la tabla `usuarios_videos`
 --
 ALTER TABLE `usuarios_videos`
-  ADD PRIMARY KEY (`id_user`,`id_video`);
+  ADD PRIMARY KEY (`id_user`,`id_video`),
+  ADD KEY `FK_videos` (`id_video`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indices de la tabla `videos`
@@ -140,17 +155,20 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT de la tabla `enlaces_videos`
 --
 ALTER TABLE `enlaces_videos`
-  MODIFY `enl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `enl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT de la tabla `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -159,7 +177,15 @@ ALTER TABLE `videos`
 -- Filtros para la tabla `enlaces_videos`
 --
 ALTER TABLE `enlaces_videos`
-  ADD CONSTRAINT `enlaces_videos_ibfk_1` FOREIGN KEY (`enl_video_id`) REFERENCES `videos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_enl_video_id` FOREIGN KEY (`enl_video_id`) REFERENCES `videos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarios_videos`
+--
+ALTER TABLE `usuarios_videos`
+  ADD CONSTRAINT `FK_usuarios` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `FK_videos` FOREIGN KEY (`id_video`) REFERENCES `videos` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

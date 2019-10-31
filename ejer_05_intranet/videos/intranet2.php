@@ -27,12 +27,8 @@ if (!isset($_GET['msg'])) {
 
     <p><label for="reg_passw">Título</label><input type= "text" name="titulo" id="titulo" class="input--large"></p>
     <p><label for="reg_passw">Url video</label><input type= "text" name="url_vid" id="url_vid" class="input--large"></p>
-
     <br>
-
-
     <br><br>
-
     <input type="submit" value="Registro Video" class="pure-button pure-button-primary margin">
     <?php   if (isset($_GET['msg'])) {
         echo "<p>".$_GET['msg']."</p>";
@@ -54,12 +50,14 @@ if (!isset($_GET['msg'])) {
     //recogemos la consulta
     $datos = mysqli_query($conx,$sql);
     $vid_url ="";
+    $user_id = 1;
     //mostramos la consulta
     while($fila = mysqli_fetch_assoc($datos)) {
         $id = $fila["id"];
     //echo "Video: ".$fila["titulo"]." url: ".$fila["vid_url"]."<br>";
     $vid_url = $fila['vid_url'];
     echo "<h3><i class='fas fa-video'></i> ".$fila['titulo']."</h3>";
+    echo "<a onclick='contView($user_id,$id)' id='linkView' class='pure-button pure-button-primary' href='https://www.youtube.com/watch?v=".$vid_url."' target='_blank'>Visitar</a>";
     echo "<a href = './controller.php?op=4&vid_id=$id&vid_url=$vid_url' onclick=\"showVideo('$vid_url')\">".$vid_url."</a><div src='".$vid_url."'>";
     echo "<a href='delete_video.php?id=$id'></a>";
 
@@ -74,12 +72,26 @@ if (!isset($_GET['msg'])) {
     ?>   
     </fieldset>
     </article>
-    <script>
+<script>
     function showVideo(vid_url) {
         var url = "https://www.youtube.com/watch?v=" + vid_url;
         console.log(url);
         window.open(url,"_blank");
     }
+
+ function contView(user_id,vid_id) {
+    $.ajax({
+
+         type: "GET",
+         url: "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_05_intranet/videos/ws_contar_visita.php?user_id="+user_id+"&vid_id="+vid_id,
+         success: function (data) {
+             console.log(data);
+         },
+         error: function (data) {
+             alert(" Error");
+         }
+     });
+}
  </script>
 </body>
 </html>
