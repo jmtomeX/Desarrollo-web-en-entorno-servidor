@@ -10,5 +10,19 @@ require "../conection.php";
 mysqli_query($conx,$sql);
 $cont = mysqli_affected_rows($conx);
 mysqli_close($conx);
-echo $cont;
+$res = $cont;
+if($cont > 0){
+ $msg = "Actualizado con exito";
+}else{
+    $msg = "No actualizado";
+}
+header('Content-Type: application/json');
+//Guardamos los datos en un array
+$data = array(
+'res' => $res, 
+'msg' => $msg
+);
+//Devolvemos el array pasado a JSON como objeto
+
+echo json_encode($data);
 ?>

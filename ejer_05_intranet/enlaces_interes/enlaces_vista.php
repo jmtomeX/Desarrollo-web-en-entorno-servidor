@@ -90,10 +90,9 @@ if ($id>0) {
                     ?>
                                 <li>
                                     <a href="<?php echo $enl_url; ?>" target="_blank" id="info_enlace_<?php echo $enl_id;?>">
-                                        <?php echo $enl_titulo; ?>
-                                    </a>
-                                    <a href="./controler.php?op=3&id=<?php echo $enl_id; ?>&enl_video_id=<?php echo $id; ?>"><i class="fas fa-trash-alt"></i></a>
-                                    <a href="#modal-one" onclick="editar(<?php echo $enl_id; ?>,'<?php echo $enl_titulo; ?>','<?php echo $enl_url; ?>')"> <i class="far fa-edit"></i></a>
+                                    <?php echo $enl_titulo; ?></a>
+                                    <a class="float_rigth" href="./controler.php?op=3&id=<?php echo $enl_id; ?>&enl_video_id=<?php echo $id; ?>" ><i class="fas fa-trash-alt"></i></a>
+                                    <a class="float_rigth" href="#modal-one" onclick="editar(<?php echo $enl_id; ?>)"> <i class="far fa-edit"></i></a>
 
                                 </li>
                                 <?php } ?>
@@ -125,6 +124,7 @@ if ($id>0) {
                         </div>
                     </form>
                 </div>
+                <span class="respuesta"></span>
             </div>
             <?php 
                     if ($id>0){
@@ -134,17 +134,20 @@ if ($id>0) {
                     }
                 ?>
             <script>
-                function editar(id, titulo, url) {
+                function editar(id) {
+                    var titulo= $('#info_enlace_'+id).text();
+                    var url=$('#info_enlace_'+id).attr('href');
+                    console.log(url);
                     $('#modal-one #id_enlace').val(id);
-                    $('#modal-one #titulo_enlace').val(titulo);
-                    $('#modal-one #url_enlace').val(url);
+                    $('#modal-one #titulo_enlace').val($.trim(titulo));
+                    $('#modal-one #url_enlace').val($.trim(url));
                 }
 
                 function changeLink() {
                     let enl_id = $('#modal-one #id_enlace').val();
                     let enl_titulo = $('#modal-one #titulo_enlace').val();
                     let enl_url = $('#modal-one #url_enlace').val();
-                    $.ajax({
+                   $.ajax({
                         type: "POST",
                         url: "./sw_act_enlace.php",
                         data: {
@@ -154,11 +157,15 @@ if ($id>0) {
                         }
                          ,
                         success: function (data) {
-                            //console.log(data);
-                            if (data>0) {
+                            console.log(data);
+                            //var obj = JSON.parse(data);
+                            if (data.res >0) {
+                                alert(data.msg);
                                 //Refresco la fila
                                 $('#info_enlace_'+enl_id).text(enl_titulo);
                                 $('#info_enlace_'+enl_id).attr("href",enl_url);
+                            } else {
+                                alert(data.msg);
                             }
                         },
                         error: function (data) {
@@ -166,6 +173,38 @@ if ($id>0) {
                     }
                 });
             }
+           /*********************************** */
+          
+   /* $.ajax({
+            url: "sw_act_enlace.php",
+            type: "POST",
+            data: data
+            }).done(function(data){
+                var obj = JSON.parse(data);
+                if (obj.res == 1) {
+                    alert(obj.description);
+                }
+	}); */
+          
+          
+          /*  $.ajax({
+            type:'POST',
+            url:'sw_act_enlace.php',
+            dataType: "json",
+            data:{res:description},
+            success:function(data){
+                if(data.res == 1){
+                    $('#res').text(data.result.res);
+                    $('#description').text(data.result.description);
+                    $('.user-content').slideDown();
+                }else{
+                    $('.user-content').slideUp();
+                } 
+            }
+        });*/
+
+
+
             </script>
 
     </body>

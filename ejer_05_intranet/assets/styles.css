@@ -225,5 +225,9 @@ form.form-acces button {
     text-align: right;
 }
 
+.float_rigth {
+    float: right;
+}
+
 
 /*****************Fin Modal *************************/
