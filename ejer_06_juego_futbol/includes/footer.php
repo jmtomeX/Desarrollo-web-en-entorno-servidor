@@ -5,11 +5,11 @@
                 <strong>Goools</strong> by <a href="#">José Mari Tomé</a>.
             </p>
             <figure>
-                <img src="./assets/img/bulma.svg" alt="logo bulma" class="image is-64x64">
+                <img src="../assets/img/bulma.svg" alt="logo bulma" class="image is-64x64">
             </figure>
 
             <figure>
-                <img src="./assets/img/php.png" class="image is-64x64" alt="logo php">
+                <img src="../assets/img/php.png" class="image is-64x64" alt="logo php">
 
             </figure>
         </div>

@@ -2,59 +2,37 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Usuarios Goool.es</title>
-    <?php include '../includes/enlaces_head.php' ?>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Usuarios Goool.es</title>
+  <?php include '../includes/enlaces_head.php' ?>
 </head>
 
 <body>
-    <main class="section">
-        <div class="container">
-        <aside class="menu">
-  <p class="menu-label">
-    General
-  </p>
-  <ul class="menu-list">
-    <li><a>Dashboard</a></li>
-    <li><a>Customers</a></li>
-  </ul>
-  <p class="menu-label">
-    Administration
-  </p>
-  <ul class="menu-list">
-    <li><a>Team Settings</a></li>
-    <li>
-      <a class="is-active">Manage Your Team</a>
-      <ul>
-        <li><a>Members</a></li>
-        <li><a>Plugins</a></li>
-        <li><a>Add a member</a></li>
-      </ul>
-    </li>
-    <li><a>Invitations</a></li>
-    <li><a>Cloud Storage Environment Settings</a></li>
-    <li><a>Authentication</a></li>
-  </ul>
-  <p class="menu-label">
-    Transactions
-  </p>
-  <ul class="menu-list">
-    <li><a>Payments</a></li>
-    <li><a>Transfers</a></li>
-    <li><a>Balance</a></li>
-  </ul>
-</aside>
-        </div>
-        <div class="container">
-    
-            <div class="columns is-desktop">
-              
-            </div>
-        </div>
-    </main>
-    <?php include '../includes/' ?>
+  <main class="section">
+    <div class="container">
+      <h1><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+      <div class="columns is-desktop">
+        <section class="column">
+          <aside class="menu">
+            <ul class="menu-list">
+              <a class="is-active">Panel de usuario</a>
+              <li><a>Cuenta de usuario</a></li>
+              <li><a>Partidos</a></li>
+              <li><a>Salir</a></li>
+            </ul>
+
+          </aside>
+          </section>
+            <section class="column"> 
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident consequuntur voluptatem repellat, adipisci soluta ducimus, illo dolorem voluptates similique blanditiis eius eligendi officia reiciendis molestiae, beatae sit. Sapiente, inventore vel.</p>
+
+            </section>
+      </div>
+    </div>
+  </main>
+  <?php include '../includes/footer.php' ?>
 </body>
 
 </html>
