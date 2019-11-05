@@ -1,0 +1,13 @@
+:root {
+    --color-principal:hsl(141, 53%, 53%);
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+.title strong{
+    font-size: 3em;
+}
