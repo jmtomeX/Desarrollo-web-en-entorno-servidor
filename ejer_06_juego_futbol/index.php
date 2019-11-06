@@ -55,6 +55,7 @@
 
                 <form action="./usuarios/create_user.php" method="POST">
                     <div class="field">
+                    <p class="subtitle">Crea tu cuenta, si aun no la tienes. </p>
                         <p class="control has-icons-left has-icons-right">
                             <input class="input" type="email" placeholder="Email" required value="correo@gmail.com">
                             <span class="icon is-small is-left">
@@ -68,7 +69,7 @@
                     <div class="field">
                             <p class="control">
                                 <button class="button is-success">
-                                    Si no eres usuario click aquí
+                                    Crear cuenta
                                 </button>
                             </p>
                         </div>
