@@ -12,7 +12,7 @@
 <body>
     <main class="section">
         <div class="container">
-            <h1><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+            <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             <div class="columns is-desktop"> 
             <section class="column">        
             <aside class="menu">

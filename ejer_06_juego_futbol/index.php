@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,51 +22,57 @@
 
             <div class="columns is-desktop">
                 <section class="column">
-
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="email" placeholder="Email o nick">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Password">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control">
-                            <button class="button is-success">
-                                Login
-                            </button>
-                        </p>
-                    </div>
-                </section>
-                <section class="column">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="email" placeholder="Email">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <a href="./acceso/acceso_user.php" class="principal-color">
-                        <div class="button is-success is-light ">
-                            Si no eres usuario ingresa tu correo.
+                    <form action="" method="POST">
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="email" placeholder="Email o nick" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </p>
                         </div>
-                    </a>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder="Password" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <button class="button is-success">
+                                    Login
+                                </button>
+                            </p>
+                        </div>
+                </section>
+                </form>
+                <section class="column">
+
+                <form action="./usuarios/create_user.php" method="POST">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Email" required value="correo@gmail.com">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                            <p class="control">
+                                <button class="button is-success">
+                                    Si no eres usuario click aquí
+                                </button>
+                            </p>
+                        </div>
+</form>
                 </section>
 
             </div>
