@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adivina Gol</title>
-    <?php include './includes/enlaces_head.php' ?>
+    <?php include './includes/enlaces_head.php';
+
+    if (!isset($_GET['msg'])) {
+        $_GET['msg'] = "";
+    }
+    $msg = $_GET['msg'];
+    
+    ?>
+
 </head>
 
 <body>
@@ -22,10 +30,10 @@
 
             <div class="columns is-desktop">
                 <section class="column">
-                    <form action="" method="POST">
+                    <form action="./usuarios/controler.php?op=2" method="POST">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="Email" id="email" required>
+                                <input class="input" type="email" placeholder="Email" id="email" name="email" value="admin@admin.com" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -36,7 +44,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Password" id="passw" required>
+                                <input class="input" type="password" placeholder="Password" id="passw" name="passw" value="admin" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -48,6 +56,7 @@
                                     Login
                                 </button>
                             </p>
+                            <p><?php echo $msg ?></p>
                         </div>
                 </section>
                 </form>

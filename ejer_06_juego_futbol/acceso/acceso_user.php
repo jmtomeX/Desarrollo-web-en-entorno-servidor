@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Usuarios Goool.es</title>
-  <?php include '../includes/enlaces_head.php' ?>
+  <?php
+   include '../includes/enlaces_head.php';
+   include '../global.php';
+
+  ?>
 </head>
 
 <body>
   <main class="section">
     <div class="container">
       <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+      <h2 class="title">Hola <span class="has-text-success"> <?php echo $nick?></span></h2>
       <div class="columns is-desktop">
         <section class="column">
           <aside class="menu">
