@@ -25,7 +25,7 @@
                     <form action="" method="POST">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="Email o nick" required>
+                                <input class="input" type="email" placeholder="Email" id="email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Password" required>
+                                <input class="input" type="password" placeholder="Password" id="passw" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
