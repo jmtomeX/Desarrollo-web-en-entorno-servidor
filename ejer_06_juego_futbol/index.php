@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adivina Gol</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <?php include './includes/enlaces_head.php';
 
     if (!isset($_GET['msg'])) {
         $_GET['msg'] = "";
     }
     $msg = $_GET['msg'];
+
+    if (!isset($_GET['msg_error'])) {
+        $_GET['msg_error'] = "";
+    }
+    $msg_error = $_GET['msg_error'];
     
     ?>
 
@@ -62,11 +68,11 @@
                 </form>
                 <section class="column">
 
-                <form action="./usuarios/create_user.php" method="POST">
+                <form id="form_check_user" method="post" action="./usuarios/create_user.php">
                     <div class="field">
                     <p class="subtitle">Crea tu cuenta, si aun no la tienes. </p>
                         <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="email" placeholder="Email" required value="correo@gmail.com">
+                            <input class="input" type="email" id="mail_check" name="mail_check" placeholder="Email" required value="correo@gmail.com">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -77,10 +83,11 @@
                     </div>
                     <div class="field">
                             <p class="control">
-                                <button class="button is-success">
+                                <button type="button" class="button is-success" onclick="check_user()">
                                     Crear cuenta
                                 </button>
                             </p>
+                            <div id="error_check_user"></div>
                         </div>
 </form>
                 </section>
@@ -104,6 +111,32 @@
             </figure>
         </div>
     </footer>
+
+    <script>
+        function check_user() {
+            let mail = $('#mail_check').val();
+                   $.ajax({
+                        type: "POST",
+                        url: "./usuarios/sw_check_user.php",
+                        data: {
+                           mail_check : mail
+                        }
+                        ,
+                        success: function (data) {
+                            console.log(data);
+                            if (data >0) {
+                                $("#error_check_user").html("<br><div class='notification is-danger'>El correo ya está en uso.</div>");
+                            } else {
+                                //Enviamos el formulario con el mail que quiere registrar:
+                                $("#form_check_user").submit();
+                            }
+                        },
+                        error: function (data) {
+                            alert(" Error");
+                    }
+                });
+        }
+    </script>
 </body>
 
 </html>
