@@ -56,10 +56,13 @@ function login($email, $passw)
     // cerramos conexión
     mysqli_close($conx);
 
+    // si se da la condición de que exista el usuario 
     if ($id > 0) {
+        // Guarda en variables de sesión
         $_SESSION['nick'] = $nick;
         $_SESSION['user_id'] = $id;
     } else {
+        // si no limpia la sesión y retorna 0
         session_unset();
         $id = 0;
     }
