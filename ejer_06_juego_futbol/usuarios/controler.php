@@ -13,7 +13,7 @@ switch ($operation) {
     }else {
         $msg = "Registro con éxito, ya puedes acceder a tu cuenta.";
         session_unset();
-        header(Location: ../index.php?msg=$msg);
+        header('Location: ../index.php?msg=$msg');
     }
         ;
         break;
@@ -46,8 +46,8 @@ function insertUser($registro_nick,$registro_email,$registro_passw) {
     $sql_insert = "INSERT INTO usuarios (user_nick, user_mail,user_password) VALUES ('$registro_nick','$registro_email','$registro_passw')";
     require "../conection.php";
     mysqli_query($conx, $sql_insert);
-    $insert_ok = mysqli_insert_id($conx); 
-    return ($id > 0);
+    $result =$insert_ok = mysqli_insert_id($conx); 
+    return ($result > 0);
    
     mysqli_close($conx);
 }
