@@ -9,7 +9,7 @@
   <?php include '../includes/enlaces_head.php';
     require '../global.php';
 
-    if (!isset($_GET['msg'])) {
+  if (!isset($_GET['msg'])) {
       $_GET['msg'] = "";
   }
   $msg = $_GET['msg'];
@@ -108,7 +108,6 @@
               </div>
             </div>
           </form>
-
 
       </div>
     </div>

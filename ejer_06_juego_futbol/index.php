@@ -83,6 +83,8 @@
                     </div>
                     <div class="field">
                             <p class="control">
+                                <!-- Para que no envie el formulario debe de ser de tipo button no submit.
+                                Se enviara en el ajax cuando tode vaya bien -->
                                 <button type="button" class="button is-success" onclick="check_user()">
                                     Crear cuenta
                                 </button>
@@ -124,7 +126,7 @@
                         ,
                         success: function (data) {
                             console.log(data);
-                            if (data >0) {
+                            if (data > 0) {
                                 $("#error_check_user").html("<br><div class='notification is-danger'>El correo ya está en uso.</div>");
                             } else {
                                 //Enviamos el formulario con el mail que quiere registrar:
