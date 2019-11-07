@@ -8,7 +8,7 @@
   <title>Usuarios Goool.es</title>
   <?php
    include '../includes/enlaces_head.php';
-   include '../global.php';
+   include '../global_user.php';
 
   ?>
 </head>

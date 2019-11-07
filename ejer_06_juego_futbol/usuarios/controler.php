@@ -36,7 +36,7 @@ function insertUser($reg_user, $reg_passw)
 {
 
     // cerramos conexión
-    mysqli_close($conx);
+    //mysqli_close($conx);
 }
 
 // ******************* login
@@ -61,6 +61,7 @@ function login($email, $passw)
         // Guarda en variables de sesión
         $_SESSION['nick'] = $nick;
         $_SESSION['user_id'] = $id;
+        $_SESSION['email'] = $email;
     } else {
         // si no limpia la sesión y retorna 0
         session_unset();

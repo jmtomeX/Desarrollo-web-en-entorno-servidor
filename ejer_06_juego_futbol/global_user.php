@@ -5,5 +5,4 @@ if (!isset($_SESSION['nick'])) {
     exit;
 }
     $nick =  $_SESSION['nick'];
-
 ?>

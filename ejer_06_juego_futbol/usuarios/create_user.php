@@ -7,23 +7,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Adivina Gol</title>
   <?php include '../includes/enlaces_head.php';
-    require '../global.php';
+  require '../global.php';
 
   if (!isset($_GET['msg'])) {
-      $_GET['msg'] = "";
+    $_GET['msg'] = "";
   }
   $msg = $_GET['msg'];
-  
 
-   if (!isset($_GET['msg_error'])) {
-      $_GET['msg_error'] = "";
-    }
+
+  if (!isset($_GET['msg_error'])) {
+    $_GET['msg_error'] = "";
+  }
   $msg = $_GET['msg_error'];
-  
-  $mail_check="";
-   if (isset($_POST['mail_check'])) {
-      $mail_check = $_POST['mail_check'];
-    }
+
+  $mail_check = "";
+  if (isset($_POST['mail_check'])) {
+    $mail_check = $_POST['mail_check'];
+  }
 
 
 
@@ -36,7 +36,7 @@
       <h1 class="title">
         Date de alta en <strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es
       </h1>
-       <!-- FORMULARIO -->
+      <!-- FORMULARIO -->
       <div class="columns is-desktop">
         <section class="column">
           <form action="" method="POST">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="field">
                   <p class="control is-expanded has-icons-left has-icons-right">
-                    <input class="input is-success" type="email" placeholder="Email" value= "<?php echo $mail_check ?>" required>
+                    <input class="input is-success" type="email" placeholder="Email" value="<?php echo $mail_check ?>" required>
                     <span class="icon is-small is-left">
                       <i class="fas fa-envelope"></i>
                     </span>
