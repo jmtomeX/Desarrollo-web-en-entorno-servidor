@@ -4,7 +4,17 @@ $msg = "Operacion desconocida";
 $operation = $_GET["op"];
 switch ($operation) {
     case 1: // Insert **************************************************************
-
+    $registro_nick = $_POST['nick'];
+    $registro_email = $_SESSION['email'];
+    $registro_passw = $_POST['password1'];
+    $result = insertUser($registro_nick,$registro_email,$registro_passw);
+    if($result == false) {
+        $msg = "El registro no se ha podido realizar";
+    }else {
+        $msg = "Registro con éxito, ya puedes acceder a tu cuenta.";
+        session_unset();
+        header(Location: ../index.php?msg=$msg);
+    }
         ;
         break;
     case 2: // login **************************************************************
@@ -32,11 +42,14 @@ switch ($operation) {
 
 // Funciones ***********************************************************
 
-function insertUser($reg_user, $reg_passw)
-{
-
-    // cerramos conexión
-    //mysqli_close($conx);
+function insertUser($registro_nick,$registro_email,$registro_passw) {
+    $sql_insert = "INSERT INTO usuarios (user_nick, user_mail,user_password) VALUES ('$registro_nick','$registro_email','$registro_passw')";
+    require "../conection.php";
+    mysqli_query($conx, $sql_insert);
+    $insert_ok = mysqli_insert_id($conx); 
+    return ($id > 0);
+   
+    mysqli_close($conx);
 }
 
 // ******************* login

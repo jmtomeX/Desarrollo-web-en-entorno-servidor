@@ -9,10 +9,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <?php include './includes/enlaces_head.php';
 
-    if (!isset($_GET['msg'])) {
-        $_GET['msg'] = "";
-    }
-    $msg = $_GET['msg'];
 
     if (!isset($_GET['msg_error'])) {
         $_GET['msg_error'] = "";
@@ -62,7 +58,10 @@
                                     Login
                                 </button>
                             </p>
-                            <p><?php echo $msg ?></p>
+                            <br>
+                            <?php if (isset($_GET['msg'])) { ?>
+                                <p class="notification is-danger"><?php echo $_GET['msg'] ?></p>
+                            <?php } ?>
                         </div>
                 </section>
                 </form>
@@ -109,12 +108,12 @@
 
             <figure>
                 <img src="./assets/img/php.png" class="image is-64x64" alt="logo php">
-
             </figure>
         </div>
     </footer>
 
     <script>
+
         function check_user() {
             let mail = $('#mail_check').val();
                    $.ajax({
