@@ -24,7 +24,7 @@
                             <li><a>Cuentas de usuarios</a></li>
                             <li><a>Registrar partidos</a></li>
                             <li><a>Partidos</a></li>
-                            <li><a>Salir</a></li>
+                            <li><a href = "../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
                     </aside>
                 </section>
