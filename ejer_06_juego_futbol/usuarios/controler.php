@@ -5,7 +5,7 @@ $operation = $_GET["op"];
 switch ($operation) {
     case 1: // Insert **************************************************************
     $registro_nick = $_POST['nick'];
-    $registro_email = $_SESSION['email'];
+    $registro_email = $_POST['email'];
     $registro_passw = $_POST['password1'];
     $result = insertUser($registro_nick,$registro_email,$registro_passw);
     if($result == false) {

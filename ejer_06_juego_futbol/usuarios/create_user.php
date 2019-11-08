@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Adivina Gol</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
   <?php include '../includes/enlaces_head.php';
-  require '../global_user.php';
 
   if (!isset($_GET['msg'])) {
     $_GET['msg'] = "";
@@ -106,6 +106,7 @@
                     </button>
                   </div>
                 </div>
+                <div id="error_check_passw"></div>
               </div>
             </div>
           </form>
@@ -119,25 +120,31 @@
 function check_password() {
     let passw1 = $('#password1').val();
     let passw2 = $('#password2').val();
+    console.log(passw1);
+    console.log(passw2);
            $.ajax({
                 type: "POST",
-                url: "./usuarios/sw_check_password.php",
+                url: "./sw_check_password.php",
                 data: {
-                  passw1 : passw1,
-                  passw2 : passw2
+                  password1 : passw1,
+                  password2 : passw2
                 }
                 ,
                 success: function (data) {
-                    console.log(data);
-                    if (data > 0) {
-                        $("#error_check_user").html("<br><div class='notification is-danger'>El correo ya está en uso.</div>");
+                    console.log(data.res);
+                    if (data.res == false) {
+                      var msg = data.msg;
+                        $("#error_check_passw").html("<br><div class='notification is-success'>")
+                        (this).text(msg);
+                        $("#error_check_passw").html("</div>");
                     } else {
-                        //Enviamos el formulario con el mail que quiere registrar:
+                        //Enviamos el formulario con el password  que se quiere comprobar:
                         $("#form_create_user").submit();
                     }
                 },
                 error: function (data) {
-                    alert(" Error");
+                    alert("La solicitud ha fallado.\nERROR " +  data.status);
+                      console.log(data.res);
             }
         });
 }
