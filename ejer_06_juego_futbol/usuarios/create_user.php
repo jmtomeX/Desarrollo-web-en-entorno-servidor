@@ -47,7 +47,7 @@
               <div class="field-body">
                 <div class="field">
                   <p class="control is-expanded has-icons-left">
-                    <input class="input" id = "nick" name = "nick" type="text" required>
+                    <input class="input" id = "nick" pattern="[a-z]{1,15}" name = "nick" type="text" required>
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>

@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./bulma_date_time.js"></script>
     <title>Usuarios Goool.es</title>
     <?php
     include '../includes/enlaces_head.php';
@@ -50,13 +51,7 @@
                 </div>
                 <div class="field">
                   <p class="control is-expanded has-icons-left has-icons-right">
-                    <input class="input is-success" id = "email" name = "email" type="email" placeholder="Email" value="<?php echo $mail_check ?>" required>
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                      <i class="fas fa-check"></i>
-                    </span>
+                    <input class="input is-success" id = "input_fecha" name = "fecha_partido" type="datetime" placeholder="Fecha" value="" required>
                   </p>
                 </div>
               </div>
