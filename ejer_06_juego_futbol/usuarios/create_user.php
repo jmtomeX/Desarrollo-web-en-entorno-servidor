@@ -47,7 +47,7 @@
               <div class="field-body">
                 <div class="field">
                   <p class="control is-expanded has-icons-left">
-                    <input class="input" id = "nick" name = "nick" type="text" placeholder="Nick">
+                    <input class="input" id = "nick" name = "nick" type="text" required>
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>
@@ -67,14 +67,13 @@
               </div>
             </div>
 
-
             <div class="field is-horizontal">
               <div class="field-label"></div>
               <div class="field-body">
                 <div class="field is-expanded">
                   <div class="field has-addons">
                     <p class="control is-expanded">
-                      <input class="input" id = "password1" name = "password1" type="text" placeholder="Password">
+                      <input class="input" id = "password1" name = "password1" type="text" placeholder="Password" required>
                     </p>
                   </div>
                 </div>
@@ -87,7 +86,7 @@
                 <div class="field is-expanded">
                   <div class="field has-addons">
                     <p class="control is-expanded">
-                      <input class="input" id = "password2" name = "password2" type="text" placeholder="Repita Password">
+                      <input class="input" id = "password2" name = "password2" type="text" placeholder="Repita Password" required>
                     </p>
                   </div>
                 </div>

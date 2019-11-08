@@ -1,3 +1,6 @@
+<?php
+   include '../global_user.php';
+  ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,8 +11,6 @@
   <title>Usuarios Goool.es</title>
   <?php
    include '../includes/enlaces_head.php';
-   include '../global_user.php';
-
   ?>
 </head>
 

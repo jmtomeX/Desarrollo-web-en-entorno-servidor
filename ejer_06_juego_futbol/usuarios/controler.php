@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 $msg = "Operacion desconocida";
 $operation = $_GET["op"];
 switch ($operation) {
@@ -12,7 +11,6 @@ switch ($operation) {
         $msg = "El registro no se ha podido realizar";
     }else {
         $msg = "Registro con éxito, ya puedes acceder a tu cuenta.";
-        session_unset();
         header("Location: ../index.php?msg_user_create=$msg");
     }
         ;
@@ -29,7 +27,6 @@ switch ($operation) {
                 header("Location:../acceso/acceso_admin.php");
             }
         } else {
-            session_unset();
             header("Location:../index.php?msg=$msg");
         };
         break;
@@ -63,21 +60,12 @@ function login($email, $passw)
     $id = 0;
     if ($fila = mysqli_fetch_assoc($datos)) {
         $id = $fila["user_id"];
-        $nick = $fila["user_nick"];
+        //OK, guardo en session:
+        $_SESSION['email'] = $email;
+        $_SESSION['user_id'] = $id;
+        $_SESSION['nick'] =$fila["user_nick"];
     }
     // cerramos conexión
     mysqli_close($conx);
-
-    // si se da la condición de que exista el usuario 
-    if ($id > 0) {
-        // Guarda en variables de sesión
-        $_SESSION['nick'] = $nick;
-        $_SESSION['user_id'] = $id;
-        $_SESSION['email'] = $email;
-    } else {
-        // si no limpia la sesión y retorna 0
-        session_unset();
-        $id = 0;
-    }
     return $id;
 }

@@ -1,3 +1,6 @@
+<?php
+    include '../global_admin.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,21 +11,22 @@
     <title>Usuarios Goool.es</title>
     <?php
     include '../includes/enlaces_head.php';
-    include '../global_admin.php';
     ?>
 </head>
 
 <body>
     <main class="section">
         <div class="container">
+            <a href="./acceso_admin.php">
             <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+            </a>
             <div class="columns is-desktop">
                 <section class="column">
                     <aside class="menu">
                         <ul class="menu-list">
                             <a class="is-active">Panel de administrador</a>
                             <li><a>Cuentas de usuarios</a></li>
-                            <li><a>Registrar partidos</a></li>
+                            <li><a href = "../partidos/registro_partido.php">Registrar partidos</a></li>
                             <li><a>Partidos</a></li>
                             <li><a href = "../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
