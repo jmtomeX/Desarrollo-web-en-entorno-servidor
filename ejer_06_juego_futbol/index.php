@@ -62,6 +62,9 @@
                             <?php if (isset($_GET['msg'])) { ?>
                                 <p class="notification is-danger"><?php echo $_GET['msg'] ?></p>
                             <?php } ?>
+                            <?php if (isset($_GET['msg_user_create'])) { ?>
+                                <p class="notification is-success"><?php echo $_GET['msg_user_create'] ?></p>
+                            <?php } ?>
                         </div>
                 </section>
                 </form>

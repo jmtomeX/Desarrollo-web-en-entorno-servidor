@@ -13,7 +13,7 @@ switch ($operation) {
     }else {
         $msg = "Registro con éxito, ya puedes acceder a tu cuenta.";
         session_unset();
-        header('Location: ../index.php?msg=$msg');
+        header("Location: ../index.php?msg_user_create=$msg");
     }
         ;
         break;
@@ -34,9 +34,8 @@ switch ($operation) {
         };
         break;
     case 3: //Unlogin *********************************************************************
-        session_start();
         session_unset();
-        header("Location:../index.php");;
+        header("Location:../index.php");
         break;
 }
 

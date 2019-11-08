@@ -26,7 +26,7 @@
               <li><a>Cuenta de usuario</a></li>
               <li><a>Recargar saldo</a></li>
               <li><a>Partidos</a></li>
-              <li><a>Salir</a></li>
+              <li><a href = "../usuarios/controler.php?op=3">Salir</a></li>
             </ul>
 
           </aside>
