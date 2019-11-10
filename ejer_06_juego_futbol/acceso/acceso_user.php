@@ -20,10 +20,12 @@
       <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
       <h2 class="title">Hola <span class="has-text-success"> <?php echo $nick?></span></h2>
       <div class="columns is-desktop">
-        <section class="column">
+        <section class="column is-one-quarter">
           <aside class="menu">
             <ul class="menu-list">
-              <a class="is-active">Panel de usuario</a>
+            <li>
+                <h1 class="title"><a href="#" class="is-active">Panel de Usuario</a></h1>
+              </li>
               <li><a>Cuenta de usuario</a></li>
               <li><a>Recargar saldo</a></li>
               <li><a>Partidos</a></li>

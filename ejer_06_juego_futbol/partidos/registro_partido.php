@@ -23,13 +23,14 @@ include '../global_admin.php';
         <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
       </a>
       <div class="columns is-desktop">
-        <section class="column">
+        <section class="column is-one-quarter">
           <aside class="menu">
             <ul class="menu-list">
-              <li>Panel de administrador</li>
+              <li> <h1 class="title"><a href="../acceso/acceso_admin.php">Panel de administrador</a></h1>
+              </li>
               <li><a>Cuentas de usuarios</a></li>
               <li><a class="is-active">Registrar partidos</a></li>
-              <li><a>Partidos</a></li>
+              <li><a href = "./show_matches.php">Partidos</a></li>
               <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
             </ul>
           </aside>
@@ -164,7 +165,7 @@ include '../global_admin.php';
                         <option>Castellón</option>
                         <option>Albacete</option>
                         <option>Eibar</option>
-                        <option>Almerí</option>
+                        <option>Almería</option>
                         <option>Córdoba</option>
                         <option>Compostela</option>
                         <option>Recreativo de Huelva</option>
