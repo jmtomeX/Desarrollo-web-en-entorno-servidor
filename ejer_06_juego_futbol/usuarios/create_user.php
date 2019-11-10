@@ -52,7 +52,7 @@
                       <i class="fas fa-envelope"></i>
                     </span>
                     <span class="icon is-small is-right">
-                      <i class="fas fa-check"></i>
+                      <i id="icon_confirm" class=""></i>
                     </span>
                   </p>
                 </div>
@@ -109,15 +109,41 @@
       var cont_input = 0;
       if ($("#nick").val().length > 1) {
         cont_input++;
+        $("#nick").addClass("is-success");
+        $("#nick").removeClass("is-danger");
+      } else {
+        $("#nick").removeClass("is-success");
+        $("#nick").addClass("is-danger");
       }
       if ($("#email").val().length > 1) {
         cont_input++;
+        $("#email").addClass("is-success");
+        $("#email").removeClass("is-danger");
+
+        $("#icon_confirm").removeClass("fas fa-exclamation-triangle");
+        $("#icon_confirm").addClass("fas fa-check");
+      } else {
+        $("#email").removeClass("is-success");
+        $("#email").addClass("is-danger");
+
+        $("#icon_confirm").removeClass("fas fa-check");
+        $("#icon_confirm").addClass("fas fa-exclamation-triangle");
       }
       if (passw1.length > 1) {
         cont_input++;
+        $("#password1").addClass("is-success");
+        $("#password1").removeClass("is-danger");
+      } else {
+        $("#password1").removeClass("is-success");
+        $("#password1").addClass("is-danger");
       }
       if (passw2.length > 1) {
         cont_input++;
+        $("#password2").addClass("is-success");
+        $("#password2").removeClass("is-danger");
+      } else {
+        $("#password2").removeClass("is-success");
+        $("#password2").addClass("is-danger");
       }
       console.log(cont_input);
 
@@ -144,12 +170,12 @@
             alert("La solicitud ha fallado.\nERROR " + data.status);
             console.log(data.res);
           }
-
         });
       } else {
         $("#error_check_passw").html("<br><div class='notification is-danger'>Debe de rellenar todos los campos.</div>");
         cont_input = 0;
       }
+      return cont_input;
     }
   </script>
 </body>
