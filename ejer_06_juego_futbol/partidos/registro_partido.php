@@ -44,14 +44,15 @@ include '../global_admin.php';
                 <input class="input" type="date">
               </div>
             </div>
-          </section>
-          <section class="column">
             <div class="field">
               <label class="label">Hora de juego</label>
               <div class="control">
                 <input class="input" type="time">
               </div>
             </div>
+          </section>
+          <section class="column">
+          
 
             <div class="field">
               <label class="label">Resultado</label>
