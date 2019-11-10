@@ -116,7 +116,6 @@
     </footer>
 
     <script>
-
         function check_user() {
             let mail = $('#mail_check').val();
                    $.ajax({
