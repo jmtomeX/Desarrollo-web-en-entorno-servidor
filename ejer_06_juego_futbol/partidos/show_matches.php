@@ -25,7 +25,7 @@ include '../global_admin.php';
           <aside class="menu">
             <ul class="menu-list">
               <li>
-                <h1 class="title"><a href="../acceso/acceso.admin.php">Panel de administrador</a></h1>
+                <h1 class="title"><a href="../acceso/acceso_admin.php">Panel de administrador</a></h1>
               </li>
               <li><a href="#">Cuentas de usuarios</a></li>
               <li><a href="./registro_partido.php">Registrar partidos</a></li>
