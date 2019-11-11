@@ -16,13 +16,12 @@ switch ($operation) {
             header("Location:./registro_partido?msg=$msg");
         } else {
             $msg = $msg = "Partido registrado con éxito.";
-            header("Location:../registro_partido.php?msg=$msg");
+            header("Location:./registro_partido.php?msg=$msg");
         }
         break;
     case 2: // Acutalizar partido
 
         ;
-        break;;
         break;
     case 3: // Mostrar  partido
 
