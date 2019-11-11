@@ -41,13 +41,13 @@ include '../global_admin.php';
             <div class="field">
               <label class="label">Día de juego</label>
               <div class="control">
-                <input class="input" type="date">
+                <input class="input" type="date" id="date">
               </div>
             </div>
             <div class="field">
               <label class="label">Hora de juego</label>
               <div class="control">
-                <input class="input" type="time">
+                <input class="input" type="time" id="time">
               </div>
             </div>
           </section>
@@ -57,7 +57,7 @@ include '../global_admin.php';
             <div class="field">
               <label class="label">Resultado</label>
               <div class="control">
-                <input class="input" type="number" min ="1" max="90">
+                <input class="input" type="number" min ="1" max="90" id="result">
               </div>
             </div>
 
@@ -69,7 +69,7 @@ include '../global_admin.php';
                   <label class="label">Equipo local</label>
                   <div class="control">
                     <div class="select">
-                      <select>
+                      <select id="team_local">
                         <option>Barcelona</option>
                         <option>Atlético de Madrid</option>
                         <option>Valencia</option>
@@ -128,7 +128,7 @@ include '../global_admin.php';
                   <label class="label">Equipo visitante</label>
                   <div class="control">
                     <div class="select">
-                      <select>
+                      <select id="team_visitor">
                         <option>Atlético de Madrid</option>
                         <option>Barcelona</option>
                         <option>Valencia</option>
