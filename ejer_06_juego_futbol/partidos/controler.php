@@ -19,15 +19,24 @@ switch ($operation) {
             header("Location:./registro_partido.php?msg=$msg");
         }
         break;
-    case 2: // Acutalizar partido
-
-        ;
+  
+    case 2: // Actualizar partido
+        $game_id = $_POST["game_id"];
+        $game_date_time =  $_POST['date']." ".$_POST['time']; 
+        $team_local = $_POST['team_local'];
+        $team_visitor = $_POST['team_visitor'];
+        $match = $team_local." - ".$team_visitor;
+        $id = UpdateMatch($game_date_time, $match, $game_id);
+        if($id == false ){
+            $msg = "Fracaso al actualizar el partido.";
+            header("Location:./show_matches.php?msg=$msg");
+        } else {
+            $msg = $msg = "Partido actualizado con éxito.";
+            header("Location:./show_matches.php?msg=$msg");
+        }
         break;
-    case 3: // Mostrar  partido
-
         ;
-        break;
-    case 4: // Borrar partido
+    case 3: // Borrar partido
 
         ;
         break;
@@ -43,11 +52,13 @@ function insertMacth($game_date_time, $match)
     return ($id > 0);
     mysqli_close($conx);
 }
+
+function UpdateMatch($game_date_time, $match, $game_id) {
+$sql_insert = "UPDATE  partidos SET game_fecha = '$game_date_time',  game_partido = '$match' WHERE game_id = '$game_id'";
+require "../conection.php";
+mysqli_query($conx,$sql_insert);
+$cont = mysqli_affected_rows($conx);
+mysqli_close($conx);
+return $cont;
+}
 ?>
-    /*
-    game_fecha 2019-01-30 23:59:59
-    game_id
-    game_partido
-    game_resultado
-    $fecha = date('Y-m-d H:i:s');
-    */

@@ -1,7 +1,6 @@
 <?php
 include '../global_admin.php';
-
-$equipos = array("Barcelona", "Atlético de Madrid", "Valencia", "Athletic Club", "Sevilla", "Espanyol", "Real Sociedad", "Zaragoza", "Betis", "Celta de Vigo", "Deportivo de La Coruña", "Valladolid", "Racin de Santander", "Sportig de Gijón", "Osasuna", "Oviedo", "Mallorca", "Villarreal", "Las Plmas", "Málaga", "Rayo Vallecano", "Granada", "Getafe", "Alavés", "Levant", "Tenerife", "Murcia", "Salamanca", "Cádiz", "Logroñés", "Albacete", "Eibar", "Almería", "Córdoba", "Compostela", "Recreativo de Huelva", "Lleida", "Huesca");
+require 'Equipos.php';
 
 // Petición de partidos
 $sql_view = "SELECT * FROM partidos order by game_fecha Asc;";
@@ -18,7 +17,8 @@ $datos = mysqli_query($conx, $sql_view);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usuarios Goool.es</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" rel="stylesheet">
     <?php
     include '../includes/enlaces_head.php';
     ?>
@@ -28,7 +28,8 @@ $datos = mysqli_query($conx, $sql_view);
     <main class="section">
         <div class="container">
             <a href="../acceso/acceso_admin.php">
-                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
+                        class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             </a>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
@@ -67,34 +68,50 @@ $datos = mysqli_query($conx, $sql_view);
                                     $game_fecha = $fila['game_fecha'];
                                     $date = date("Y-m-d ", strtotime($game_fecha));
                                     $time = date("H:i:s", strtotime($game_fecha));
-
+                                    // desglosar equipos
+                                    $game = explode(" - ", $game_partido);
+                                    $team1 = $game[0];
+                                    $team2 = $game[1];
                                     ?>
 
-                                    <tr>
-                                        <th><?php echo $game_id ?></th>
-                                        <td><?php echo $date ?></td>
-                                        <td><?php echo $time ?></td>
-                                        <td><?php echo $game_partido ?></td>
-                                        <td><?php echo  $game_resultado ?></td>
-                                        <td><a href="#"><span class="icon has-text-danger">
-                                                    <i class="fas fa-ban"></i>
-                                                </span></a></td>
-                                        <td><a type="button" class="showModal" data-target="modal-ter" aria-haspopup="true"><span class="icon has-text-success">
-                                                    <i class="fas fa-check-square"></i>
-                                                </span></a></td>
-                                    </tr>
+                                <tr  id='game_<?php echo $game_id; ?>' 
+                                    data-date="<?php echo date("Y-m-d",strtotime($date)) ?>"
+                                    data-time="<?php echo date("H:i:s",strtotime($time)) ?>"
+                                    data-team1="<?php echo $team1 ?>"
+                                    data-team2="<?php echo $team2 ?>"
+                                 
+                                    >
+                                    <th><?php echo $game_id ?></th>
+                                    <td><?php echo $date ?></td>
+                                    <td><?php echo $time ?></td>
+                                    <td><?php echo $game_partido ?></td>
+                                    <td><?php echo  $game_resultado ?></td>
+                                    <td><a href="#"><span class="icon has-text-danger">
+                                                <i class="fas fa-ban"></i>
+                                            </span></a></td>
+                                    <td><a type="button" class="showModal" data-target="modal-ter"
+                                            aria-haspopup="true"><span class="icon has-text-success"
+                                                onclick="editMatch(<?php echo $game_id; ?>)">
+                                                <i class="fas fa-check-square"></i>
+                                            </span></a></td>
+                                </tr>
                                 <?php
                                 }
                                 ?>
                             </tbody>
 
 
-
                         </table>
+                        <?php if (isset($_GET['msg'])) { ?>
+                                    <p class="notification is-danger"><?php echo $_GET['msg'] ?></p>
+                                <?php
+                                } ?>
                     </div>
                     <!-- Modal  -->
-                    <div class="modal">
+                    <div id="modal_editar" class="modal">
                         <div class="modal-background"></div>
+                        <form action="./controler.php?op=2" method="POST" id="form_reg_match">
+                        <input type="hidden" id="game_id" name="game_id" />
                         <div class="modal-card">
                             <header class="modal-card-head">
                                 <p class="modal-card-title">Modificar Partido</p>
@@ -102,7 +119,7 @@ $datos = mysqli_query($conx, $sql_view);
                             <section class="modal-card-body">
                                 <!-- Content ... -->
                                 <section class="column">
-                                    <form action="./controler.php?op=1" method="POST" id="form_reg_match">
+                                    
                                         <div class="field">
                                             <label class="label">Día de juego</label>
                                             <div class="control">
@@ -126,14 +143,14 @@ $datos = mysqli_query($conx, $sql_view);
                                                         <select id="team_local" name="team_local" required>
                                                             <option>Equipo local</option>
                                                             <?php
-                                                            /*$recogerEquipos = new Equipos;
-                                                $equiposFut = $recogerEquipos->equipos;*/
-                                                            foreach ($equipos as &$equipo) {
-                                                                ?>
-                                                                <option><?php echo $equipo ?></option>
+                                                $recogerEquipos = new Equipos();
+                                                $equiposFut = $recogerEquipos->equipos;
+                                                foreach ($equiposFut as &$equipo) {
+                                                    ?>
+                                                            <option><?php echo $equipo ?></option>
                                                             <?php
-                                                            }
-                                                            ?>
+                                                }
+                                                ?>
 
                                                         </select>
                                                     </div>
@@ -148,13 +165,14 @@ $datos = mysqli_query($conx, $sql_view);
                                                         <select id="team_visitor" name="team_visitor">
                                                             <option>Equipo visitante</option>
                                                             <?php
-                                                            foreach ($equipos as &$equipo) {
-                                                                ?>
-                                                                <option><?php echo $equipo ?></option>
+                                                $recogerEquipos = new Equipos();
+                                                $equiposFut = $recogerEquipos->equipos;
+                                                foreach ($equiposFut as &$equipo) {
+                                                    ?>
+                                                            <option><?php echo $equipo ?></option>
                                                             <?php
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                }
+                                                ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -162,14 +180,15 @@ $datos = mysqli_query($conx, $sql_view);
                                         </section>
                                     </div>
                                 </section>
-                                </form>
+                                
                                 <!-- Fin Content ... -->
                             </section>
                             <footer class="modal-card-foot">
-                                <button class="button is-success">Guardar</button>
-                                <button class="button" id="modal-close">Cancelar</button>
+                                <button class="button is-success" type="submit">Guardar</button>
+                                <button class="button" id="modal-close" type="button">Cancelar</button>
                             </footer>
                         </div>
+                        </form>
                     </div>
                     <!-- Modal fin -->
 
@@ -179,13 +198,31 @@ $datos = mysqli_query($conx, $sql_view);
     </main>
     <?php include '../includes/footer.php' ?>
     <script>
-        $(".showModal").click(function() {
-            $(".modal").addClass("is-active");
-        });
+    // Mostrar modal
+    $(".showModal").click(function() {
+        $(".modal").addClass("is-active");
+    });
 
-        $("#modal-close").click(function() {
-            $(".modal").removeClass("is-active");
-        });
+    $("#modal-close").click(function() {
+        $(".modal").removeClass("is-active");
+    });
+    // Fin modal
+
+    function editMatch(id) {
+        var fecha = $("#game_"+id).data("date");
+        var time = $("#game_"+id).data("time");
+        var team1 = $("#game_"+id).data("team1");
+        var team2 = $("#game_"+id).data("team2");
+        $("#modal_editar #game_id").val(id);
+        $("#modal_editar #date").val(fecha);
+        $("#modal_editar #time").val(time);
+        $("#modal_editar #team_local").val(team1).attr("selected","selected");
+        $("#modal_editar #team_visitor").val(team2).attr("selected","selected");
+    }
+
+    function updateModal(){
+
+    }
     </script>
 </body>
 

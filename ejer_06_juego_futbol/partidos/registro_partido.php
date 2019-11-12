@@ -1,5 +1,6 @@
 <?php
 include '../global_admin.php';
+require './Equipos.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,7 +14,6 @@ include '../global_admin.php';
 
     <?php
     include '../includes/enlaces_head.php';
-    $equipos = array("Barcelona", "Atlético de Madrid", "Valencia", "Athletic Club", "Sevilla", "Espanyol", "Real Sociedad", "Zaragoza", "Betis", "Celta de Vigo", "Deportivo de La Coruña", "Valladolid", "Racin de Santander", "Sportig de Gijón", "Osasuna", "Oviedo", "Mallorca", "Villarreal", "Las Plmas", "Málaga", "Rayo Vallecano", "Granada", "Getafe", "Alavés", "Levant", "Tenerife", "Murcia", "Salamanca", "Cádiz", "Logroñés", "Albacete", "Eibar", "Almería", "Córdoba", "Compostela", "Recreativo de Huelva", "Lleida", "Huesca");
 
     ?>
 </head>
@@ -66,9 +66,9 @@ include '../global_admin.php';
                                             <select id="team_local" name="team_local" required>
                                                 <option>Equipo local</option>
                                                 <?php
-                                                /*$recogerEquipos = new Equipos;
-                                                $equiposFut = $recogerEquipos->equipos;*/
-                                                foreach ($equipos as &$equipo) {
+                                                $recogerEquipos = new Equipos();
+                                                $equiposFut = $recogerEquipos->equipos;
+                                                foreach ($equiposFut as &$equipo) {
                                                     ?>
                                                     <option><?php echo $equipo ?></option>
                                                 <?php
@@ -88,7 +88,7 @@ include '../global_admin.php';
                                             <select id="team_visitor" name="team_visitor">
                                                 <option>Equipo visitante</option>
                                                 <?php
-                                                foreach ($equipos as &$equipo) {
+                                                foreach ($equiposFut as &$equipo) {
                                                     ?>
                                                     <option><?php echo $equipo ?></option>
                                                 <?php

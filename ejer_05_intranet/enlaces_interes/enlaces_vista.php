@@ -137,7 +137,6 @@ if ($id>0) {
                 function editar(id) {
                     var titulo= $('#info_enlace_'+id).text();
                     var url=$('#info_enlace_'+id).attr('href');
-                    console.log(url);
                     $('#modal-one #id_enlace').val(id);
                     $('#modal-one #titulo_enlace').val($.trim(titulo));
                     $('#modal-one #url_enlace').val($.trim(url));
