@@ -16,16 +16,15 @@ $datos = mysqli_query($conx, $sql_view);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usuarios Goool.es</title>
     <?php
-  include '../includes/enlaces_head.php';
-  ?>
+    include '../includes/enlaces_head.php';
+    ?>
 </head>
 
 <body>
     <main class="section">
         <div class="container">
             <a href="../acceso/acceso_admin.php">
-                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
-                        class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             </a>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
@@ -55,33 +54,33 @@ $datos = mysqli_query($conx, $sql_view);
                                     <th><abbr title="Delete">Editar Partido</abbr></th>
                                 </tr>
                             <tbody>
-                                <?php 
-                                    while($fila = mysqli_fetch_assoc($datos)) {
-                                 $game_id = $fila['game_id'];
-                                 $game_resultado = $fila['game_resultado'];
-                  
-                                 $game_partido = $fila['game_partido'];
-                                 $game_fecha = $fila['game_fecha'];
-                                  $date = date("Y-m-d ", strtotime($game_fecha)); 
-                                  $time = date("H:i:s", strtotime($game_fecha)); 
-                                  
-              ?>
-
-                                <tr>
-                                    <th><?php echo $game_id ?></th>
-                                    <td><?php echo $date?></td>
-                                    <td><?php echo $time ?></td>
-                                    <td><?php echo $game_partido ?></td>
-                                    <td><?php echo  $game_resultado ?></td>
-                                    <td><a href="#"><span class="icon has-text-danger">
-                                                <i class="fas fa-ban"></i>
-                                            </span></a></td>
-                                    <td><a href="#"><span class="icon has-text-success">
-                                                <i class="fas fa-check-square"></i>
-                                            </span></a></td>
-                                </tr>
                                 <?php
-                                    }
+                                while ($fila = mysqli_fetch_assoc($datos)) {
+                                    $game_id = $fila['game_id'];
+                                    $game_resultado = $fila['game_resultado'];
+
+                                    $game_partido = $fila['game_partido'];
+                                    $game_fecha = $fila['game_fecha'];
+                                    $date = date("Y-m-d ", strtotime($game_fecha));
+                                    $time = date("H:i:s", strtotime($game_fecha));
+
+                                    ?>
+
+                                    <tr>
+                                        <th><?php echo $game_id ?></th>
+                                        <td><?php echo $date ?></td>
+                                        <td><?php echo $time ?></td>
+                                        <td><?php echo $game_partido ?></td>
+                                        <td><?php echo  $game_resultado ?></td>
+                                        <td><a href="#"><span class="icon has-text-danger">
+                                                    <i class="fas fa-ban"></i>
+                                                </span></a></td>
+                                        <td><a href="#"><span class="icon has-text-success">
+                                                    <i class="fas fa-check-square"></i>
+                                                </span></a></td>
+                                    </tr>
+                                <?php
+                                }
                                 ?>
                             </tbody>
                         </table>

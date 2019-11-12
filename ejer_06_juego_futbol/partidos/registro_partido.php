@@ -12,16 +12,18 @@ include '../global_admin.php';
     <title>Usuarios Goool.es</title>
 
     <?php
-  include '../includes/enlaces_head.php';
-  ?>
+    include '../includes/enlaces_head.php';
+    $equipos = array("Barcelona", "Atlético de Madrid", "Valencia", "Athletic Club", "Sevilla", "Espanyol", "Real Sociedad", "Zaragoza", "Betis", "Celta de Vigo", "Deportivo de La Coruña", "Valladolid", "Racin de Santander", "Sportig de Gijón", "Osasuna", "Oviedo", "Mallorca", "Villarreal", "Las Plmas", "Málaga", "Rayo Vallecano", "Granada", "Getafe",
+        "Alavés", "Levant", "Tenerife", "Murcia", "Salamanca", "Cádiz", "Logroñés", "Albacete", "Eibar", "Almería", "Córdoba", "Compostela", "Recreativo de Huelva", "Lleida", "Huesca"
+    );
+    ?>
 </head>
 
 <body>
     <main class="section">
         <div class="container">
             <a href="../acceso/acceso_admin.php">
-                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
-                        class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             </a>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
@@ -63,54 +65,15 @@ include '../global_admin.php';
                                     <div class="control">
                                         <div class="select">
                                             <select id="team_local" name="team_local" required>
-                                                <option>Barcelona</option>
-                                                <option>Atlético de Madrid</option>
-                                                <option>Valencia</option>
-                                                <option>Athletic Club</option>
-                                                <option>Sevilla</option>
-                                                <option>Espanyol</option>
-                                                <option>Real Sociedad</option>
-                                                <option>Zaragoza</option>
-                                                <option>Betis</option>
-                                                <option>Celta de Vigo</option>
-                                                <option>Deportivo de La Coruña</option>
-                                                <option>Valladolid</option>
-                                                <option>Racin de Santander</option>
-                                                <option>Sportig de Gijón</option>
-                                                <option>Osasuna</option>
-                                                <option>Oviedo</option>
-                                                <option>Mallorca</option>
-                                                <option>Villarreal</option>
-                                                <option>Las Plmas</option>
-                                                <option>Málaga</option>
-                                                <option>Rayo Vallecano</option>
-                                                <option>Granada</option>
-                                                <option>Getafe</option>
-                                                <option>Elche</option>
-                                                <option>CD Málaga</option>
-                                                <option>Hércules</option>
-                                                <option>Alavés</option>
-                                                <option>Levant</option>
-                                                <option>Tenerife</option>
-                                                <option>Murci</option>
-                                                <option>Salamanca</option>
-                                                <option>Sabadell</option>
-                                                <option>Cádiz</option>
-                                                <option>Logroñés</option>
-                                                <option>Castellón</option>
-                                                <option>Albacete</option>
-                                                <option>Eibar</option>
-                                                <option>Almerí</option>
-                                                <option>Córdoba</option>
-                                                <option>Compostela</option>
-                                                <option>Recreativo de Huelva</option>
-                                                <option>Real Unión</option>
-                                                <option>AD Almería</option>
-                                                <option>Europa</option>
-                                                <option>Lleida</option>
-                                                <option>Xerez</option>
-                                                <option>Huesca</option>
-                                                <option>Condal</option>
+                                            <option>Equipo local</option>
+                                                <?php
+                                                foreach ($equipos as &$equipo) {
+                                                    ?>
+                                                    <option><?php echo $equipo ?></option>
+                                                <?php
+                                                }
+                                                ?>
+
                                             </select>
                                         </div>
                                     </div>
@@ -122,54 +85,14 @@ include '../global_admin.php';
                                     <div class="control">
                                         <div class="select">
                                             <select id="team_visitor" name="team_visitor">
-                                                <option>Atlético de Madrid</option>
-                                                <option>Barcelona</option>
-                                                <option>Valencia</option>
-                                                <option>Athletic Club</option>
-                                                <option>Sevilla</option>
-                                                <option>Espanyol</option>
-                                                <option>Real Sociedad</option>
-                                                <option>Zaragoza</option>
-                                                <option>Betis</option>
-                                                <option>Celta de Vigo</option>
-                                                <option>Deportivo de La Coruña</option>
-                                                <option>Valladolid</option>
-                                                <option>Racin de Santander</option>
-                                                <option>Sportig de Gijón</option>
-                                                <option>Osasuna</option>
-                                                <option>Oviedo</option>
-                                                <option>Mallorca</option>
-                                                <option>Villarreal</option>
-                                                <option>Las Plmas</option>
-                                                <option>Málaga</option>
-                                                <option>Rayo Vallecano</option>
-                                                <option>Granada</option>
-                                                <option>Getafe</option>
-                                                <option>Elche</option>
-                                                <option>CD Málaga</option>
-                                                <option>Hércules</option>
-                                                <option>Alavés</option>
-                                                <option>Levant</option>
-                                                <option>Tenerife</option>
-                                                <option>Murci</option>
-                                                <option>Salamanca</option>
-                                                <option>Sabadell</option>
-                                                <option>Cádiz</option>
-                                                <option>Logroñés</option>
-                                                <option>Castellón</option>
-                                                <option>Albacete</option>
-                                                <option>Eibar</option>
-                                                <option>Almería</option>
-                                                <option>Córdoba</option>
-                                                <option>Compostela</option>
-                                                <option>Recreativo de Huelva</option>
-                                                <option>Real Unión</option>
-                                                <option>AD Almería</option>
-                                                <option>Europa</option>
-                                                <option>Lleida</option>
-                                                <option>Xerez</option>
-                                                <option>Huesca</option>
-                                                <option>Condal</option>
+                                                <option>Equipo visitante</option>
+                                           <?php
+                                                foreach ($equipos as &$equipo) {
+                                                    ?>
+                                                    <option><?php echo $equipo ?></option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                             </select>
                                         </div>
@@ -182,13 +105,13 @@ include '../global_admin.php';
                             <section class="column">
                                 <div class="field is-grouped">
                                     <div class="control">
-                                        <input type="submit" class="button is-link" value= "Registrar partido"></input>
+                                        <input type="submit" class="button is-link" value="Registrar partido"></input>
                                     </div>
                                 </div>
                                 <?php if (isset($_GET['msg'])) { ?>
-                                <p class="notification is-danger"><?php echo $_GET['msg'] ?></p>
-                                <?php 
-                              } ?>
+                                    <p class="notification is-danger"><?php echo $_GET['msg'] ?></p>
+                                <?php
+                                } ?>
                         </div>
                     </section>
                     </form>
