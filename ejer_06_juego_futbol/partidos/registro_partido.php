@@ -16,6 +16,7 @@ include '../global_admin.php';
     $equipos = array("Barcelona", "Atlético de Madrid", "Valencia", "Athletic Club", "Sevilla", "Espanyol", "Real Sociedad", "Zaragoza", "Betis", "Celta de Vigo", "Deportivo de La Coruña", "Valladolid", "Racin de Santander", "Sportig de Gijón", "Osasuna", "Oviedo", "Mallorca", "Villarreal", "Las Plmas", "Málaga", "Rayo Vallecano", "Granada", "Getafe",
         "Alavés", "Levant", "Tenerife", "Murcia", "Salamanca", "Cádiz", "Logroñés", "Albacete", "Eibar", "Almería", "Córdoba", "Compostela", "Recreativo de Huelva", "Lleida", "Huesca"
     );
+
     ?>
 </head>
 
@@ -67,6 +68,8 @@ include '../global_admin.php';
                                             <select id="team_local" name="team_local" required>
                                             <option>Equipo local</option>
                                                 <?php
+                                               /* $recogerEquipos = new Equipos;
+                                                $equipos = $recogerEquipos.equipos;*/
                                                 foreach ($equipos as &$equipo) {
                                                     ?>
                                                     <option><?php echo $equipo ?></option>
