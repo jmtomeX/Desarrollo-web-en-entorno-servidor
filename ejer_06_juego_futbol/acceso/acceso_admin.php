@@ -29,7 +29,7 @@ include '../global_admin.php';
                             </li>
                             <li><a>Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
-                            <li><a href="../partidos/show_matches.com">Partidos</a></li>
+                            <li><a href="../partidos/show_matches.php">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
                     </aside>
