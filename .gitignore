@@ -1,3 +1,2 @@
-*.docx
-/nose_modules
+/node_modules
 conection.php

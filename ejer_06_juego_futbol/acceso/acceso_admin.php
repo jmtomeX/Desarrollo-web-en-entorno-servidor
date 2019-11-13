@@ -27,7 +27,7 @@ include '../global_admin.php';
                             <li>
                                 <h1 class="title"><a href="../acceso/acceso_admin.php" class="is-active">Panel de administrador</a></h1>
                             </li>
-                            <li><a>Cuentas de usuarios</a></li>
+                            <li><a href="../usuarios/user_accounts.php">Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
                             <li><a href="../partidos/show_matches.php">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
