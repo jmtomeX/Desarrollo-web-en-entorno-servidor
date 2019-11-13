@@ -19,11 +19,7 @@ switch ($operation) {
             $msg = $message_exito;
             header("Location:./enlaces_vista.php?msg=$msg&id=$enl_video_id");
         };
-        break;
-    case 2: // update link **************************************************************
-
-        ;
-        break;
+        break;      
     case 3: //Delete link *********************************************************************
         $message_fracaso = "Error al borrar el enlace, compruebe los campos.";
         $message_exito = "Se ha borrado el enlace con éxito";
@@ -34,10 +30,6 @@ switch ($operation) {
         } else {
             $msg = $message_fracaso;
         };
-        break;
-    case 4: //Show links *********************************************************************
-
-        ;
         break;
 }
 header("Location:./enlaces_vista.php?msg=$msg&id=$enl_video_id");
@@ -64,7 +56,7 @@ function deleteLinks($enl_id)
     require "../conection.php";
     mysqli_query($conx, $sql_delete);
     $cont = mysqli_affected_rows($conx);
-    
+
     mysqli_close($conx);
     return ($cont > 0);
 }
@@ -84,5 +76,4 @@ function showLinks($enl_id)
     };
     mysqli_close($conx);
     return $arrayLinks;
-    
 }

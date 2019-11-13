@@ -37,9 +37,16 @@ switch ($operation) {
         break;
         ;
     case 3: // Borrar partido
-
-        ;
+     
+        $game_id = $_GET['game_id'];
+        if (deleteMatch($game_id)) {
+            $msg = "Se ha borrado el partido con éxito";
+        } else {
+            $msg = "Error al borrar el partido.";
+        }
+        header("Location:./show_matches.php?msg=$msg");
         break;
+        ;   
 }
 
 // Funciones
@@ -61,4 +68,16 @@ $cont = mysqli_affected_rows($conx);
 mysqli_close($conx);
 return $cont;
 }
+
+function deleteMatch($game_id) {
+    
+    $sql_delete = "DELETE FROM partidos WHERE game_id = '$game_id'";
+    require "../conection.php";
+    mysqli_query($conx, $sql_delete);
+    $cont = mysqli_affected_rows($conx);
+
+    mysqli_close($conx);
+    return ($cont > 0);
+}
+
 ?>

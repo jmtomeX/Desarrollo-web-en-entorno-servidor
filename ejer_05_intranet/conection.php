@@ -1,7 +1,7 @@
 <?php
 // conexion a la base de datos
-//$conx = mysqli_connect("localhost","root","26Ab3sT0","bd_intranet");
-$conx = mysqli_connect("localhost","root","","bd_intranet");
+$conx = mysqli_connect("localhost","root","26Ab3sT0","bd_intranet");
+//$conx = mysqli_connect("localhost","root","","bd_intranet");
 
 // comprobamos errores
 if(!$conx) {
