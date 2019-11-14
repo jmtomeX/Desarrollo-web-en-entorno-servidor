@@ -82,13 +82,23 @@ $datos = mysqli_query($conx, $sql_view);
                                     <td><?php echo $date ?></td>
                                     <td><?php echo $time ?></td>
                                     <td><?php echo $game_partido ?></td>
-                                    <td><?php echo  $game_resultado ?></td>
+
+                                    <td>
+                                    <?php  if($game_resultado >=0 ){?>
+                                    <a class="showModal_resultado" onclick = "editMatchResult(<?php echo $game_id; ?>)">
+                                            <?php echo $game_resultado ?>
+                                        </a></<a>
+                                    <?php } else {
+                                          echo $game_resultado;
+                                        }?>
+                                        </td>
+
                                     <td><a href="./controler.php?op=3&game_id=<?php echo $game_id ?>"
                                             onclick="return confirm('¿Desea eliminar el partido?')"><span
                                                 class="icon has-text-danger">
                                                 <i class="fas fa-ban"></i>
                                             </span></a></td>
-                                    <td><a type="button" class="showModal" data-target="modal-ter"
+                                    <td><a type="button" class="showModal" data-target="modal_editar"
                                             aria-haspopup="true"><span class="icon has-text-success"
                                                 onclick="editMatch(<?php echo $game_id; ?>)">
                                                 <i class="fas fa-check-square"></i>
@@ -200,6 +210,37 @@ $datos = mysqli_query($conx, $sql_view);
                     </div>
                     <!-- Modal fin -->
 
+                    <!-- Modal  RESULTADO-->
+                    <div id="modal_editar_resultado" class="modal">
+                        <div class="modal-background"></div>
+                        <form action="./controler.php?op=4" method="POST" id="form_reg_resultado">
+                            <input type="hidden" id="game_id" name="game_id" />
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Modificar Resultado Partido</p>
+                                </header>
+                                <section class="modal-card-body">
+                                    <!-- Content ... -->
+                                    <section class="column">
+
+                                        <div class="field">
+                                            <label class="label">Resultado</label>
+                                            <div class="control">
+                                                <input class="input" type="number" id="resultado_modificado" name="resultado_modificado">
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- Fin Content ... -->
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button is-success" type="submit">Guardar</button>
+                                    <button class="button" id="modal-close-result" type="button">Cancelar</button>
+                                </footer>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal fin -->
+
                 </section>
 
             </div>
@@ -208,11 +249,21 @@ $datos = mysqli_query($conx, $sql_view);
     <script>
     // Mostrar modal
     $(".showModal").click(function() {
-        $(".modal").addClass("is-active");
+        $("#modal_editar").addClass("is-active");
     });
 
     $("#modal-close").click(function() {
-        $(".modal").removeClass("is-active");
+        $("#modal_editar").removeClass("is-active");
+    });
+    // Fin modal
+
+    // Mostrar modal Resultado
+    $(".showModal_resultado").click(function() {
+        $("#modal_editar_resultado").addClass("is-active");
+    });
+
+    $("#modal-close-result").click(function() {
+        $("#modal_editar_resultado").removeClass("is-active");
     });
     // Fin modal
 
@@ -228,6 +279,12 @@ $datos = mysqli_query($conx, $sql_view);
         $("#modal_editar #team_local").val(team1);
         $("#modal_editar #team_visitor").val(team2);
         $("#modal_editar #resultado").val(resultado);
+    }
+
+    function editMatchResult(id) {
+        $("#modal_editar_resultado #game_id").val(id);
+        var resultado = $("#game_" + id).data("resultado");
+        $("#modal_editar_resultado #resultado_modificado").val(resultado);
     }
     </script>
 </body>
