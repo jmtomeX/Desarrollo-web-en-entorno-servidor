@@ -25,7 +25,8 @@ include '../global_admin.php';
                     <aside class="menu">
                         <ul class="menu-list">
                             <li>
-                                <h1 class="title"><a href="../acceso/acceso_admin.php" class="is-active">Panel de administrador</a></h1>
+                                <h1 class="title"><a href="../acceso/acceso_admin.php" class="is-active">Panel de
+                                        administrador</a></h1>
                             </li>
                             <li><a href="../usuarios/user_accounts.php">Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
@@ -35,7 +36,16 @@ include '../global_admin.php';
                     </aside>
                 </section>
                 <section class="column">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident consequuntur voluptatem repellat, adipisci soluta ducimus, illo dolorem voluptates similique blanditiis eius eligendi officia reiciendis molestiae, beatae sit. Sapiente, inventore vel.</p>
+                    <?php
+                    $sql = "SELECT sum(mov_cantidad) AS total FROM movs";
+                    require "../conection.php";
+                    $datos = mysqli_query($conx, $sql);
+                    if ($fila = mysqli_fetch_assoc($datos)) {
+                        $mov_cantidad_total = $fila['total'];
+                    }
+                    mysqli_close($conx);
+                    ?>
+                    <h1 class="title">Total en caja <strong class="has-text-success"><?php echo $mov_cantidad_total; ?></strong><span class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
 
                 </section>
             </div>
