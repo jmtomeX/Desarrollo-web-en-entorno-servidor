@@ -4,7 +4,6 @@ $msg = "Operacion desconocida";
 $operation = $_GET["op"];
 switch ($operation) {
     case 1: // Insert **************************************************************
-    
     $message_fracaso ="El usuario ya existe, selecciona otro diferente a \"$reg_user\" <br>O los campos son inválidos";
     $message_exito = "Registro con éxito";
     

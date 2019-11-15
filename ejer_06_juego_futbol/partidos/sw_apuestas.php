@@ -1,12 +1,13 @@
 <?php
-$cont = 0;
 
 $sql = "SELECT * FROM apuestas
 INNER JOIN usuarios ON apuestas.bet_user_id = usuarios.user_id
 INNER JOIN partidos ON apuestas.bet_game_id = partidos.game_id
 ";
+
 require "../conection.php";
-mysqli_query($conx,$sql);
+$data = array();
+$datos = mysqli_query($conx,$sql);
 while($fila= mysqli_fetch_assoc($datos) ) {
     // apuestas
     $bet_user_id = $fila['bet_user_id'];
@@ -27,29 +28,28 @@ while($fila= mysqli_fetch_assoc($datos) ) {
     // partidos
     $game_partido = $fila['game_partido'];
     $game_fecha = $fila['game_fecha'];
-    $cont++;
+
+    $data[] = array(
+        'bet_cant_apostada' => $bet_cant_apostada,
+        'bet_minuto_apuesta' => $bet_minuto_apuesta,
+        'bet_fecha_apuesta' => $bet_fecha_apuesta,
+        'bet_premio' => $bet_premio,
+        'bet_estado' => $bet_estado,
+    
+        'user_nick' => $user_nick,
+        'user_mail' => $user_mail, 
+        'user_saldo' => $user_saldo,
+        
+        'game_partido' => $game_partido,
+        'game_fecha' => $game_fecha
+    );
 
 }
 mysqli_close($conx);
-$res = $cont;
 
 header('Content-Type: application/json');
 //Guardamos los datos en un array
-$data = array(
-    'res' => $cont,
-    'bet_cant_apostada' => $bet_cant_apostada,
-    'bet_minuto_apuesta' => $bet_minuto_apuesta,
-    'bet_fecha_apuesta' => $bet_fecha_apuesta,
-    'bet_premio' => $bet_premio,
-    'bet_estado' => $bet_estado,
 
-    'user_nick' => $user_nick,
-    'user_mail' => $user_mail, 
-    'user_saldo' => $user_saldo,
-    
-    'game_partido' => $game_partido,
-    'game_fecha' => $game_fecha
-);
 //Devolvemos el array pasado a JSON como objeto
 
 echo json_encode($data);

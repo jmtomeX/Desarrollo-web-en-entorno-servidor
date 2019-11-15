@@ -18,7 +18,8 @@ include '../global_admin.php';
     <main class="section">
         <div class="container">
             <a href="./acceso_admin.php">
-                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
+                        class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             </a>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
@@ -30,7 +31,7 @@ include '../global_admin.php';
                             </li>
                             <li><a href="../usuarios/user_accounts.php">Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
-                            <li><a href=>Apuestas</a></li>
+                            <li><a onclick="showBets()">Apuestas</a></li>
                             <li><a href="../partidos/show_matches.php">Partidos</a></li>
                             <li><a href="../partidos/sw_pagos.php">Pagos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
@@ -47,8 +48,27 @@ include '../global_admin.php';
                     }
                     mysqli_close($conx);
                     ?>
-                    <h1 class="title">Total en caja <strong class="has-text-success"><?php echo $mov_cantidad_total; ?></strong><span class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
+                    <h1 class="title">Total en caja <strong class="has-text-success">
 
+                            <?php echo $mov_cantidad_total; ?></strong><span
+                            class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
+
+                    <table id="tabla" class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><abbr>Cantidad Apuesta</abbr></th>
+                                <th><abbr>Minuto Apuesta</abbr></th>
+                                <th><abbr>Partido</abbr></th>
+                                <th><abbr>Fecha de juego</abbr></th>
+                                <th><abbr>Fecha Apuesta</abbr></th>
+                                <th><abbr>Premio</abbr></th>
+                                <th><abbr>Estado</abbr></th>
+                                <th><abbr>Nick</abbr></th>
+                                <th><abbr>Mail</abbr></th>
+                                <th><abbr>Saldo</abbr></th>
+                            </tr>
+                        <tbody id="table_bets"></tbody>
+                    </table>
                 </section>
             </div>
         </div>
@@ -56,43 +76,48 @@ include '../global_admin.php';
     </main>
     <?php include '../includes/footer.php' ?>
     <script>
-           function showBets() {
-                   
-                   $.ajax({
-                        type: "POST",
-                        url: "../partidos/sw_apuestas.php",
-                        success: function (data) {
-                            console.log(data);
-                            //var obj = JSON.parse(data);
-                            if (data.res >0) {
-                        
-                                /* 
-                                data.res
-                                    data.bet_cant_apostada
-                                    data.bet_minuto_apuesta
-                                    data.bet_fecha_apuesta
-                                    data.bet_premio
-                                    data.bet_estado
+    $(function() {
+        $("#tabla").css("display", "none"); 
+    });
 
-                                    data.user_nick
-                                    data.user_mail
-                                    data.user_saldo
-                                    
-                                    data.game_partido
-                                    data.game_fecha
-                                    */
-                                //Refresco la fila
-                                $('#info_enlace_'+enl_id).text(enl_titulo);
-                                $('#info_enlace_'+enl_id).attr("href",enl_url);
-                            } else {
-                                alert(data.msg);
-                            }
-                        },
-                        error: function (data) {
-                            alert(" Error");
+    function showBets() {
+        $("#tabla").fadeIn(1000).css("display", "block"); 
+        $.ajax({
+            type: "GET",
+            url: "../partidos/sw_apuestas.php",
+            success: function(data) {
+                console.log(data);
+                //var obj = JSON.parse(data);
+                if (data.length > 0) {
+                    $("#table_bets").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#table_bets").append("<tr>");
+
+                        $("#table_bets").append("<td>" + data[i].bet_cant_apostada + "€</td>");
+                        $('#table_bets').append("<td>" + data[i].bet_minuto_apuesta + "</td>");
+                        $('#table_bets').append("<td>" + data[i].game_partido + "</td>");
+                        $('#table_bets').append("<td>" + data[i].game_fecha + "</td>");
+                        $('#table_bets').append("<td>" + data[i].bet_fecha_apuesta + "</td>");
+                        $('#table_bets').append("<td>" + data[i].bet_premio + "</td>");
+                        $('#table_bets').append("<td>" + data[i].bet_estado + "</td>");
+
+                        $('#table_bets').append("<td>" + data[i].user_nick + "</td>");
+                        $('#table_bets').append("<td>" + data[i].user_mail + "</td>");
+                        $('#table_bets').append("<td>" + data[i].user_saldo + "</td>");
+
+                        
+                        $("#table_bets").append("</tr>");
+
                     }
-                });
+                } else {
+                    alert(data.msg);
+                }
+            },
+            error: function(data) {
+                alert("Error");
             }
+        });
+    }
     </script>
 </body>
 

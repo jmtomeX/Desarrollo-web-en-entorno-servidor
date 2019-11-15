@@ -47,7 +47,6 @@ $datos = mysqli_query($conx, $sql_view);
                         <table class="table is-striped">
                             <thead>
                                 <tr>
-                                    <!-- user_id	user_mail	user_password	user_nick	user_saldo -->
                                     <th><abbr title="id"> ID</abbr></th>
                                     <th><abbr title="nick">Nick</abbr></th>
                                     <th><abbr title="email">Email</abbr></th>

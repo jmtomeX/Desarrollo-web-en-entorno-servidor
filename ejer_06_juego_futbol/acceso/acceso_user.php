@@ -35,11 +35,11 @@
           </aside>
           </section>
             <section class="column"> 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident consequuntur voluptatem repellat, adipisci soluta ducimus, illo dolorem voluptates similique blanditiis eius eligendi officia reiciendis molestiae, beatae sit. Sapiente, inventore vel.</p>
               <h1 class="title">
                 Saldo <span id="saldo" class="has-text-success">0</span>
                €
               </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident consequuntur voluptatem repellat, adipisci soluta ducimus, illo dolorem voluptates similique blanditiis eius eligendi officia reiciendis molestiae, beatae sit. Sapiente, inventore vel.</p>
 
             </section>
       </div>

@@ -155,7 +155,6 @@ function rectificarPartido($game_id, $game_resultado_modificado) {
         } 
     }
 }
-
 function deleteMatch($game_id) {
     $sql_delete = "DELETE FROM partidos WHERE game_id = '$game_id'";
     require "../conection.php";
