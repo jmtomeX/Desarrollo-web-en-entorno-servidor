@@ -30,7 +30,9 @@ include '../global_admin.php';
                             </li>
                             <li><a href="../usuarios/user_accounts.php">Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
+                            <li><a href=>Apuestas</a></li>
                             <li><a href="../partidos/show_matches.php">Partidos</a></li>
+                            <li><a href="../partidos/sw_pagos.php">Pagos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
                     </aside>
@@ -53,6 +55,45 @@ include '../global_admin.php';
 
     </main>
     <?php include '../includes/footer.php' ?>
+    <script>
+           function showBets() {
+                   
+                   $.ajax({
+                        type: "POST",
+                        url: "../partidos/sw_apuestas.php",
+                        success: function (data) {
+                            console.log(data);
+                            //var obj = JSON.parse(data);
+                            if (data.res >0) {
+                        
+                                /* 
+                                data.res
+                                    data.bet_cant_apostada
+                                    data.bet_minuto_apuesta
+                                    data.bet_fecha_apuesta
+                                    data.bet_premio
+                                    data.bet_estado
+
+                                    data.user_nick
+                                    data.user_mail
+                                    data.user_saldo
+                                    
+                                    data.game_partido
+                                    data.game_fecha
+                                    */
+                                //Refresco la fila
+                                $('#info_enlace_'+enl_id).text(enl_titulo);
+                                $('#info_enlace_'+enl_id).attr("href",enl_url);
+                            } else {
+                                alert(data.msg);
+                            }
+                        },
+                        error: function (data) {
+                            alert(" Error");
+                    }
+                });
+            }
+    </script>
 </body>
 
 </html>
