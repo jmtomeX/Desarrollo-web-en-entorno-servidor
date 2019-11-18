@@ -1,5 +1,4 @@
 <?php
-   session_start();
    include '../global_user.php';
   ?>
 <!DOCTYPE html>
@@ -29,21 +28,29 @@
                                 <h1 class="title"><a href="#" class="is-active">Panel de Usuario</a></h1>
                             </li>
                             <li><a>Cuenta de usuario</a></li>
-                            <li><a>Recargar saldo</a></li>
-                            <li><a>Partidos</a></li>
+                            <li><a href="#">Recargar saldo</a></li>
+                            <li><a href="../partidos/show_matches_user.php">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
 
                     </aside>
                 </section>
-                <section class="column">
+                <section class="column is-one-quarter">
+                <form action="../usuarios/controler.php?op=4" method="post">
                     <h1 class="title">
                         Saldo <span id="saldo" class="has-text-success">
                       <?php 
-                      
+                      $user_id =$_SESSION['user_id'] ;
                       $sql = "SELECT user_saldo FROM usuarios WHERE user_id = '$user_id'";
+                      require "../conection.php";
+                      //recogemos la consulta
+                      $datos = mysqli_query($conx, $sql);
+                      //mostramos la consulta
+                      if ($fila = mysqli_fetch_assoc($datos)) {
+                          $saldo = $fila["user_saldo"];
+                      }
+                      echo $saldo;
                       ?>
-
                         </span>
                         €
                     </h1>
@@ -52,16 +59,22 @@
                     </h1>
                     <div class="field">
                         <div class="control">
-                            <input class="input is-primary" type="text" placeholder="Primary input">
+                            <input class="input is-primary" type="number" placeholder="€" id="recarga_saldo" name="recarga_saldo">
                         </div>
                     </div>
 
 
                     <div class="buttons">
-                        <button class="button is-primary">Recargar</button>
-
+                        <button class="button is-primary" type="submit">Recargar</button>
                     </div>
-
+                    </form>
+                    <br>
+                    <?php if (isset($_GET['msg_error'])) { ?>
+                                    <p class="notification is-danger"><?php echo $_GET['msg_error'] ?></p>
+                    <?php } ?>
+                    <?php if (isset($_GET['msg'])) { ?>
+                                    <p class="notification is-success"><?php echo $_GET['msg'] ?></p>
+                    <?php } ?>
                 </section>
             </div>
         </div>

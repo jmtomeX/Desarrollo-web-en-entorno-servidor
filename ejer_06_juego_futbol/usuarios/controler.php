@@ -34,6 +34,20 @@ switch ($operation) {
         session_unset();
         header("Location:../index.php");
         break;
+    case 4: // Recargar saldo *********************************************************************
+       $recarga_saldo = $_POST["recarga_saldo"];
+       $user_id = $_SESSION['user_id'];
+       $result =rechargeMoney($recarga_saldo, $user_id);
+       if($result == false) {
+        $msg = "La recarga no se ha podido realizar";
+        header("Location: ./acceso_user.php?msg=$msg_error");
+    }else {
+        $msg = "Recarga con éxito.";
+        header("Location: ../acceso/acceso_user.php?msg=$msg");
+    }
+        ;
+
+        break;
 }
 
 // Funciones ***********************************************************
@@ -49,8 +63,7 @@ function insertUser($registro_nick,$registro_email,$registro_passw) {
 }
 
 // ******************* login
-function login($email, $passw)
-{
+function login($email, $passw){
     //generar la consulta
     $sql = "SELECT * FROM usuarios WHERE user_mail = '$email' AND user_password = '$passw' ";
     require "../conection.php";
@@ -69,3 +82,13 @@ function login($email, $passw)
     mysqli_close($conx);
     return $id;
 }
+    // Recargar saldo
+    function rechargeMoney($recarga_saldo, $user_id) {
+        $sql = "UPDATE usuarios SET user_saldo = (user_saldo + $recarga_saldo)  where user_id='$user_id'";
+        require "../conection.php";
+        mysqli_query($conx,$sql);
+        $cont = mysqli_affected_rows($conx);
+        mysqli_close($conx);
+        return ($cont > 0);
+    }
+
