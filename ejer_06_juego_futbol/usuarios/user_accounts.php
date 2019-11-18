@@ -38,7 +38,7 @@ $datos = mysqli_query($conx, $sql_view);
                             <li><a href="#" class="is-active">Cuentas de usuarios</a></li>
                             <li><a href="../partidos/registro_partido.php">Registrar partidos</a></li>
                             <li><a href="../partidos/show_matches.php">Partidos</a></li>
-                            <li><a href="./usuarios/controler.php?op=3">Salir</a></li>
+                            <li><a href="./controler.php?op=3">Salir</a></li>
                         </ul>
                     </aside>
                 </section>

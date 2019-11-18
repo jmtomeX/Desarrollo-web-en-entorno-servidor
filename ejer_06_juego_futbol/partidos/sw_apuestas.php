@@ -1,5 +1,4 @@
 <?php
-
 $sql = "SELECT * FROM apuestas
 INNER JOIN usuarios ON apuestas.bet_user_id = usuarios.user_id
 INNER JOIN partidos ON apuestas.bet_game_id = partidos.game_id
