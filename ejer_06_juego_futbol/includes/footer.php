@@ -1,7 +1,7 @@
 <footer class="footer pie-pagina">
         <div class="content has-text-centered">
-            <p>
                 <h2><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h2>
+            <p>
                 <strong>Goools</strong> by <a href="#">José Mari Tomé</a>.
             </p>
             <figure>
