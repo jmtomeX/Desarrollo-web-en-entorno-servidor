@@ -56,7 +56,7 @@ function insertUser($registro_nick,$registro_email,$registro_passw) {
     $sql_insert = "INSERT INTO usuarios (user_nick, user_mail,user_password) VALUES ('$registro_nick','$registro_email','$registro_passw')";
     require "../conection.php";
     mysqli_query($conx, $sql_insert);
-    $result =$insert_ok = mysqli_insert_id($conx); 
+    $result  = mysqli_insert_id($conx); 
     return ($result > 0);
    
     mysqli_close($conx);
