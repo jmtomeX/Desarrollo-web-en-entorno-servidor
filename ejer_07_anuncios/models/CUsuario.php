@@ -1,5 +1,6 @@
 <?php
-class CUsuario {
+require 'CBBDD.php';
+class CUsuario extends CBBDD{
     private $mus_id;
     private $mus_name;
     private $mus_email;
@@ -7,43 +8,41 @@ class CUsuario {
 
     // getters and setters
     public function getName() {
-        return $this -> $mus_name;
+        return $this -> mus_name;
     }
     public function getID() {
-        return $this -> $mus_id;
+        return $this -> mus_id;
     }
 
     // funciones
     public function checkUser($us_email, $us_password) {
-         //generar la consulta
+    //generar la consulta
     $sql = "SELECT * FROM usuarios WHERE us_email = '$us_email' AND us_password = '$us_password' ";
-    //echo $sql; exit;
-    require "../conection.php";
     //recogemos la consulta
-    $datos = mysqli_query($conx, $sql);
+    $this -> conectarBD();
+    $datos = $this -> mConex ->  query($sql);
     //mostramos la consulta
-    $this -> $mus_id = 0;
-    // USar la versión de po de acceso a base de datos *****************************************************
-    if ($fila = mysqli_fetch_assoc($datos)) {
-        $id = $fila["us_id"];
+    $this -> mus_id = 0;
+    // USar la versión de PO de acceso a base de datos *****************************************************
+    if ($fila = $datos->fetch_assoc()) {
         //OK, guardo en los atributos:
-        $this -> $mus_email = $fila["us_email"];
-        $this -> $mus_name = $fila["us_name"];
-        $this -> $mus_id  = $fila["us_id"];
+        $this->mus_email = $fila["us_email"];
+        $this->mus_name = $fila["us_name"];
+        $this->mus_id  = $fila["us_id"];
     }
     // cerramos conexión
-    mysqli_close($conx);
-    return $this -> $mus_id;
+    $this->desconectarBD();
+    return $this -> mus_id;
     }
 
     public function toRegister ($us_email, $us_password, $us_name) {
-        $sql_insert = "INSERT INTO usuarios (us_email, us_name,us_password) VALUES ('$us_email','$us_name','$us_password')";
-        require "../conection.php";
-        mysqli_query($conx, $sql_insert);
-        $result = mysqli_insert_id($conx); 
-        mysqli_close($conx);
+        $sql = "INSERT INTO usuarios (us_email, us_name,us_password) VALUES ('$us_email','$us_name','$us_password')";
+        $this -> conectarBD();
+        $this -> mConex -> query($sql);
+        $result = $this -> mConex -> insert_id; 
+        $this -> desconectarBD();
         return ($result > 0);
     }
-  
+
 }
 ?>

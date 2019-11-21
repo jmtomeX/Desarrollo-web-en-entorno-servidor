@@ -15,7 +15,7 @@
         <label for="email">Email <br><input type="text" name="email" id="email"></label><br>
         <label for="name">Nombre <br><input type="text" name="name" id="name"></label><br>
         <label for="email">Password <br><input type="password" name="password" id="password"></label><br>
-        <button type="submit">Entrar</button>
+        <button type="submit">Registrar</button>
     </form>
 </body>
 

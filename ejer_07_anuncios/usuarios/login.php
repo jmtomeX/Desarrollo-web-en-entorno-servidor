@@ -14,7 +14,7 @@
     <form action="./controller.php?op=2" method="post">
         <label for="email">Email <br><input type="text" name="email" id="email" value="jm@jm.com"></label><br>
         <label for="email">Password <br><input type="password" name="password" id="password" value= "1234"></label><br>
-        <button type="submit">Registrar</button>
+        <button type="submit">Entrar</button>
     </form>
 </body>
 

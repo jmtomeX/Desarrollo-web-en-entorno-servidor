@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Leer nodos
+        $(function() {
+            console.log("hello");
+            $.get("elementos.xml", function(xml) {
+                $(xml).find("blog").each(function() {
+                    var name = $(this).find('name').text();
+                    var description = $(this).find('description').text();
+                    var url = $(this).find('url').text();
+                    console.log(name + " " + description + " " + url);
+                });
+            });
+
+            //leer atributos
+            $.get("atributos.xml", function(xml) {
+                $(xml).find("blog").each(function() {
+
+                    var name = $(this).attr('name');
+                    var description = $(this).attr('description');
+                    var url = $(this).attr('url');
+
+                    alert(name + " " + description + " " + url);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
