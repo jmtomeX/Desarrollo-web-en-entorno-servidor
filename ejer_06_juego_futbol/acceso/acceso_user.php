@@ -17,18 +17,19 @@
 <body>
     <main class="section">
         <div class="container">
-            <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
-                    class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+        <a href="#">
+            <h1 class="title"><strong class="has-text-success">Goool!!!</strong>
+            <span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1></a>
             <h2 class="title">Hola <span class="has-text-success"> <?php echo $nick?></span></h2>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
                     <aside class="menu">
                         <ul class="menu-list">
                             <li>
-                                <h1 class="title"><a href="#" class="is-active">Panel de Usuario</a></h1>
+                                <h1 class="title"><a href="#">Panel de Usuario</a></h1>
                             </li>
-                            <li><a>Cuenta de usuario</a></li>
-                            <li><a href="#">Recargar saldo</a></li>
+                            <li><a href="../usuarios/controler.php?op=5">Cuenta de usuario</a></li>
+                            <li class="title"><a href="#" class="is-active">Recargar saldo</a></li>
                             <li><a href="../partidos/show_matches_user.php">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>
                         </ul>
@@ -80,8 +81,6 @@
         </div>
     </main>
     <?php include '../includes/footer.php' ?>
-
-
 </body>
 
 </html>

@@ -76,7 +76,6 @@ switch ($operation) {
                 $msg = "Error al realizar la apuesta.";
             }
             header("Location:./show_matches_user.php?msg=$msg");
-            
             break;
             ;   
 }
@@ -186,12 +185,13 @@ function deleteMatch($game_id) {
 // Añadir apuesta 
 function addBet($bet_user_id, $bet_minuto_apuesta, $bet_cant_apostada ,$bet_game_id ,$bet_fecha_apuesta) {
     $sql = "INSERT INTO apuestas (bet_user_id, bet_game_id , bet_cant_apostada, bet_minuto_apuesta, bet_fecha_apuesta) VALUES  ('$bet_user_id', '$bet_game_id', '$bet_cant_apostada', '$bet_minuto_apuesta', '$bet_fecha_apuesta')";
-    echo  $sql; exit;
+    var_dump($_SESSION);
     require "../conection.php";
     mysqli_query($conx,$sql);
     $id = mysqli_insert_id($conx);
     // Crear consulta para modificar el saldo del usuario con la cantidad apostada.
-    $sql = "UPDATE usuarios user_saldo = (user_saldo - $bet_cant_apostada) WHERE user_id = 'bet_user_id'";
+    echo " apuesta " . $bet_cant_apostada . "\n"; 
+    $sql = "UPDATE usuarios SET user_saldo = (user_saldo - $bet_cant_apostada) WHERE user_id = '$bet_user_id'";
     mysqli_query($conx,$sql);
     // Crear consulta para insertar movimiento en la banca
     $sql = "INSERT INTO movs (mov_user, mov_game , mov_cantidad, mov_fecha) VALUES  ('$bet_user_id', '$bet_game_id', '$bet_cant_apostada', '$bet_fecha_apuesta')";

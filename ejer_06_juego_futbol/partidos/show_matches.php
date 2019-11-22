@@ -55,7 +55,7 @@ $datos = mysqli_query($conx, $sql_view);
                                     <th><abbr title="partido">Partido</abbr></th>
                                     <th><abbr title="result">Resultado minuto</abbr></th>
                                     <th><abbr title="Delete">Eliminar Partido</abbr></th>
-                                    <th><abbr title="Delete">Editar Partido</abbr></th>
+                                    <th><abbr title="edit">Editar Partido</abbr></th>
                                 </tr>
                             <tbody>
                                 <?php
