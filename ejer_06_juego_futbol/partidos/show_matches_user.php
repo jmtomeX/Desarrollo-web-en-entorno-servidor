@@ -48,7 +48,7 @@ mysqli_close($conx);
                             <li>
                                 <h1 class="title"><a href="#">Panel de Usuario</a></h1>
                             </li>
-                            <li><a href="../usuarios/controler.php?op=5">Cuenta de usuario</a></li>
+                            <li><a href="../usuarios/user_account.php">Cuenta de usuario</a></li>
                             <li><a href="../acceso/acceso_user.php">Recargar saldo</a></li>
                             <li class="title"><a href="#" class="is-active">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>

@@ -19,7 +19,7 @@ switch ($operation) {
     case 2: // login **************************************************************
         $msg = "El email o contraseña son incorrectos";
         $email = $_POST['email'];
-        $passw = $_POST['passw'];
+        $passw = $_POST['passw'];  
         $id = login($email, $passw);
         if ($id > 0) {
             if ($email != "admin@admin.com") {
@@ -48,13 +48,19 @@ switch ($operation) {
     }
         ;
         break;
-        case 5: // Mostrar datos usuario para modificar o eliminar cuenta.
+        case 5: //  modificar usuario.
             $user_id = $_SESSION['user_id'];
-            $data_user = showUser($user_id);
-            //var_dump($data_user);exit;
-            header("Location: ./user_account.php?password=$data_user[0]&saldo=$data_user[1]");
+            $user_nick = $_POST['nick'];
+            $user_email = $_POST['email'];
+            $data_user = UpdateUser($user_id, $user_nick, $user_email);
+            if($result == false) {
+                header("Location: ./user_account.php?msg='Error al cambiar datos'");
+            }else {
+                header("Location: ../index.php?msg='Ya puede acceder con tus nuevos datos'");
+            }
             ;
         break;
+
         case 6:
             $user_id = $_SESSION['user_id'];
             if (deleteUser($user_id)) {
@@ -81,6 +87,8 @@ function insertUser($registro_nick,$registro_email,$registro_passw) {
 // ******************* login
 function login($email, $passw){
     //generar la consulta
+    $passHash = password_hash($passw, PASSWORD_BCRYPT);
+    password_verify($passw, $passHash);
     $sql = "SELECT * FROM usuarios WHERE user_mail = '$email' AND user_password = '$passw' ";
     require "../conection.php";
     //recogemos la consulta
@@ -108,20 +116,15 @@ function login($email, $passw){
         return ($cont > 0);
     }
 
-    // Mostrar datos de un usuario en su panel 
-     function showUser($user_id) {
-         $sql = "SELECT  user_password, user_saldo FROM usuarios WHERE user_id = '$user_id'";
+    // Modificar email y nick de un usuario en su panel 
+     function UpdateUser($user_id, $user_nick, $user_email) {
+         $sql = "UPDATE  usuarios SET user_nick='$user_nick' , user_mail = '$user_email' WHERE user_id = '$user_id'";
+         echo $sql;exit;
          require "../conection.php";
-         $datos = mysqli_query($conx, $sql);
-         //mostramos la consulta
-         $data_user  = array();
-         if ($fila = mysqli_fetch_assoc($datos)) {
-            $data_user[0] = $fila["user_password"];
-            $data_user[1] = $fila["user_saldo"];
-         }  	 	 	 	
-         // cerramos conexión
+         mysqli_query($conx,$sql);
+         $cont = mysqli_affected_rows($conx); 	
          mysqli_close($conx);
-         return $data_user;
+         return ($cont > 0);
      }
 
      // Eliminar usuario

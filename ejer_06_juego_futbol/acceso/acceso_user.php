@@ -28,7 +28,7 @@
                             <li>
                                 <h1 class="title"><a href="#">Panel de Usuario</a></h1>
                             </li>
-                            <li><a href="../usuarios/controler.php?op=5">Cuenta de usuario</a></li>
+                            <li><a href="../usuarios/user_account.php">Cuenta de usuario</a></li>
                             <li class="title"><a href="#" class="is-active">Recargar saldo</a></li>
                             <li><a href="../partidos/show_matches_user.php">Partidos</a></li>
                             <li><a href="../usuarios/controler.php?op=3">Salir</a></li>

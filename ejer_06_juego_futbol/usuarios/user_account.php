@@ -38,81 +38,64 @@
                     </aside>
                 </section>
                 <section class="column is-two-quarter">
-                      <!-- FORMULARIO -->
-          <form id="form_create_user" action="../usuarios/controler.php?op=1" method="POST">
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-expanded has-icons-left">
-                    <input class="input" id="nick" pattern="[a-z]{1,15}" name="nick" type="text" value="<?php echo $_SESSION['nick']; ?>" disabled>
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-user"></i>
-                    </span>
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control is-expanded has-icons-left has-icons-right">
-                    <input class="input is-success" id="email" name="email" type="email" placeholder="Email" value="<?php echo $_SESSION['email']?>" required>
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                      <i id="icon_confirm" class=""></i>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="field is-horizontal">
-              <div class="field-label"></div>
-              <div class="field-body">
-                <div class="field is-expanded">
-                  <div class="field has-addons">
-                    <p class="control is-expanded">
-                      <input class="input" id="password1" name="password1" type="text" placeholder="Password" required>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="field is-horizontal">
-              <div class="field-label"></div>
-              <div class="field-body">
-                <div class="field is-expanded">
-                  <div class="field has-addons">
-                    <p class="control is-expanded">
-                      <input class="input" id="password2" name="password2" type="text" placeholder="Repita Password" required>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="field is-horizontal">
-              <div class="field-label">
-                <!-- Left empty for spacing -->
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <div class="control">
-                    <button type="button" class="button is-warning" id="button_send_user">
-                      Modificar cuenta
-                    </button>
-                    <br><br><br>
-                    <a href = "./controler.php?op=6" type="button" class="button is-danger"  id="button_send_user" onclick="return confirm('¿Desea eliminar la cuenta?')">Eliminar cuenta</a>
-                  </div>
-                </div>
-                <div id="error_check_passw"></div>
-              </div>
-            </div>
-          </form>
+                    <!-- FORMULARIO Modificar usuario-->
+                    <form id="form_modify_user" action="../usuarios/controler.php?op=5" method="POST">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded has-icons-left">
+                                        <input class="input" id="nick" name="nick" type="text"
+                                            value="<?php echo $_SESSION['nick']; ?>">
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control is-expanded has-icons-left has-icons-right">
+                                        <input class="input is-success" id="email" name="email" type="email"
+                                            placeholder="Email" value="<?php echo $_SESSION['email']?>" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <span class="icon is-small is-right">
+                                            <i id="icon_confirm" class=""></i>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- <?php 
-                    echo $_GET['password'] ;         
-                    ?> -->
-                </section>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <!-- Left empty for spacing -->
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <button type="submit" class="button is-warning" id="button_send_user">
+                                            Modificar cuenta
+                                        </button>
+                                        <br><br><br>
+                                        <a href="./controler.php?op=6" type="button" class="button is-danger"
+                                            id="button_send_user"
+                                            onclick="return confirm('¿Desea eliminar la cuenta?')">Eliminar cuenta</a>
+                                    </div>
+                                </div>
+                                <div id="error_check_passw"></div>
+                            </div>
+                        </div>
+                    </form>
             </div>
+        </div>
+        <div id="error_check_passw"></div>
+        </div>
+        </div>
+
+        </section>
+        </div>
         </div>
     </main>
     <?php include '../includes/footer.php' ?>

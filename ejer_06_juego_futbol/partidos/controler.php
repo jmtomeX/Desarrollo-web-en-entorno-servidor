@@ -5,7 +5,6 @@ $operation = $_GET['op'];
 switch ($operation) {
     case 1: // Insertar partido
         $game_date_time =  $_POST['date']." ".$_POST['time'];
-        //echo date("Y-m-d H:i:s", strtotime($fecha)); 
         $team_local = $_POST['team_local'];
         $team_visitor = $_POST['team_visitor'];
         $match = $team_local." - ".$team_visitor;
@@ -185,12 +184,10 @@ function deleteMatch($game_id) {
 // Añadir apuesta 
 function addBet($bet_user_id, $bet_minuto_apuesta, $bet_cant_apostada ,$bet_game_id ,$bet_fecha_apuesta) {
     $sql = "INSERT INTO apuestas (bet_user_id, bet_game_id , bet_cant_apostada, bet_minuto_apuesta, bet_fecha_apuesta) VALUES  ('$bet_user_id', '$bet_game_id', '$bet_cant_apostada', '$bet_minuto_apuesta', '$bet_fecha_apuesta')";
-    var_dump($_SESSION);
     require "../conection.php";
     mysqli_query($conx,$sql);
     $id = mysqli_insert_id($conx);
     // Crear consulta para modificar el saldo del usuario con la cantidad apostada.
-    echo " apuesta " . $bet_cant_apostada . "\n"; 
     $sql = "UPDATE usuarios SET user_saldo = (user_saldo - $bet_cant_apostada) WHERE user_id = '$bet_user_id'";
     mysqli_query($conx,$sql);
     // Crear consulta para insertar movimiento en la banca

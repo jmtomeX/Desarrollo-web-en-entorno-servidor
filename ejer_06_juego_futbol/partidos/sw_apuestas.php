@@ -2,6 +2,7 @@
 $sql = "SELECT * FROM apuestas
 INNER JOIN usuarios ON apuestas.bet_user_id = usuarios.user_id
 INNER JOIN partidos ON apuestas.bet_game_id = partidos.game_id
+ORDER BY game_partido
 ";
 
 require "../conection.php";
@@ -23,10 +24,11 @@ while($fila= mysqli_fetch_assoc($datos) ) {
     //usuarios
     $user_nick = $fila['user_nick'];
     $user_mail = $fila['user_mail'];
-    $user_saldo = $fila['user_saldo'];
+
     // partidos
     $game_partido = $fila['game_partido'];
     $game_fecha = $fila['game_fecha'];
+    $bet_minuto_gol = $fila['game_resultado'];
 
     $data[] = array(
         'bet_cant_apostada' => $bet_cant_apostada,
@@ -34,10 +36,10 @@ while($fila= mysqli_fetch_assoc($datos) ) {
         'bet_fecha_apuesta' => $bet_fecha_apuesta,
         'bet_premio' => $bet_premio,
         'bet_estado' => $bet_estado,
+        'bet_minuto_gol' => $bet_minuto_gol,
     
         'user_nick' => $user_nick,
         'user_mail' => $user_mail, 
-        'user_saldo' => $user_saldo,
         
         'game_partido' => $game_partido,
         'game_fecha' => $game_fecha
