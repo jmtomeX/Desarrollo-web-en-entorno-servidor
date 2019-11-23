@@ -18,6 +18,7 @@ class CUsuario extends CBBDD{
     public function checkUser($us_email, $us_password) {
     //generar la consulta
     $sql = "SELECT * FROM usuarios WHERE us_email = '$us_email' AND us_password = '$us_password' ";
+    //echo $sql;exit;
     //recogemos la consulta
     $this -> conectarBD();
     $datos = $this -> mConex ->  query($sql);

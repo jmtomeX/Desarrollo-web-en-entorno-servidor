@@ -1,23 +1,20 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
+html {
     font-family: 'Alata', sans-serif;
     padding: 3em;
 }
-
-input {
-    margin-bottom: 1em;
+#main {
+    width: 80%;
+    margin-left: 100px;
 }
-
-a {
-    text-decoration: none;
-    color: white;
-    display: inline-block;
-    background-color: black;
-    padding: .3em;
-    width: 150px;
-    text-align: center;
-}
-
-a:hover {
-    color: black;
-    background-color: darkslategrey;
+.title {
+        font-family: 'Archivo Black', sans-serif black;
+        text-align: left; 
+        font-weight: bold; font-size: 120px; 
+        background: #202020; 
+        -webkit-background-clip: text; 
+        -moz-background-clip: text; 
+        background-clip: text; 
+        color: transparent; 
+        text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(4, 252, 210, 0.301);   
 }
