@@ -56,47 +56,51 @@
             O
         </div>
     </div>
-    
+    <div class="ui inverted vertical footer segment form-page primary-color">
+        <div class="ui container">
+            Travel Match 2015. All Rights Reserved
+        </div>
+    </div>
+    <?php include '../includes/footer.php'; ?>
     <script>
-    $(document)
-        .ready(function() {
-            $('.ui.form')
-                .form({
-                    fields: {
-                        email: {
-                            identifier: 'email',
-                            rules: [{
-                                    type: 'empty',
-                                    prompt: 'Ingresa tu correo'
-                                },
-                                {
-                                    type: 'email',
-                                    prompt: 'Ingresa un email valido'
-                                }
-                            ]
-                        },
-                        password: {
-                            identifier: 'password',
-                            rules: [{
-                                    type: 'empty',
-                                    prompt: 'Ingresa tu password'
-                                },
-                                {
-                                    type: 'length[4]',
-                                    prompt: 'Su contraseña debe tener al menos 4 caracteres.'
-                                }
-                            ]
-                        }
+    $(function() {
+        $('.ui.form')
+            .form({
+                fields: {
+                    email: {
+                        identifier: 'email',
+                        rules: [{
+                                type: 'empty',
+                                prompt: 'Ingresa tu correo'
+                            },
+                            {
+                                type: 'email',
+                                prompt: 'Ingresa un email valido'
+                            }
+                        ]
+                    },
+                    password: {
+                        identifier: 'password',
+                        rules: [{
+                                type: 'empty',
+                                prompt: 'Ingresa tu password'
+                            },
+                            {
+                                type: 'length[4]',
+                                prompt: 'Su contraseña debe tener al menos 4 caracteres.'
+                            }
+                        ]
                     }
-                });
-            // cerrar mensaje
-            $('.message .close')
-                .on('click', function() {
-                    $(this)
-                        .closest('.message')
-                        .transition('fade');
-                });
-        });
+                }
+            });
+        // cerrar mensaje
+        $('.message .close')
+            .on('click', function() {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+    });
     </script>
 </body>
 

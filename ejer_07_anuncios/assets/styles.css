@@ -1,8 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
+:root {
+    --primary-color:rgba(0, 156, 149, 1);
+}
 html {
     font-family: 'Alata', sans-serif;
     padding: 3em;
+    min-height: 100%;
+    position: relative;
 }
+@media (min-height: 320px) {
+    .ui.footer.form-page.primary-color { /* Mayor especificidad para la prioridad del fragmento SO */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 100px;
+      width: 100%;
+      background: var(--primary-color);
+    }
+  }
 #main {
     width: 80%;
     margin-left: 100px;
@@ -16,5 +31,9 @@ html {
         -moz-background-clip: text; 
         background-clip: text; 
         color: transparent; 
-        text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(4, 252, 210, 0.301);   
+        text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px var(--primary-color);   
+}
+
+    .ui.inverted.menu.primary-color {
+    background: var(--primary-color);
 }

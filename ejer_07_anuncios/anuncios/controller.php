@@ -30,7 +30,7 @@ switch ($operation) {
             //Guardo en session los datos de usuario (id, name)
             $_SESSION['us_id'] = $un_usuario->getID();
             $_SESSION['us_name'] = $un_usuario->getName();
-            header("Location:./dentro.php");
+            header("Location:./userSite.php");
         } else {
             header("Location:./login.php?msg=$msg");
         };

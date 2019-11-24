@@ -1,5 +1,5 @@
 <?php 
-$passw1=$_POST['password1'];
+$passw1=$_POST['password'];
 $passw2=$_POST['password2'];
 $res = true;
 $msg ="";
