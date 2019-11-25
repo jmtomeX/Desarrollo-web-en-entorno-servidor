@@ -10,7 +10,7 @@
 
 <body>
     <div class="ui container">
-    <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
+        <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="ui placeholder segment">
             <div class="ui two column very relaxed stackable grid">
                 <div class="column">
@@ -31,7 +31,7 @@
                                     <i class="lock icon"></i>
                                 </div>
                             </div>
-                            <button type="submit" class="ui fluid large teal submit button">Entrar</button>
+                            <button class="ui fluid large teal button">Entrar</button>
                     </form>
                     <!-- mensaje error -->
                     <?php if (isset($_GET['msg'])) { ?>
@@ -41,7 +41,6 @@
                         </div>
                         <p><?php echo $_GET['msg']?></p>
                     </div> <?php } ?>
-
                     <!-- Fin mensaje error -->
                 </div>
             </div>
@@ -92,13 +91,6 @@
                         ]
                     }
                 }
-            });
-        // cerrar mensaje
-        $('.message .close')
-            .on('click', function() {
-                $(this)
-                    .closest('.message')
-                    .transition('fade');
             });
     });
     </script>

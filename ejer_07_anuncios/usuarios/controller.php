@@ -9,7 +9,7 @@ switch ($operation) {
     case 1: // Insert **************************************************************
     $us_email = $_POST['email'];
     $us_password = $_POST['password'];
-    $us_name = $_POST['name'];
+    $us_name = $_POST['nombre'];
 
     $result =  $un_usuario->toRegister ($us_email, $us_password, $us_name);
     if($result == false) {
@@ -38,5 +38,12 @@ switch ($operation) {
     case 3: //Unlogin *********************************************************************
         session_unset();
         header("Location:../public/index.php");
+        break;
+
+    case 4: //Servicio web que comprueba si el mail pasado por post ya existe en la bbbdd:
+        $mail_check  =  $_POST['mail_check'];
+        //comprobar si el mail existe en la base de datos
+        $result =  $un_usuario->checkUserMail ($mail_check);
+        echo $result;
         break;
 }

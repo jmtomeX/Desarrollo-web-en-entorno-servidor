@@ -13,7 +13,7 @@ class CAnuncio extends CBBDD{
     // funciones
     public function createCommercial($an_titulo, $an_descripcion, $an_precio, $an_foto, $us_id ) {
         // generar la consulta
-        $sql = "INSERT INTO anuncios (an_titulo, an_descripcion, an_precio, an_foto, an_us_id) VALUES ($an_titulo, $an_descripcion, $an_precio, $an_foto, $us_id)";
+        $sql = "INSERT INTO anuncios (an_titulo, an_descripcion, an_precio, an_foto, an_us_id) VALUES ('$an_titulo', '$an_descripcion', '$an_precio', '$an_foto', '$us_id')";
         $this -> conectarBD();
         $this -> mConex -> query($sql);
         $result = $this -> mConex -> insert_id; 

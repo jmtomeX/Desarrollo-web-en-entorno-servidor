@@ -44,6 +44,20 @@ class CUsuario extends CBBDD{
         $this -> desconectarBD();
         return ($result > 0);
     }
+    // comprobar si existe el mail
+    public function checkUserMail($us_email) {
+        //generar la consulta
+        $sql = "SELECT us_id from usuarios where us_email = '$us_email'";
+        //echo $sql;exit;
+        //recogemos la consulta
+        $this -> conectarBD();
+        $datos = $this -> mConex ->  query($sql);
+        //mostramos la consulta
+        $cont = $this -> mConex ->affected_rows;
+        // cerramos conexión
+        $this->desconectarBD();
+        return $cont;
+    }
 
 }
 ?>

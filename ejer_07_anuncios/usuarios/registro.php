@@ -16,7 +16,7 @@
         <div class="ui two column very relaxed stackable grid">
             <div class="column">
                 <h1>Registrar cuenta</h1>
-                <form action="./controller.php?op=1" method="post" class="ui form">
+                <form class="ui form" id = "form_create_user" method="POST" action ="controller.php?op=1">
                     <div class="field">
                         <label for="email">Email <br><input type="text" name="email" id="email" required></label>
                     </div>
@@ -32,26 +32,60 @@
                                 id="password2" required></label><br>
                     </div>
                     <div class="field">
-                        <button type="submit" class="ui fluid large teal submit button">Registrar</button>
+                        <button id ="boton-registrar" type="button" class="ui fluid large teal button" >Registrar</button>
                     </div>
                 </form>
             </div>
         </div>
+        <div class="ui error message" id = "mensaje-error"></div>
         <?php if (isset($_GET['msg'])) { ?>
         <div class="ui error message">
             <?php echo $_GET['msg'] ?>
         </div>
         <?php }?>
 
-        <div class="column">
-
-        </div>
     </div>
     <?php include '../includes/footer.php'; ?>
-    <!-- https://semantic-ui.com/modules/sidebar.html -->
 
     <script>
     $(function() {
+        var mensaje_error = $("#mensaje-error");
+        mensaje_error.css({'visibility':'hidden'});
+        $("#boton-registrar").click(function() {
+            //console.log("boton-registrar.click");
+            if( $("#password").val() == $("#password2").val()) {
+               check_user();
+            }else {
+                mensaje_error.css({'visibility':'visible'});
+                mensaje_error.text("Las contraseñas deben de ser iguales.");
+                return;
+            }
+        });      
+        function check_user() {
+            let email = $('#email').val();
+                   $.ajax({
+                        type: "POST",
+                        url: "./controller.php?op=4",
+                        data: {
+                           mail_check : email
+                        } ,
+                        success: function (data) {
+                            console.log(data);
+                            if (data > 0) {
+                                mensaje_error.css({'visibility':'visible'});
+                                mensaje_error.text("El correo ya está en uso.");
+                            } else {
+                                //Enviamos el formulario con el mail que quiere registrar:
+                                $("#form_create_user").submit();
+                            }
+                        },
+                        error: function (data) {
+                            alert(" Error");
+                    }
+                });
+        }
+
+        // comprobar campos
         $('.ui.form')
             .form({
                 fields: {
@@ -65,7 +99,7 @@
                     nombre: {
                         identifier: 'nombre',
                         rules: [{
-                            type: 'empty,
+                            type: 'empty',
                             prompt: 'por favor ingresa tu nombre'
                         }]
                     },
@@ -100,7 +134,6 @@
             });
     });
     </script>
-    </div>
 </body>
 
 </html>

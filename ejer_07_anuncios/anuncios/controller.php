@@ -1,42 +1,32 @@
 <?php session_start();
-require '../models/CUsuario.php';
+require './globals.php';
+require '../models/CAnuncio.php';
 $msg = "Operacion desconocida";
 $operation = $_GET["op"];
 
-$un_usuario = new CUsuario();
+$un_anuncio = new CAnuncio();
 
 switch ($operation) {
-    case 1: // Insert **************************************************************
-    $us_email = $_POST['email'];
-    $us_password = $_POST['password'];
-    $us_name = $_POST['name'];
+    case 1: // Insertar Anuncio **************************************************************
+         $an_titulo = $_POST['titulo'];
+         $an_descripcion = $_POST['descripcion'];
+         $an_precio = $_POST['precio'];
+         $an_foto = $_POST['foto'];
+         $an_us_id = $_SESSION['us_id'];
 
-    $result =  $un_usuario->toRegister ($us_email, $us_password, $us_name);
-    if($result == false) {
-        $msg = "El registro no se ha podido realizar";
-    }else {
-        $msg = "Registro con éxito, ya puedes acceder a tu cuenta.";
-        header("Location: ../public/index.php?msg=$msg");
-    }
-        ;
+         $result = $un_anuncio->registroAnuncio($an_titulo, $an_descripcion, $an_precio, $an_foto, $an_us_id );
+         if($result == false) {
+            $msg = "El anuncio no se ha podido insertar";
+        }else {
+            $msg = "Anuncio registrado con éxito.";
+            header("Location: ../public/index.php?msg=$msg");
+        }
+            ;
         break;
-    case 2: // login **************************************************************
-        $msg = "El email o contraseña son incorrectos";
-        $us_email = $_POST['email'];
-        $us_password = $_POST['password'];
-        
-        $id =  $un_usuario->checkUser ($us_email, $us_password);
-        if ($id > 0) {
-            //Guardo en session los datos de usuario (id, name)
-            $_SESSION['us_id'] = $un_usuario->getID();
-            $_SESSION['us_name'] = $un_usuario->getName();
-            header("Location:./userSite.php");
-        } else {
-            header("Location:./login.php?msg=$msg");
-        };
+    case 2: // Modificar anuncio **************************************************************
+      
         break;
-    case 3: //Unlogin *********************************************************************
-        session_unset();
-        header("Location:../public/index.php");
+    case 3: // Borrar Anuncio *********************************************************************
+       
         break;
 }
