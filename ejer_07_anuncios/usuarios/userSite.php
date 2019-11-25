@@ -14,7 +14,7 @@ require '../includes/globals.php';
 
 <body>
     <div class="ui text container">
-        <h1 class="title">FOR SALE</h1>
+        <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="column">
             <div class="ui visible left demo vertical inverted sidebar labeled icon menu primary-color">
                 <a href="./anuncios/controller.php?op=1" class="item">

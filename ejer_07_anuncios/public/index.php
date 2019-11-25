@@ -10,7 +10,7 @@
 
 <body>
     <div class="ui container">
-        <h1 class="title">FOR SALE</h1>
+    <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="ui placeholder segment">
             <div class="ui two column very relaxed stackable grid">
                 <div class="column">
