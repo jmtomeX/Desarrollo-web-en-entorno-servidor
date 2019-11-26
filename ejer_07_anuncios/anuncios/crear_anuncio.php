@@ -34,16 +34,28 @@ require '../includes/globals.php';
         <div class="column">
 
             <h1>Crear anuncio</h1>
-            <form action="../anuncios/controller.php?op=1" method="post" class="ui form">
+            <form action="../anuncios/controller.php?op=1" enctype="multipart/form-data" method="post" class="ui form">
                 <label for="titulo">Titulo <br><input type="text" name="titulo" id="titulo"></label><br>
-                <label for="descripcion">Descripción <br><input type="text" name="descripcion" id="descripcion"></label><br>
+                <label for="descripcion">Descripción <br><input type="text" name="descripcion"
+                        id="descripcion"></label><br>
                 <label for="precio">Precio <br><input type="number" name="precio" id="precio"></label><br>
                 <label for="foto">Foto <br><input type="file" name="foto" id="foto"></label><br><br>
-                <button type="submit" class="ui fluid large teal button">Subir</button>
+                <button type="submit" class="ui fluid large teal button" name="cargarAnuncio"
+                    value="Upload">Subir</button>
+                
+         
+                <?php if (isset($_GET['msg']) && isset($_SESSION['message_img'])) { ?>
+                    <div class="ui error message">
+                    <?php echo $_GET['msg'];
+                     echo $_SESSION['message_img']; ?>
+                    </div>
+                <?php
+                 unset($_SESSION['message_img']);
+                 }?>
             </form>
         </div>
-        </div>
-        <?php include '../includes/footer.php'; ?>
+    </div>
+    <?php include '../includes/footer.php'; ?>
 
 </body>
 
