@@ -9,7 +9,6 @@ class CAnuncio extends CBBDD{
     private $man_foto;
     private $man_us_id;
 
-
     // funciones
     public function registroAnuncio($an_titulo, $an_descripcion, $an_precio, $an_foto, $us_id ) {
         // generar la consulta
@@ -21,7 +20,57 @@ class CAnuncio extends CBBDD{
         return ($result > 0);
     }
 
-    
+    // función para listar los anuncios de los usuarios
+    public function listarAnuncios($us_id = null) {
+        if($us_id == null){
+            $sql = "SELECT * FROM anuncios";
+        }else {
+            $sql = "SELECT * FROM anuncios WHERE an_us_id = '$us_id'";
+        }
+        // conectamos// 
+        $anuncios = array();
+        $this -> conectarBD();
+        // hacemos la consulta
+        $datos = $this -> mConex -> query($sql);
+
+        //Total registros.
+        //$total_num_rows = $sql->num_rows;
+       
+        while($fila = $datos ->fetch_assoc()) {
+            $anuncios[] = $fila;
+            /*			
+            $id = $fila['an_id'];
+            $anuncios[$id][0] =  $fila['an_titulo'];
+            $anuncios[$id][1] =  $fila['an_descripcion'];
+            $anuncios[$id][2] =  $fila['an_precio'];
+            $anuncios[$id][3] =  $fila['an_foto'];
+            $anuncios[$id][4] =  $fila['an_us_id'];
+            */
+            
+            /*			
+            $id = $fila['an_id'];
+            $anuncios[$id]['titulo'] =  $fila['an_titulo'];
+            $anuncios[$id]['descripcion'] =  $fila['an_descripcion'];
+            $anuncios[$id]['precio'] =  $fila['an_precio'];
+            $anuncios[$id]['foto'] =  $fila['an_foto'];
+            $anuncios[$id]['id_usuario'] =  $fila['an_us_id'];
+            */
+        }
+        $this->desconectarBD();
+        //echo var_dump($anuncios);exit;
+        return $anuncios;
+    }
+
+    public function EliminarAnuncio($an_id) {
+       // $sql = $this -> conectarBD() -> prepare("DELETE FROM anuncios WHERE an_id = ?;");
+        $sql = "DELETE FROM anuncios WHERE an_id = '$an_id'";
+       $this -> conectarBD();
+        //$result = $sql->execute([$an_id]);
+        $this -> mConex -> query($sql);
+        $result = $this -> mConex -> affected_rows;
+        return $result;
+        $this->desconectarBD();
+    }
 }
 ?>
  	 

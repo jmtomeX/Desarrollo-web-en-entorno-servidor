@@ -21,7 +21,7 @@ require '../includes/globals.php';
                     <i class="shopping cart icon"></i>
                     Crear anuncio
                 </a>
-                <a class="item" href="./anuncios/controller.php?op=2">
+                <a class="item" href="../anuncios/vista_anuncios_id.php">
                     <i class="exchange icon"></i>
                     Listar anuncios
                 </a>
@@ -67,8 +67,7 @@ require '../includes/globals.php';
         </div>
         <!-- Fin  Modal prueba eliminar user -->
 
-        <div class="ui link cards">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="image">
                     <img src="../img/habit.jpg">
                 </div>
@@ -91,107 +90,11 @@ require '../includes/globals.php';
                         3999 €
                     </span>
                 </div>
-            </div>
-            <div class="card">
-                <div class="image">
-                    <img src="../img/habit.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Cannondale HABIT CARBON 2 </div>
-                    <div class="meta">
-                        <span class="date">Mountainbike</span>
-                    </div>
-                    <div class="description">
-                        130mm travel, BallisTec Carbon front triangle, SmartForm C1 Alloy swingarm, Proportional
-                        Response Tuned, Ai offset drivetrain, ISCG05, PF30, Post mount brake, tapered headtube
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        2019
-                    </span>
-                    <span>
-                        <i class="user icon"></i>
-                        3999 €
-                    </span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="image">
-                    <img src="../img/habit.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Cannondale HABIT CARBON 2 </div>
-                    <div class="meta">
-                        <span class="date">Mountainbike</span>
-                    </div>
-                    <div class="description">
-                        130mm travel, BallisTec Carbon front triangle, SmartForm C1 Alloy swingarm, Proportional
-                        Response Tuned, Ai offset drivetrain, ISCG05, PF30, Post mount brake, tapered headtube
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        2019
-                    </span>
-                    <span>
-                        <i class="user icon"></i>
-                        3999 €
-                    </span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="image">
-                    <img src="../img/habit.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Cannondale HABIT CARBON 2 </div>
-                    <div class="meta">
-                        <span class="date">Mountainbike</span>
-                    </div>
-                    <div class="description">
-                        130mm travel, BallisTec Carbon front triangle, SmartForm C1 Alloy swingarm, Proportional
-                        Response Tuned, Ai offset drivetrain, ISCG05, PF30, Post mount brake, tapered headtube
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        2019
-                    </span>
-                    <span>
-                        <i class="user icon"></i>
-                        3999 €
-                    </span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="image">
-                    <img src="../img/habit.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Cannondale HABIT CARBON 2 </div>
-                    <div class="meta">
-                        <span class="date">Mountainbike</span>
-                    </div>
-                    <div class="description">
-                        130mm travel, BallisTec Carbon front triangle, SmartForm C1 Alloy swingarm, Proportional
-                        Response Tuned, Ai offset drivetrain, ISCG05, PF30, Post mount brake, tapered headtube
-                    </div>
-                </div>
-                <div class="extra content">
-                    <span class="right floated">
-                        2019
-                    </span>
-                    <span>
-                        <i class="user icon"></i>
-                        3999 €
-                    </span>
-                </div>
-            </div>
+            </div> -->
 
 
 
-        </div>
+     
     </div>
     <?php include '../includes/footer.php'; ?>
 </body>

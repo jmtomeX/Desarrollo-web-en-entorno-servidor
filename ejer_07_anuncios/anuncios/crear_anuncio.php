@@ -21,7 +21,7 @@ require '../includes/globals.php';
                     <i class="shopping cart icon"></i>
                     Crear anuncio
                 </a>
-                <a class="item" href="./controller.php?op=2">
+                <a class="item" href="./vista_anuncios_id.php">
                     <i class="exchange icon"></i>
                     Listar anuncios
                 </a>
@@ -44,14 +44,16 @@ require '../includes/globals.php';
                     value="Upload">Subir</button>
                 
          
-                <?php if (isset($_GET['msg']) && isset($_SESSION['message_img'])) { ?>
-                    <div class="ui error message">
-                    <?php echo $_GET['msg'];
-                     echo $_SESSION['message_img']; ?>
-                    </div>
-                <?php
-                 unset($_SESSION['message_img']);
-                 }?>
+                 <!-- mensaje error -->
+                 <?php if (isset($_GET['msg'])) { ?>
+                    <div class="ui message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                        </div>
+                        <p><?php echo $_GET['msg']?></p>
+                    </div> <?php } ?>
+                    <!-- Fin mensaje error -->
+              
             </form>
         </div>
     </div>

@@ -47,7 +47,7 @@ switch ($operation) {
                 $msg = "Formato de imagen no válido.";
             }
         }
-        $result = $un_anuncio->registroAnuncio($an_titulo, $an_descripcion, $an_precio, $newFileName, $an_us_id );
+        $result = $un_anuncio -> registroAnuncio($an_titulo, $an_descripcion, $an_precio, $newFileName, $an_us_id );
         if($result == false) {
             $msg .= "El anuncio no se ha podido insertar";
         }else {
@@ -56,10 +56,19 @@ switch ($operation) {
 
         header("Location: ./crear_anuncio.php?msg=$msg");
         break;
-    case 2: // Modificar anuncio **************************************************************
-            
+    case 2: // Eliminar anuncio **************************************************************
+        $an_id = $_GET['id'];
+        $result =  $un_anuncio -> EliminarAnuncio($an_id);
+        if($result == false) {
+            $msg = "El anuncio no se ha podido borrar";
+        }else {
+            $msg = "Anuncio borrado con éxito.";
+        }
+        header("Location: ./vista_anuncios_id.php?msg=$msg");
                 break;
-      case 3: // Borrar Anuncio *********************************************************************
-            
+                // Borrar la foto de la carpeta ????????????????????????????????????????????????????
+
+      case 3: // Listar  Anuncios de un usuario *********************************************************************
+           
                 break;
 }
