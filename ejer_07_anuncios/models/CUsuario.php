@@ -21,7 +21,7 @@ class CUsuario extends CBBDD{
     //echo $sql;exit;
     //recogemos la consulta
     $this -> conectarBD();
-    $datos = $this -> mConex ->  query($sql);
+    $datos = $this -> mConex -> query($sql);
     //mostramos la consulta
     $this -> mus_id = 0;
     // USar la versión de PO de acceso a base de datos *****************************************************

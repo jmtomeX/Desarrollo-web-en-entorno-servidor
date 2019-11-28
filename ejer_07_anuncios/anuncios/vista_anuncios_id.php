@@ -22,13 +22,17 @@ $anuncios = $un_anuncio -> listarAnuncios($id) ;
         <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="column">
             <div class="ui visible left demo vertical inverted sidebar labeled icon menu primary-color">
+                <a href="../public/index.php" class="item">
+                    <i class="home icon"></i>
+                   Home
+                </a>
                 <a href="./crear_anuncio.php" class="item">
                     <i class="shopping cart icon"></i>
                     Crear anuncio
                 </a>
                 <a class="item" href="#">
                     <i class="exchange icon"></i>
-                    Listar anuncios
+                    Tus anuncios
                 </a>
                 <a class="item" href="../usuarios/controller.php?op=3">
                     <i class="x icon"></i>
@@ -39,11 +43,7 @@ $anuncios = $un_anuncio -> listarAnuncios($id) ;
         <div class="column">
             <h1><?php echo $name ?> aquí tienes tus productos en venta.</h1>
             <br>
-
         </div>
-        <?php if (isset($_GET['msg'])) { ?>
-        <p><?php echo $_GET['msg'] ?></p>
-        <?php }?>
         <div class="ui link cards">
             <?php
             $an_id = "";
@@ -112,7 +112,9 @@ $anuncios = $un_anuncio -> listarAnuncios($id) ;
             <script>$('#modal_deleted').modal('show');</script>
          <?php  } ?>
         <!-- Fin  Mostrar msg  -->
+
     <?php include '../includes/footer.php'; ?>
+
     <script>
     function getId(id){
         console.log("./controller.php?op=2&id="+id);

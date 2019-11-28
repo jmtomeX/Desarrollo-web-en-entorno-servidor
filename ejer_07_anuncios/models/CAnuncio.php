@@ -9,6 +9,14 @@ class CAnuncio extends CBBDD{
     private $man_foto;
     private $man_us_id;
 
+    // getters and setters
+    public function getImage() {
+        return $this -> man_foto;
+    }
+    public function tieneImage() {
+        return isset($this -> man_foto);
+    }
+
     // funciones
     public function registroAnuncio($an_titulo, $an_descripcion, $an_precio, $an_foto, $us_id ) {
         // generar la consulta
@@ -23,9 +31,9 @@ class CAnuncio extends CBBDD{
     // función para listar los anuncios de los usuarios
     public function listarAnuncios($us_id = null) {
         if($us_id == null){
-            $sql = "SELECT * FROM anuncios";
+            $sql = "SELECT an_id, an_titulo, an_descripcion, an_foto, an_precio, usuarios.us_name FROM anuncios INNER JOIN usuarios ON usuarios.us_id = anuncios.an_us_id ORDER BY an_id DESC";
         }else {
-            $sql = "SELECT * FROM anuncios WHERE an_us_id = '$us_id'";
+            $sql = "SELECT * FROM anuncios WHERE an_us_id = '$us_id' ORDER BY an_id DESC";
         }
         // conectamos// 
         $anuncios = array();
@@ -60,16 +68,31 @@ class CAnuncio extends CBBDD{
         //echo var_dump($anuncios);exit;
         return $anuncios;
     }
+    
+    public function cargarAnuncio($an_id) {
+        $this -> man_id = 0;
+        $this -> conectarBD();
+        $sql = "SELECT * FROM anuncios  WHERE an_id = '$an_id'";
+        $datos = $this -> mConex -> query($sql);
+        if ($fila = $datos->fetch_assoc()) {
+            //OK, guardo en los atributos:
+            $this -> man_id = $fila["an_id"];
+            $this -> man_titulo = $fila["an_titulo"];
+            $this -> man_descripcion = $fila["an_descripcion"];
+            $this -> man_precio = $fila["an_pecio"];
+            $this -> man_foto = $fila["an_foto"];
+        }
+        $this->desconectarBD();
+        return $this -> man_id>0;
+    }
 
     public function EliminarAnuncio($an_id) {
-       // $sql = $this -> conectarBD() -> prepare("DELETE FROM anuncios WHERE an_id = ?;");
         $sql = "DELETE FROM anuncios WHERE an_id = '$an_id'";
-       $this -> conectarBD();
-        //$result = $sql->execute([$an_id]);
+        $this -> conectarBD();
         $this -> mConex -> query($sql);
         $result = $this -> mConex -> affected_rows;
-        return $result;
         $this->desconectarBD();
+        return $result>0;
     }
 }
 ?>

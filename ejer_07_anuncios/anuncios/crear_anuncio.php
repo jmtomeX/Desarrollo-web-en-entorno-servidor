@@ -17,6 +17,10 @@ require '../includes/globals.php';
         <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="column">
             <div class="ui visible left demo vertical inverted sidebar labeled icon menu primary-color">
+            <a href="../public/index.php" class="item">
+                    <i class="home icon"></i>
+                   Home
+                </a>
                 <a href="#" class="item">
                     <i class="shopping cart icon"></i>
                     Crear anuncio

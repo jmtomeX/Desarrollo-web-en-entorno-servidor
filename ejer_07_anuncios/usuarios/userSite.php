@@ -17,6 +17,10 @@ require '../includes/globals.php';
         <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="column">
             <div class="ui visible left demo vertical inverted sidebar labeled icon menu primary-color">
+            <a href="../public/index.php" class="item">
+                    <i class="home icon"></i>
+                   Home
+                </a>
                 <a href="../anuncios/crear_anuncio.php" class="item">
                     <i class="shopping cart icon"></i>
                     Crear anuncio
@@ -32,7 +36,7 @@ require '../includes/globals.php';
             </div>
         </div>
         <div class="column">
-            <h1>Bienvenido <?php echo $name ?> aquí tienes tus productos en venta.</h1>
+            <h1><i class="user icon"></i> Bienvenido <?php echo $name ?></h1>
 
             <button id="botonModAdv" class="ui google plus button"><i class="trash alternate icon"></i>Eliminar cuenta
             </button>

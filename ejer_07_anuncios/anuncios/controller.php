@@ -58,7 +58,19 @@ switch ($operation) {
         break;
     case 2: // Eliminar anuncio **************************************************************
         $an_id = $_GET['id'];
-        $result =  $un_anuncio -> EliminarAnuncio($an_id);
+        if ($un_anuncio -> cargarAnuncio($an_id)) {
+            $result =  $un_anuncio -> EliminarAnuncio($an_id);
+            if ($result) {
+                //Comprobamos si tenía imagen:
+                if ($un_anuncio ->tieneImage()) {
+                    //Comprobamos que el archivo existe:
+                    $archivo = "../img/uploads_imgs/".$un_anuncio -> getImage();
+                    if (file_exists($archivo)) {
+                        unlink($archivo);
+                    }
+                }
+            }
+        }
         if($result == false) {
             $msg = "El anuncio no se ha podido borrar";
         }else {
@@ -66,7 +78,7 @@ switch ($operation) {
         }
         header("Location: ./vista_anuncios_id.php?msg=$msg");
                 break;
-                // Borrar la foto de la carpeta ????????????????????????????????????????????????????
+                // Borrar la foto de la carpeta 
 
       case 3: // Listar  Anuncios de un usuario *********************************************************************
            
