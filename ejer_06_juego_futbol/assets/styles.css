@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
 :root {
     --color-principal: hsl(141, 53%, 53%);
+    --forSale-color: rgba(0, 156, 149, 1);
 }
 
 *,
@@ -10,4 +12,32 @@
 
 .title strong {
     font-size: 3em;
+}
+
+.titleForSale {
+    font-family: 'Archivo Black', sans-serif black;
+    text-align: left;
+    font-weight: bold;
+    font-size: 120px;
+    background: #202020;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.4), 0px -1px 1px var(--forSale-color);
+}
+
+h1 span.dolar {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.5em;
+    background: var(--primary-color);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 5px 5px 10px rgba(255, 255, 255, 0.4), 0px -1px 1px whitesmoke;
+}
+
+#modal_servicio_web {
+    bottom: 40px;
 }

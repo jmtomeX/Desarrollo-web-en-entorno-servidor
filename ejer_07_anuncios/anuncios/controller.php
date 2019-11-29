@@ -78,9 +78,20 @@ switch ($operation) {
         }
         header("Location: ./vista_anuncios_id.php?msg=$msg");
                 break;
-                // Borrar la foto de la carpeta 
+     case 3: // Servicio recibido de generar una busqueda aleatoria de un anuncio *********************************************************************
+           $anuncio_aleatorio =  new CAnuncio();
+           $objecto = new stdClass();
 
-      case 3: // Listar  Anuncios de un usuario *********************************************************************
+           $anuncio_aleatorio -> cargarAnuncioAleatorio();
+
+           $objeto-> id = $anuncio_aleatorio->getId ;
+           $objeto-> titulo = $anuncio_aleatorio->getTitulo;
+           $objeto-> descripcion = $anuncio_aleatorio->getDescripcion;
+           $objeto-> precio = $anuncio_aleatorio->getPrecio;
+           $objeto-> foto = $anuncio_aleatorio->getFoto;
            
-                break;
+           $anuncio_servicio =  json_encode($objeto);
+
+           echo $anuncio_servicio;exit;
+           break;
 }

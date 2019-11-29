@@ -10,9 +10,22 @@ class CAnuncio extends CBBDD{
     private $man_us_id;
 
     // getters and setters
-    public function getImage() {
+    public function getId() {
+        return $this -> man_id;
+    }
+    public function getTitulo() {
+        return $this -> man_titulo;
+    }
+    public function getDescripcion() {
+        return $this -> man_descripcion;
+    }
+    public function getPrecio() {
+        return $this -> man_precio;
+    }
+    public function getFoto() {
         return $this -> man_foto;
     }
+
     public function tieneImage() {
         return isset($this -> man_foto);
     }
@@ -79,11 +92,42 @@ class CAnuncio extends CBBDD{
             $this -> man_id = $fila["an_id"];
             $this -> man_titulo = $fila["an_titulo"];
             $this -> man_descripcion = $fila["an_descripcion"];
-            $this -> man_precio = $fila["an_pecio"];
+            $this -> man_precio = $fila["an_precio"];
             $this -> man_foto = $fila["an_foto"];
         }
         $this->desconectarBD();
         return $this -> man_id>0;
+    }
+    
+    public function cargarAnuncioAleatorio() {
+        $this -> man_id = 0;
+        $this -> conectarBD();
+        $sql = "SELECT * FROM anuncios ORDER BY RAND() LIMIT 1";
+        $datos = $this -> mConex -> query($sql);
+        if ($fila = $datos->fetch_assoc()) {
+            // guardar en los atributos:
+            $this -> man_id = $fila["an_id"];
+            $this -> man_titulo = $fila["an_titulo"];
+            $this -> man_descripcion = $fila["an_descripcion"];
+            $this -> man_precio = $fila["an_precio"];
+            $this -> man_foto = $fila["an_foto"];
+            
+        }
+        $this->desconectarBD();
+        return $this -> man_id>0;
+    }
+
+    public function cargarAnuncioAleatorio2() {
+        $this -> man_id = 0;
+        $anuncios = array();
+        $this -> conectarBD();
+        $sql = "SELECT * FROM anuncios ORDER BY RAND() LIMIT 3";
+        $datos = $this -> mConex -> query($sql);
+        while ($fila = $datos->fetch_assoc()) {
+            $anuncios[] = $fila;
+        }
+        $this->desconectarBD();
+        return $anuncios;
     }
 
     public function EliminarAnuncio($an_id) {
