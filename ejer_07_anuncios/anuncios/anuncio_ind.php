@@ -5,11 +5,17 @@ session_start();
 if (isset($_SESSION['us_name'])) {
     $name =  $_SESSION['us_name'];
 }
-
+$id_anuncio = $_GET['id'];
 require '../models/CAnuncio.php';
 $un_anuncio = new CAnuncio();
-$anuncios = $un_anuncio -> listarAnuncios() ;
-//var_dump($anuncios);exit;
+$anuncio = $un_anuncio -> cargarAnuncio($id_anuncio);
+
+$titulo =  $un_anuncio -> getTitulo();
+$descripcion =  $un_anuncio -> getDescripcion();
+$precio =  $un_anuncio -> getPrecio();
+$img =  $un_anuncio -> getImage();
+
+//var_dump($img);exit;
 ?>
 
 <head>
@@ -25,22 +31,22 @@ $anuncios = $un_anuncio -> listarAnuncios() ;
         <h1 class="title">FOR <span class="dolar">$</span>ALE</h1>
         <div class="column">
             <div class="ui visible left demo vertical inverted sidebar labeled icon menu primary-color">
-
+               
                 <?php
                 if (!isset($_SESSION['us_name'])) { ?>
-                <a href="./login.php" class="item">
+                <a href="../public/login.php" class="item">
                     <i class="user icon"></i>
                     Login
                 </a>
-                <a class="item" href="#">
+                <a class="item" href="../public/index.php">
                     <i class="exchange icon"></i>
                     Anuncios
                 </a>
 
                 <?php } else {?>
-                <a href="#" class="item">
+                    <a href="../public/index.php" class="item">
                     <i class="home icon"></i>
-                    Home
+                   Home
                 </a>
                 <a href="../anuncios/crear_anuncio.php" class="item">
                     <i class="shopping cart icon"></i>
@@ -60,47 +66,45 @@ $anuncios = $un_anuncio -> listarAnuncios() ;
             </div>
         </div>
         <div class="column">
-            <?php
+        <?php
                 if (isset($_SESSION['us_name'])) { ?>
-            <h1><i class="user icon"></i> <?php echo $name ?></h1><br>
-            <?php } ?>
+        <h1><i class="user icon"></i> <?php echo $name ?></h1><br>
+                <?php } ?>
 
         </div>
         <div class="ui link cards">
             <?php
             $an_id = "";
-            foreach ($anuncios as $anuncio) {
-                //Comprobar si hay foto:
-                $foto = "../img/no_img.png";
-                if (strlen($anuncio['an_foto'])>0) $foto = "../img/uploads_imgs/".$anuncio['an_foto'];
-                $an_id = $anuncio["an_id"];
-                ?>
-           
-                <a href="../anuncios/anuncio_ind.php?id=<?php echo $an_id; ?>" class="card">
-                    <div class="image">
-                        <img src="<?php echo $foto;?>">
+     
+               //Comprobar si hay foto:
+               $foto = "../img/no_img.png";
+               if (strlen($img)>0) $foto = "../img/uploads_imgs/".$img ;
+               $an_id = $anuncio["an_id"];
+               ?>
+            <div class="card">
+                <div class="image">
+                    <img src="<?php echo $foto;?>">
+                </div>
+                <div class="content">
+                    <div class="header"><?php echo $titulo;?></div>
+                    <div class="description">
+                        <?php echo $descripcion;?>
                     </div>
-                    <div class="content">
-                        <div class="header"><?php echo $anuncio["an_titulo"];?></div>
-                        <div class="description">
-                            <?php echo $anuncio["an_descripcion"];?>
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <span class="right floated">
-                            <?php echo $anuncio["us_name"];?>
-                        </span>
-                        <span>
-                            <?php echo $anuncio["an_precio"];?>
-                            <i class="euro sign icon"></i>
-                        </span>
-                    </div>
-                </a>
-                <?php }
+                </div>
+                <div class="extra content">
+                    <span class="right floated">
+                        <?php echo $anuncio["us_name"];?>
+                    </span>
+                    <span>
+                        <?php echo $precio;?>
+                        <i class="euro sign icon"></i>
+                    </span>
+                </div>
+            </div>
+           <?php
             unset($anuncio);
             ?>
         </div>
-        
     </div>
 
     <!-- Modal  mostrar msg  -->

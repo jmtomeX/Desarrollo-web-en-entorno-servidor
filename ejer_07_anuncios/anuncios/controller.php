@@ -92,6 +92,11 @@ switch ($operation) {
            
            $anuncio_servicio =  json_encode($objeto);
 
-           echo $anuncio_servicio;exit;
+           //echo $anuncio_servicio;exit;
            break;
+        
+        // Mostrar un anuncio
+           case 4:
+            
+        break;
 }

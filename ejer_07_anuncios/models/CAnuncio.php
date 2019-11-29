@@ -22,7 +22,7 @@ class CAnuncio extends CBBDD{
     public function getPrecio() {
         return $this -> man_precio;
     }
-    public function getFoto() {
+    public function getImage() {
         return $this -> man_foto;
     }
 
