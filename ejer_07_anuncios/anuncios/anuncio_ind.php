@@ -14,6 +14,8 @@ $titulo =  $un_anuncio -> getTitulo();
 $descripcion =  $un_anuncio -> getDescripcion();
 $precio =  $un_anuncio -> getPrecio();
 $img =  $un_anuncio -> getImage();
+$visit =  $un_anuncio -> getVisitas();
+$view =  $un_anuncio -> getVista();
 
 //var_dump($img);exit;
 ?>
@@ -96,7 +98,17 @@ $img =  $un_anuncio -> getImage();
                         <?php echo $anuncio["us_name"];?>
                     </span>
                     <span>
-                        <?php echo $precio;?>
+                        <?php echo "Visitas";?>
+                        Visitas
+                        <i class="arrow alternate circle left icon"></i>
+                    </span>
+                    <span>
+                        <?php echo $view;?>
+                        Vistas
+                        <i class="eye icon"></i>
+                    </span>
+                    <span>
+                        <?php echo $visit;?>
                         <i class="euro sign icon"></i>
                     </span>
                 </div>

@@ -7,7 +7,12 @@ class CAnuncio extends CBBDD{
     private $man_descripcion;
     private $man_precio;
     private $man_foto;
+    private $man_visitas;
+    private $man_vistas;
     private $man_us_id;
+
+    private $cont_visitas;
+    private $cont_vistas;
 
     // getters and setters
     public function getId() {
@@ -24,6 +29,12 @@ class CAnuncio extends CBBDD{
     }
     public function getImage() {
         return $this -> man_foto;
+    }
+    public function getVisitas() {
+        return $this -> cont_visitas;
+    }
+    public function getVistas() {
+        return $this -> cont_vistas;
     }
 
     public function tieneImage() {
@@ -85,7 +96,7 @@ class CAnuncio extends CBBDD{
     public function cargarAnuncio($an_id) {
         $this -> man_id = 0;
         $this -> conectarBD();
-        $sql = "SELECT * FROM anuncios  WHERE an_id = '$an_id'";
+        $sql = "SELECT * FROM anuncios WHERE an_id = '$an_id'";
         $datos = $this -> mConex -> query($sql);
         if ($fila = $datos->fetch_assoc()) {
             //OK, guardo en los atributos:
@@ -95,10 +106,11 @@ class CAnuncio extends CBBDD{
             $this -> man_precio = $fila["an_precio"];
             $this -> man_foto = $fila["an_foto"];
         }
+        $this -> addVisit($an_id);
         $this->desconectarBD();
-        return $this -> man_id>0;
+        return $this -> man_id > 0;
     }
-    
+        
     public function cargarAnuncioAleatorio() {
         $this -> man_id = 0;
         $this -> conectarBD();
@@ -111,6 +123,8 @@ class CAnuncio extends CBBDD{
             $this -> man_descripcion = $fila["an_descripcion"];
             $this -> man_precio = $fila["an_precio"];
             $this -> man_foto = $fila["an_foto"];
+            $this -> cont_visitas = $fila["an_visita"];
+            $this -> cont_vistas = $fila["an_vista"];
             
         }
         $this->desconectarBD();
@@ -125,7 +139,9 @@ class CAnuncio extends CBBDD{
         $datos = $this -> mConex -> query($sql);
         while ($fila = $datos->fetch_assoc()) {
             $anuncios[] = $fila;
+            $id = $fila['an_id'];
         }
+        $this -> addView($id);
         $this->desconectarBD();
         return $anuncios;
     }
@@ -138,6 +154,22 @@ class CAnuncio extends CBBDD{
         $this->desconectarBD();
         return $result>0;
     }
+
+      // añadir una visita al anuncio
+      private function addVisit($an_id) {
+        $sql = "UPDATE anuncios SET an_visitas =  an_visitas + 1 WHERE an_id = '$an_id';";
+        $this -> conectarBD();
+        $this -> mConex -> query($sql);
+        $this -> mConex -> affected_rows;
+        $this->desconectarBD();
+    }
+
+    // añadir una vista al anuncio
+    private function addView($an_id) {
+        $sql = "UPDATE anuncios SET 'an_vista' = an_visitas + 1 WHERE 'an_id' = $an_id;";
+        $this -> conectarBD();
+        $this -> mConex -> query($sql);
+        $this -> mConex -> affected_rows;
+        $this->desconectarBD();
+    }
 }
-?>
- 	 
