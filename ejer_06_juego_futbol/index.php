@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <a href="http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/public/index.php">
+                    <a id="adv_id" href="#">
                         <div class="ui black deny button">
                             Ir
                         </div>
@@ -186,6 +186,7 @@
                 function(data) {
                     var content = JSON.parse(data);
                     var url = content.url;
+                    var anuncio_id = content.id;
                     var foto = content.foto;
                     var precio = content.precio;
                     var img =
@@ -198,6 +199,7 @@
                     $("#titulo").text(content.titulo);
                     $("#descripcion").text(content.descripcion);
                     $("#precio").text(content.precio);
+                    $("#adv_id").attr('href',"http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/anuncios/anuncio_ind.php?id="+anuncio_id);
                 });
 
 

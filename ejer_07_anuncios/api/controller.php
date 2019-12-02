@@ -13,7 +13,7 @@ switch ($operation) {
            $objeto-> descripcion = $anuncio_aleatorio->getDescripcion();
            $objeto-> precio = $anuncio_aleatorio->getPrecio();
            $objeto-> url = "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/uploads_imgs/";
-           $objeto-> foto = $anuncio_aleatorio->getFoto();
+           $objeto-> foto = $anuncio_aleatorio -> getImage();
            $anuncio_servicio =  json_encode($objeto, JSON_UNESCAPED_UNICODE);
            echo $anuncio_servicio;
           /*

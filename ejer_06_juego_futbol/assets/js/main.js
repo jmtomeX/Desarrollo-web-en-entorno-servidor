@@ -11,6 +11,7 @@ function showBets() {
     $("#li-movimientos").removeClass("title");
     $("#movimientos").removeClass("is-active");
     $("#tabla-apuestas").fadeIn(1000).css("display", "block");
+    $("#anuncio").fadeIn(1000).css("display", "none");
     $.ajax({
         type: "GET",
         url: "../partidos/sw_apuestas.php",
@@ -56,6 +57,7 @@ function showMov() {
     $("#movimientos").addClass("is-active");
     $("#tabla-apuestas").css("display", "none");
     $("#tabla-movimientos").fadeIn(1000).css("display", "block");
+    $("#anuncio").fadeIn(1000).css("display", "none");
     $.ajax({
         type: "GET",
         url: "../partidos/sw_movimientos.php",
@@ -69,7 +71,7 @@ function showMov() {
                     $("#table_mov").append("<td>" + data[i].user_nick + "</td>");
                     $('#table_mov').append("<td>" + data[i].mov_cantidad + "€</td>");
                     $('#table_mov').append("<td>" + data[i].mov_fecha + "</td>");
-         
+
                     $("#table_mov").append("</tr>");
 
                 }

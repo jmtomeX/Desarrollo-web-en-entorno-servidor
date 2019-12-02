@@ -33,7 +33,7 @@ class CAnuncio extends CBBDD{
     public function getVisitas() {
         return $this -> cont_visitas;
     }
-    public function getVistas() {
+    public function getVista() {
         return $this -> cont_vistas;
     }
 
@@ -105,9 +105,11 @@ class CAnuncio extends CBBDD{
             $this -> man_descripcion = $fila["an_descripcion"];
             $this -> man_precio = $fila["an_precio"];
             $this -> man_foto = $fila["an_foto"];
+            $this -> cont_visitas = $fila["an_visitas"];
+            $this -> cont_vistas = $fila["an_vistas"];
         }
-        $this -> addVisit($an_id);
         $this->desconectarBD();
+        $this -> addVisit($an_id);
         return $this -> man_id > 0;
     }
         
@@ -123,15 +125,16 @@ class CAnuncio extends CBBDD{
             $this -> man_descripcion = $fila["an_descripcion"];
             $this -> man_precio = $fila["an_precio"];
             $this -> man_foto = $fila["an_foto"];
-            $this -> cont_visitas = $fila["an_visita"];
-            $this -> cont_vistas = $fila["an_vista"];
+            $this -> cont_visitas = $fila["an_visitas"];
+            $this -> cont_vistas = $fila["an_vistas"];
             
         }
         $this->desconectarBD();
+        $this -> addView($this -> man_id);
         return $this -> man_id>0;
     }
 
-    public function cargarAnuncioAleatorio2() {
+    /*public function cargarAnuncioAleatorio2() {
         $this -> man_id = 0;
         $anuncios = array();
         $this -> conectarBD();
@@ -141,10 +144,10 @@ class CAnuncio extends CBBDD{
             $anuncios[] = $fila;
             $id = $fila['an_id'];
         }
-        $this -> addView($id);
         $this->desconectarBD();
+        $this -> addView($id);
         return $anuncios;
-    }
+    }*/
 
     public function EliminarAnuncio($an_id) {
         $sql = "DELETE FROM anuncios WHERE an_id = '$an_id'";
@@ -158,6 +161,7 @@ class CAnuncio extends CBBDD{
       // añadir una visita al anuncio
       private function addVisit($an_id) {
         $sql = "UPDATE anuncios SET an_visitas =  an_visitas + 1 WHERE an_id = '$an_id';";
+  
         $this -> conectarBD();
         $this -> mConex -> query($sql);
         $this -> mConex -> affected_rows;
@@ -166,7 +170,8 @@ class CAnuncio extends CBBDD{
 
     // añadir una vista al anuncio
     private function addView($an_id) {
-        $sql = "UPDATE anuncios SET 'an_vista' = an_visitas + 1 WHERE 'an_id' = $an_id;";
+        $sql = "UPDATE anuncios SET an_vistas = an_vistas + 1 WHERE an_id = '$an_id';";
+     
         $this -> conectarBD();
         $this -> mConex -> query($sql);
         $this -> mConex -> affected_rows;

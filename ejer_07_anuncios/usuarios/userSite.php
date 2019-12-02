@@ -44,7 +44,6 @@ require '../includes/globals.php';
             <br>
 
         </div>
-        <!-- https://semantic-ui.com/modules/sidebar.html -->
         <?php if (isset($_GET['msg'])) { ?>
         <p><?php echo $_GET['msg'] ?></p>
         <?php }?>

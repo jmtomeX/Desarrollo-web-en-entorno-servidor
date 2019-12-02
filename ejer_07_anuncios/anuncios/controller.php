@@ -78,6 +78,7 @@ switch ($operation) {
         }
         header("Location: ./vista_anuncios_id.php?msg=$msg");
                 break;
+    /* OBSOLETO
      case 3: // Servicio recibido de generar una busqueda aleatoria de un anuncio *********************************************************************
            $anuncio_aleatorio =  new CAnuncio();
            $objecto = new stdClass();
@@ -92,11 +93,12 @@ switch ($operation) {
            
            $anuncio_servicio =  json_encode($objeto);
 
-           //echo $anuncio_servicio;exit;
+           echo $anuncio_servicio;
            break;
         
         // Mostrar un anuncio
            case 4:
             
         break;
+    */
 }

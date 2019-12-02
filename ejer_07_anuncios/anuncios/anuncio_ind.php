@@ -97,9 +97,13 @@ $view =  $un_anuncio -> getVista();
                     <span class="right floated">
                         <?php echo $anuncio["us_name"];?>
                     </span>
+                    <p>
+                        <?php echo $precio;?>
+                        <i class="euro sign icon"></i>
+                    </p>
                     <span>
-                        <?php echo "Visitas";?>
-                        Visitas
+                    Visitas
+                        <?php echo $visit;?>
                         <i class="arrow alternate circle left icon"></i>
                     </span>
                     <span>
@@ -107,10 +111,7 @@ $view =  $un_anuncio -> getVista();
                         Vistas
                         <i class="eye icon"></i>
                     </span>
-                    <span>
-                        <?php echo $visit;?>
-                        <i class="euro sign icon"></i>
-                    </span>
+                  
                 </div>
             </div>
            <?php
