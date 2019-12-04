@@ -33,7 +33,7 @@ class CAnuncio extends CBBDD{
     public function getVisitas() {
         return $this -> cont_visitas;
     }
-    public function getVista() {
+    public function getVistas() {
         return $this -> cont_vistas;
     }
 
@@ -161,7 +161,6 @@ class CAnuncio extends CBBDD{
       // añadir una visita al anuncio
       private function addVisit($an_id) {
         $sql = "UPDATE anuncios SET an_visitas =  an_visitas + 1 WHERE an_id = '$an_id';";
-  
         $this -> conectarBD();
         $this -> mConex -> query($sql);
         $this -> mConex -> affected_rows;

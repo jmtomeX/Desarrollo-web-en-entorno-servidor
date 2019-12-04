@@ -174,35 +174,31 @@
     }
 
     $(document).ready(function() {
+        // Mostrar anuncio aleatorio
         getAdvertisement();
-
+        // Centrar en pantalla no funciona con el modal_caja ya si tiene sus estilos
         $('#modal_caja').css({
             left: ($(window).width() - $('.caja').outerWidth()) / 2,
             top: ($(window).height() - $('.caja').outerHeight()) / 2
         });
 
         function getAdvertisement() {
-            $.get('http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/api/controller.php?op=1',
+           $.get('http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/api/controller.php?op=1',
                 function(data) {
                     var content = JSON.parse(data);
                     var url = content.url;
                     var anuncio_id = content.id;
                     var foto = content.foto;
                     var precio = content.precio;
-                    var img =
-                        "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/no_img.png";
+                    var img = "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/no_img.png";
                     if (foto.length > 0) img = url + foto;
-
-                    console.log(img);
 
                     $("#image_advertisement").attr("src", img);
                     $("#titulo").text(content.titulo);
                     $("#descripcion").text(content.descripcion);
                     $("#precio").text(content.precio);
-                    $("#adv_id").attr('href',"http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/anuncios/anuncio_ind.php?id="+anuncio_id);
+                    $("#adv_id").attr('href',"http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/anuncios/anuncio_ind.php?id=" + anuncio_id);
                 });
-
-
 
             $('#modal_servicio_web')
                 .modal('show');

@@ -15,7 +15,7 @@ $descripcion =  $un_anuncio -> getDescripcion();
 $precio =  $un_anuncio -> getPrecio();
 $img =  $un_anuncio -> getImage();
 $visit =  $un_anuncio -> getVisitas();
-$view =  $un_anuncio -> getVista();
+$view =  $un_anuncio -> getVistas();
 
 //var_dump($img);exit;
 ?>

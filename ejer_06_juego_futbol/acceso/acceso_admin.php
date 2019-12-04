@@ -1,5 +1,31 @@
 <?php
 include '../global_admin.php';
+
+$sql = "SELECT sum(mov_cantidad) AS total FROM movs";
+require "../conection.php";
+$datos = mysqli_query($conx, $sql);
+if ($fila = mysqli_fetch_assoc($datos)) {
+    $mov_cantidad_total = $fila['total'];
+}
+mysqli_close($conx);
+
+//llamar al servicio web que nos da un anuncio aleatorio (curl)
+$cliente = curl_init();
+curl_setopt($cliente, CURLOPT_URL, "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/api/controller.php?op=1");
+curl_setopt($cliente, CURLOPT_HEADER, 0);
+curl_setopt($cliente, CURLOPT_RETURNTRANSFER, true);
+
+$contenido = curl_exec($cliente);
+curl_close($cliente);
+
+$array = json_decode($contenido);
+
+$an_titulo = $array->titulo;
+$an_descripcion = $array->descripcion;
+$an_precio = $array->precio;
+$an_id = $array->id;
+$an_url = $array->url;
+$an_foto = $array->foto;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,24 +37,35 @@ include '../global_admin.php';
     <title>Usuarios Goool.es</title>
     <?php
     include '../includes/enlaces_head.php';
-    include '../includes/semantic.php';
+    //include '../includes/semantic.php';
     ?>
 </head>
 
 <body>
     <main class="section">
+        <!-- Anuncio desde servicio goool.es -->
+        <aside class="responsive-banner">
+            <span class="circle-a"></span>
+            <span class="circle-b"></span>
+            <img src="<?php echo $an_url . $an_foto ?>" />
+            <div class="container-envelope">
+                <h1><?php echo $an_titulo; ?></h1>
+                <p><?php echo $an_descripcion; ?></p>
+                <h2><?php echo $an_precio; ?>€</h2>
+            </div>
+        </aside>
+
+        <!-- FIN Anuncio desde servicio goool.es -->
         <div class="container">
             <a href="./acceso_admin.php">
-                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span
-                        class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
+                <h1 class="title"><strong class="has-text-success">Goool!!!</strong><span class="has-text-info is-size-3 is-size-1-desktop">.</span>es</h1>
             </a>
             <div class="columns is-desktop">
                 <section class="column is-one-quarter">
                     <aside class="menu">
                         <ul class="menu-list">
                             <li>
-                                <h1 class="title"><a href="../acceso/acceso_admin.php" class="is-active"
-                                        id="panel">Panel de
+                                <h1 class="title"><a href="../acceso/acceso_admin.php" class="is-active" id="panel">Panel de
                                         administrador</a></h1>
                             </li>
                             <li><a href="../usuarios/user_accounts.php">Cuentas de usuarios</a></li>
@@ -41,48 +78,10 @@ include '../global_admin.php';
                     </aside>
                 </section>
                 <section class="column">
-                    <?php
-                    $sql = "SELECT sum(mov_cantidad) AS total FROM movs";
-                    require "../conection.php";
-                    $datos = mysqli_query($conx, $sql);
-                    if ($fila = mysqli_fetch_assoc($datos)) {
-                        $mov_cantidad_total = $fila['total'];
-                    }
-                    mysqli_close($conx);
-
-                    //llamar al servicio web que nos da un anuncio aleatorio (curl)
-                    $cliente = curl_init();
-                    curl_setopt($cliente, CURLOPT_URL, "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/api/controller.php?op=1");
-                    curl_setopt($cliente, CURLOPT_HEADER, 0);
-                    curl_setopt($cliente, CURLOPT_RETURNTRANSFER, true); 
-
-                    $contenido = curl_exec($cliente);
-                    curl_close($cliente);
-                
-                    $array = json_decode($contenido);
-
-                    $an_titulo = $array -> titulo;
-                    $an_descripcion = $array -> descripcion;
-                    $an_precio = $array -> precio;
-                    $an_id = $array -> id;                                        
-                    $an_url = $array -> url;                     
-                    $an_foto = $array -> foto;                     
-                    ?>
 
                     <h1 class="title">Total en caja <strong class="has-text-success">
-                            <?php echo $mov_cantidad_total; ?></strong><span
-                            class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
+                            <?php echo $mov_cantidad_total; ?></strong><span class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
 
-                    <!-- Anuncio desde servicio goool.es -->
-                    <div id="anuncio">
-                        <div class="four wide column">
-                            <h1><?php echo $an_titulo;?></h1>
-                            <h2><?php echo $an_descripcion;?></h2>
-                            <h2><?php echo $an_precio;?></h2>
-
-                        </div>
-                        <div class="four wide column"><img src="<?php echo $an_url.$an_foto?>" alt=""></div>
-                    </div>
             </div>
 
         </div>
