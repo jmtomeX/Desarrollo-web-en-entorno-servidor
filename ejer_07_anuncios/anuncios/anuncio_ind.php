@@ -111,6 +111,9 @@ $view =  $un_anuncio -> getVistas();
                         Vistas
                         <i class="eye icon"></i>
                     </span>
+                    <a href="../anuncios/contacto_usuario.php"> 
+                        <i class="envelope outline icon"></i></a>
+                    </span>
                   
                 </div>
             </div>
