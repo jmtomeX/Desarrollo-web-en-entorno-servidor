@@ -11,5 +11,5 @@ if(!$connexion) {
     echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
-define('NUM_ITEMS_BY_PAGE', 6);
+define('NUM_ITEMS_BY_PAGE', 5);
 ?>

@@ -1,8 +1,10 @@
 <?php 
 require('config.php');
-$result = $connexion->query('SELECT COUNT(*) as total_products FROM product WHERE active = 1');
+// Recogemos el número de anuncios totales
+$sql = 'SELECT COUNT(*) as total_anuncios FROM anuncios';
+$result = $connexion->query($sql);
 $row = $result->fetch_assoc();
-$num_total_rows = $row['total_products'];
+$num_total_rows = $row['total_anuncios'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,11 +63,12 @@ if ($num_total_rows > 0) {
     if (isset($_GET["page"])) {
         $page = $_GET["page"];
     }
-
+    // si no hay una variable $page
     if (!$page) {
         $start = 0;
         $page = 1;
     } else {
+        // si la tenemos calculamos el inicio del anuncio que será el primero a mostrar, que ira en la sentecia $sql
         $start = ($page - 1) * NUM_ITEMS_BY_PAGE;
     }
     //calculo el total de paginas
@@ -75,23 +78,22 @@ if ($num_total_rows > 0) {
     echo '<h3>Numero de articulos: '.$num_total_rows.'</h3>';
     echo '<h3>En cada pagina se muestra '.NUM_ITEMS_BY_PAGE.' articulos ordenados por fecha en formato descendente.</h3>';
     echo '<h3>Mostrando la pagina '.$page.' de ' .$total_pages.' paginas.</h3>';
+    $sql ="select * from anuncios limit $start,".NUM_ITEMS_BY_PAGE;
+    $result = $connexion->query($sql);
 
-    $result = $connexion->query(
-        'SELECT * FROM anuncios;');
-
-        /*'SELECT * FROM product p 
+    /* 'SELECT * FROM product p 
         LEFT JOIN product_lang pl ON (pl.id_product = p.id_product AND pl.id_lang = 1) 
         LEFT JOIN `image` i ON (i.id_product = p.id_product AND cover = 1) 
         WHERE active = 1 
         ORDER BY date_upd DESC LIMIT '.$start.', '.NUM_ITEMS_BY_PAGE
-    );*/
+    ;*/
     if ($result->num_rows > 0) {
         echo '<ul class="row items">';
         while ($row = $result->fetch_assoc()) {
             echo '<li class="col-lg-4">';
             echo '<div class="item">';
            // echo '<img class="img-fluid mx-auto d-block" src="htdocs\Desarrollo-web-en-entorno-servidor\ejer_07_anuncios\img\uploads_imgs\'.$row['an_foto'].'-home_default/'.$row['link_rewrite'].'.jpg" width="100" height="100" />';
-            echo '<img class="img-fluid mx-auto d-block" src="htdocs/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/uploads_imgs/'.$row['an_foto']" width="100" height="100" />';
+            echo '<img class="img-fluid mx-auto d-block" src="htdocs/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/uploads_imgs/'.$row['an_foto'].' width="100" height="100" />';
             echo '<h3>'.utf8_encode($row['an_titulo']).'</h3>';
             echo '<p class="description_short">'.strip_tags(utf8_encode($row['an_descripcion'])).'</p>';
             echo '<p class="price">'.round($row['an_precio'], 2).' EUR</p>';
