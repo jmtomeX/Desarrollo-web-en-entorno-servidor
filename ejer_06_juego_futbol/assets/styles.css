@@ -58,6 +58,7 @@ h1 span.dolar {
   border-radius: 10px;
   border: 1px solid yellow;
   background-image: linear-gradient(to bottom right, var(--color-principal),var(--forSale-color));
+  z-index: 1000;
 }
 .container-envelope {
   padding: 35px 15px;

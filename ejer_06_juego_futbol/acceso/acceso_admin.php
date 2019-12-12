@@ -80,40 +80,41 @@ $an_foto = $array->foto;
                 <section class="column">
 
                     <h1 class="title">Total en caja <strong class="has-text-success">
-                            <?php echo $mov_cantidad_total; ?></strong><span class="has-text-info is-size-3 is-size-1-desktop"> €</span></h1>
+                            <?php echo $mov_cantidad_total; ?></strong><span class="has-text-info is-size-3 is-size-1-desktop"> €</span>
+                    </h1>
 
+
+
+                    <!-- Tabla apuestas -->
+                    <table id="tabla-apuestas" class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><abbr>Cantidad Apuesta</abbr></th>
+                                <th><abbr>Minuto Apuesta</abbr></th>
+                                <th><abbr>Minuto gol</abbr></th>
+                                <th><abbr>Partido</abbr></th>
+                                <th><abbr>Fecha de juego</abbr></th>
+                                <th><abbr>Fecha Apuesta</abbr></th>
+                                <th><abbr>Premio</abbr></th>
+                                <th><abbr>Estado</abbr></th>
+                                <th><abbr>Nick</abbr></th>
+                                <th><abbr>Mail</abbr></th>
+                            </tr>
+                        <tbody id="table_bets"></tbody>
+                    </table>
+                    <!-- Tabla movimientos -->
+                    <table id="tabla-movimientos" class="table is-striped">
+                        <thead>
+                            <tr>
+                                <th><abbr>Movimientos número</abbr></th>
+                                <th><abbr>Usuario</abbr></th>
+                                <th><abbr>Cantidad</abbr></th>
+                                <th><abbr>Fecha</abbr></th>
+                            </tr>
+                        <tbody id="table_mov"></tbody>
+                    </table>
+                </section>
             </div>
-
-        </div>
-        <!-- Tabla apuestas -->
-        <table id="tabla-apuestas" class="table is-striped">
-            <thead>
-                <tr>
-                    <th><abbr>Cantidad Apuesta</abbr></th>
-                    <th><abbr>Minuto Apuesta</abbr></th>
-                    <th><abbr>Minuto gol</abbr></th>
-                    <th><abbr>Partido</abbr></th>
-                    <th><abbr>Fecha de juego</abbr></th>
-                    <th><abbr>Fecha Apuesta</abbr></th>
-                    <th><abbr>Premio</abbr></th>
-                    <th><abbr>Estado</abbr></th>
-                    <th><abbr>Nick</abbr></th>
-                    <th><abbr>Mail</abbr></th>
-                </tr>
-            <tbody id="table_bets"></tbody>
-        </table>
-        <!-- Tabla movimientos -->
-        <table id="tabla-movimientos" class="table is-striped">
-            <thead>
-                <tr>
-                    <th><abbr>Movimientos número</abbr></th>
-                    <th><abbr>Usuario</abbr></th>
-                    <th><abbr>Cantidad</abbr></th>
-                    <th><abbr>Fecha</abbr></th>
-                </tr>
-            <tbody id="table_mov"></tbody>
-        </table>
-        </section>
         </div>
         </div>
 

@@ -3,7 +3,7 @@ require '../models/CAnuncio.php';
 $operation = $_GET["op"];
 
 switch ($operation) {
-     case 1: // Servicio recibido de generar una busqueda aleatoria de un anuncio *********************************************************************
+     case 1: // Servicio recibido de generar una busqueda aleatoria de un anuncio **
            $anuncio_aleatorio =  new CAnuncio();
            
            $anuncio_aleatorio -> cargarAnuncioAleatorio();
@@ -15,7 +15,7 @@ switch ($operation) {
            $objeto-> url = "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_07_anuncios/img/uploads_imgs/";
            $objeto-> foto = $anuncio_aleatorio -> getImage();
            $anuncio_servicio =  json_encode($objeto, JSON_UNESCAPED_UNICODE);
-           echo $anuncio_servicio;exit;
+           echo $anuncio_servicio;//exit;
           /*
           $anuncios = $anuncio_aleatorio -> cargarAnuncioAleatorio2();
           echo json_encode($anuncios, JSON_UNESCAPED_UNICODE);

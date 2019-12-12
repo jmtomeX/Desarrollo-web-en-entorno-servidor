@@ -19,10 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `apuestas`
+-- Base de datos: `bd_apuestas`
 --
-CREATE DATABASE IF NOT EXISTS `apuestas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `apuestas`;
+CREATE DATABASE IF NOT EXISTS `bd_apuestas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bd_apuestas`;
 
 -- --------------------------------------------------------
 

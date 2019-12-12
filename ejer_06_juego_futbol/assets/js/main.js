@@ -2,6 +2,9 @@
 $(function() {
     $("#tabla-apuestas").css("display", "none");
     $("#tabla-movimientos").css("display", "none");
+    $(".responsive-banner").click(function(){
+        $(this).hide();
+    });
 });
 
 function showBets() {
@@ -83,4 +86,5 @@ function showMov() {
             alert("Error");
         }
     });
+
 }
