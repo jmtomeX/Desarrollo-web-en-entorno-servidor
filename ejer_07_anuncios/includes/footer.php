@@ -9,6 +9,12 @@ echo '
         <div class="one wide column">
             <img class="ui mini image" src="../img/logo-semantic.png">
         </div>
+        <div class="one wide column">
+            <img class="ui mini image" src="../img/jquery.png">
+        </div>
+        <div class="one wide column">
+            <img class="ui mini image" src="../img/ajax.png">
+        </div>
         <div class="nine wide column">
             <h1> forsale.es 2019 by José Mari Tomé</h1>
         </div>
