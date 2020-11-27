@@ -1,13 +1,15 @@
 <?php
 const MSG_EXITO = "Usuario borrado";
-const MSG_FALLO = "Usuario no se ha podido borrar";
+const MSG_FALLO = "El usuario no se ha podido borrar";
 $user_id = $_GET['id'];
 
-require "../conection.php";
 
+require "../conection.php";
 //generar la consulta
 $sql = "DELETE FROM usuarios WHERE id = '$user_id'";
-echo $sql;
+// echo $sql;
+// exit;
+
 //ejecutar la consulta
 mysqli_query($conx,$sql);
 $cont = mysqli_affected_rows($conx);
