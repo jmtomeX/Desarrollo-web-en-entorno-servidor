@@ -14,12 +14,12 @@ require '../global.php';
 </head>
 
 <body>
+    <?php include '../includes/menu.txt' ?>
     <div class="pure-g main">
         <article class="pure-u-md-1">
-            <?php include '../includes/menu.txt' ?>
         </article>
     </div>
-    <h2 class="title2">Has accedido a la biblioteca de videos</h2>
+    <h2 class="title2">Has accedido a la biblioteca de videos <img src="../img/youtube.svg" width="150px" height="120"></h2>
     <fieldset>
         <legend class="title">Lista de usuarios que han visualizado videos</legend>
         <?php

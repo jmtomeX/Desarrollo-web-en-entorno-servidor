@@ -19,7 +19,8 @@ require '../global.php';
         </article>
     </div>
     <fieldset>
-        <legend class="title">Detalle películas vistas</legend>
+        <legend class="title">Detalle visita vídeos
+        <img src="../img/youtube.svg" width="100px" height="100"> </legend>
         <?php
         if (isset($_GET['msg'])) {
             echo "<p>" . $_GET['msg'] . "</p>";

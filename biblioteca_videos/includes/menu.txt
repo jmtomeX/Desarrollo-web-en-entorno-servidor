@@ -1,8 +1,8 @@
-<nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-<a href='../usuarios/controler.php?op=3' class="pure-menu-link pure-menu-heading">Cerrar Sesión</a>
+<nav class="pure-menu pure-menu-horizontal no-move">
+<a href='../usuarios/controller.php?op=3' class="pure-menu-heading pure-menu-link">Cerrar Sesión</a>
     <ul class="pure-menu-list"> 
         <li class="pure-menu-item">
-    <?php echo "<i class='fas fa-user'></i> $user";?></li>
+    <?php echo "<i class='fas fa-user pure-menu-item'></i> $user";?></li>
         <li class="pure-menu-item"><a href='../intranet/intranet.php' class="pure-menu-link">Inicio </a> </li>
         <li class="pure-menu-item"><a href='../videos/intranet2.php' class="pure-menu-link"> Videos </a> </li>
         <li class="pure-menu-item"><a href='../enlaces_interes/enlaces_vista.php' class="pure-menu-link">Enlaces de interes videos</a></li>

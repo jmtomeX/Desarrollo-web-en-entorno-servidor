@@ -60,10 +60,10 @@ function deleteLinks($enl_id)
     mysqli_close($conx);
     return ($cont > 0);
 }
-// Mostrar videos
-function showLinks($enl_id)
+// Mostrar enlaces videos
+function showLinks($enlace)
 {
-    $sql = "SELECT * FROM enlaces_videos WHERE enl_video_id = '$enl_id'";
+    $sql = "SELECT * FROM enlaces_videos WHERE enl_video_id = '$enlace'";
     require "../conection.php";
     $datos = mysqli_query($conx, $sql);
     $arrayLinks = [];

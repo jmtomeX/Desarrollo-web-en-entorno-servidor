@@ -32,73 +32,97 @@ if ($id > 0) {
     include '../includes/menu.txt';
     ?>
     <div class="pure-g">
-        <article class="pure-u-md-2-5">
+        <article class="pure-u-24-24">
             <fieldset>
-                <legend class="title">Insertar enlaces de interes</legend>
-                <form action="./controler.php?op=1" method="POST" class="pure-form box--flex">
+                <legend class="title">Insertar enlaces de interes <img src="../img/www.svg" width="100px" height="100"></legend>
+                <form action="./controller.php?op=1" method="POST" class="pure-form pure-form-aligned">
                     <?php if ($id > 0) { ?>
                         <input type="hidden" name="video_id" value="<?php echo $id; ?>" />
                     <?php }
-                    if (isset($_GET['msg'])) echo $_GET['msg'];
+                    if (isset($_GET['msg'])) {
+                        echo "
+                        <div class='ribbon l-box-lrg pure-g'>
+                            <div class='pure-u-1 pure-u-md-1-2 pure-u-lg-5-5'>
+                                <h2 class='content-head content-head-ribbon'>" . $_GET['msg'] . "</h2>
+                            </div>
+                        </div>";
+                    }
                     ?>
+                    <div class="pure-control-group">
+                        <div class="pure-g">
+                            <div class="pure-u-xl-12-24 pure-u-sm-24-24 ">
+                                <label for="titulo_enlace">Título del enlace</label>
+                                <input type="text" name="titulo_enlace" id="titulo_enlace" value="">
+                            </div>
+                            <div class="pure-u-xl-12-24 pure-u-sm-24-24 ">
+                                <label for="enlace">Url enlace 
 
-                    <p><label for="titulo_enlace">Título del enlace</label><input type="text" name="titulo_enlace" id="titulo_enlace" value="" class="input--large"></p>
-                    <p><label for="enlace">Url enlace</label><input type="text" name="enlace" id="enlace" value="" class="input--large"></p>
-                    <p><label for="enlaces">Video</label>
+                                </label>
+                                <input type="text" name="enlace" id="enlace" value="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pure-control-group">
+                        <label for="enlaces">Video</label>
                         <?php if ($id > 0) { ?>
-                            <input type="text" class="input--large" value="<?php echo  $titulo; ?>" disabled></p>
-                <?php } else {  ?>
-                    <select class="input--large" name="video_id">
-                        <?php
-                            // insertar los titulos 
-                            while ($fila = mysqli_fetch_assoc($datos)) {
-                                $vid_id = $fila["id"];
-                                $vid_titulo = $fila["titulo"];  ?>
-                            <option value="<?php echo $vid_id; ?>"><?php echo $vid_titulo; ?></option>
-                        <?php } ?>
-                    </select>
-                <?php }  ?>
-                </p>
-                <br>
-                <br>
-                <input type="submit" value="Registro Enlace" class="pure-button pure-button-primary margin">
+                            <input type="text" value="<?php echo  $titulo; ?>" disabled>
+                        <?php } else {  ?>
+
+                            <select name="video_id">
+                                <?php
+                                // insertar los titulos 
+                                while ($fila = mysqli_fetch_assoc($datos)) {
+                                    $vid_id = $fila["id"];
+                                    $vid_titulo = $fila["titulo"];  ?>
+                                    <option value="<?php echo $vid_id; ?>"><?php echo $vid_titulo; ?></option>
+                                <?php } ?>
+                            </select>
+                        <?php }  ?>
+
+
+                        <input type="submit" value="Registro Enlace" class="pure-button pure-button-primary margin">
+                    </div>
                 </form>
             </fieldset>
         </article>
 
-        <article class="pure-u-md-3-5">
+
+        <article class="pure-u-24-24">
             <fieldset>
                 <legend class="title">Enlaces de interes <span id="titulo"></span></legend>
                 <div class="pure-g">
                     <?php
                     if ($id > 0) {
                         // Si entras desde el botón enlace modificar
-                        $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id WHERE videos.id = '$id' ";
+                        $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id WHERE videos.id = '$id' ORDER BY titulo";
                     } else {
                         // si entras desde el link del menu
-                        $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id";
+                        $sql = "SELECT titulo,enl_id,enl_titulo,enl_url FROM videos INNER JOIN enlaces_videos ON videos.id = enlaces_videos.enl_video_id ORDER BY titulo";
                     }
 
+
                     require "../conection.php";
-                    $tituloVideo ='';
+                    $tituloVideo = '';
                     $datos = mysqli_query($conx, $sql);
                     while ($linea = mysqli_fetch_assoc($datos)) {
                         $enl_id = $linea['enl_id'];
                         $enl_titulo = $linea['enl_titulo'];
                         $enl_url = $linea['enl_url'];
                         $tituloVideo  = $linea['titulo'];
-
-                    ?>
-
-
-                        <div class="pure-u-7-12">
+                        ?>
+                        <div class='pure-u-8-24'>
                             <a href="<?php echo $enl_url; ?>" target="_blank" id="info_enlace_<?php echo $enl_id; ?>">
                                 <?php echo $enl_titulo; ?></a>
                         </div>
-                        <div class="pure-u-2-12">
-                            <a class="float_rigth" href="./controler.php?op=3&id=<?php echo $enl_id; ?>&enl_video_id=<?php echo $id; ?>"><i class="fas fa-trash-alt"></i></a>
+
+                        <div class='pure-u-8-24'>
+                            <?php echo $tituloVideo; ?>
                         </div>
-                        <div class="pure-u-3-12">
+                        <div class='pure-u-4-24'>
+                            <a class="float_rigth" href="./controller.php?op=3&id=<?php echo $enl_id; ?>&enl_video_id=<?php echo $id; ?>" onclick = "return confirm('¿Desea eliminar el enlace?')"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        <div class='pure-u-4-24'>
                             <a class="float_rigth" href="#modal-one" onclick="editar(<?php echo $enl_id; ?>)"> <i class="far fa-edit"></i></a>
                         </div>
                     <?php } ?>
@@ -115,12 +139,12 @@ if ($id > 0) {
                     <fieldset>
                         <div class='pure-control-group'>
                             <label for='titulo_enlace'>Título del enlace</label>
-                            <input id='titulo_enlace' type='text'>
+                            <input id='titulo_enlace' type='text' required>
                         </div>
-
                         <div class='pure-control-group'>
-                            <label for='url_enlace'>Url enlace</label>
-                            <input id='url_enlace' type='text'>
+                            <label for='url_enlace'>Url enlace
+                            </label>
+                            <input id='url_enlace' type='text' placeholder="-https://webdelenlace.com" required>
                         </div>
                     </fieldset>
                 </div>
