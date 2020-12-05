@@ -5,9 +5,7 @@ require '../global.php';
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
 
     <?php include '../includes/enlaces.txt' ?>
     <title>Intranet</title>
@@ -52,29 +50,28 @@ where usuarios.id=1";
             $id = $fila["id"];            // añdido 
             echo "
 
+                    <div class='pure-u-1 pure-u-md-1-3'>
+                        <div class='pricing-table pricing-table-biz pricing-table-selected'>
+                                <div class='pricing-table-header'>
+                                    <h2>Detalle Usuario</h2>
+                                    <span class='pricing-table-price'>
+                                    <a href='detalle.php?id=$id'><i class='far fa-eye'></i></a>
+                                    " . $fila["contador"] . "
+                                        <span>" . $fila["nombre"] . "</span>
+                                    </span>
+                                </div>
 
-<div class='pure-u-1 pure-u-md-1-3'>
-    <div class='pricing-table pricing-table-biz pricing-table-selected'>
-            <div class='pricing-table-header'>
-                <h2>Detalle Usuario</h2>
-                <span class='pricing-table-price'>
-                <a href='detalle.php?id=$id'><i class='far fa-eye'></i></a>
-                " . $fila["contador"] . "
-                    <span>" . $fila["nombre"] . "</span>
-                </span>
-            </div>
+                                <ul class='pricing-table-list'>
+                                <li> Identificador 
+                                " . $fila["id"] . "</li>
+                                    <li>  <i class='fas fa-calendar-alt'></i> " . $fila["date_insert"] . "</li>
+                                    <li> <a href='delete_user.php?id=$id' onclick = \"return confirm('¿Desea eliminar al usuario?')\"><i class='fas fa-trash-alt'></i>Borrar usuario</a></li>
+                                </ul>
 
-            <ul class='pricing-table-list'>
-            <li> Identificador 
-            " . $fila["id"] . "</li>
-                <li>  <i class='fas fa-calendar-alt'></i> " . $fila["date_insert"] . "</li>
-                <li> <a href='delete_user.php?id=$id' onclick = \"return confirm('¿Desea eliminar al usuario?')\"><i class='fas fa-trash-alt'></i>Borrar usuario</a></li>
-            </ul>
-
-            <a href='detalle.php?id=$id' class='button-choose pure-button'>Visitas de videos</a>
-        </div>
-    </div>
-";
+                                <a href='detalle.php?id=$id' class='button-choose pure-button'>Visitas de videos</a>
+                            </div>
+                        </div>
+                ";
         }
         echo "</div>
         </div>

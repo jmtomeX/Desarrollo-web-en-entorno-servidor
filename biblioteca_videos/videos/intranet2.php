@@ -1,5 +1,6 @@
 <?php
 require '../global.php';
+$usu_id = $_SESSION['user_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,10 +66,10 @@ require '../global.php';
                 //recogemos la consulta
                 $datos = mysqli_query($conx, $sql);
                 $vid_url = "";
-                $user_id = $user;
+            
                 //mostramos la consulta
                 while ($fila = mysqli_fetch_assoc($datos)) {
-                    $id = $fila["id"];
+                    $vid_id = $fila["id"];
                     $vid_url = $fila['vid_url'];
                     echo " <div class='pure-g'>
                     <div class='pure-u-24-24'>
@@ -80,20 +81,21 @@ require '../global.php';
 
                     echo " <div class='pure-g'>";
                     echo " <div class='pure-u-6-24'>
-                    <a onclick='contView($user_id,$id)' id='linkView' class='main-color-button' href='https://www.youtube.com/watch?v=" . $vid_url . "' target='_blank'>Visitar</a></div>";
-                    //TODO Comprobar la función de js showvideo la ruta 
+                    
+                    <a onclick='contView($usu_id,$vid_id)' id='linkView' class='main-color-button' href='https://www.youtube.com/watch?v=" . $vid_url . "' target='_blank'>Visitar</a></div>";
+
                     echo "
-                    <a href = './controller.php?op=4&vid_id=$id&vid_url=$vid_url' onclick=\"showVideo('$vid_url')\">
+                    <a href = './controller.php?op=4&vid_id=$vid_id&vid_url=$vid_url' onclick=\"showVideo('$vid_url')\">
                                 <div class='pure-u-6-24'>"
                         . $vid_url .
                         "</div>
                             </a>";
                     echo " <div class='pure-u-2-24 icons'>
-                                <a href='../enlaces_interes/enlaces_vista.php?id=$id'><i class='fas fa-info-circle'></i></a></div>";
+                                <a href='../enlaces_interes/enlaces_vista.php?id=$vid_id'><i class='fas fa-info-circle'></i></a></div>";
                     echo " <div class='pure-u-2-24 icons'>
-                                <a href='update_video.php?id=$id'><i class='fas fa-edit'></i></a></div>";
+                                <a href='update_video.php?id=$vid_id'><i class='fas fa-edit'></i></a></div>";
                     echo " <div class='pure-u-2-24 icons'>
-                                <a href='controller.php?id=$id&op=3' onclick = \"return confirm('¿Desea eliminar el video?')\"><i class='fas fa-trash-alt'></i></a></div>";
+                                <a href='controller.php?id=$vid_id&op=3' onclick = \"return confirm('¿Desea eliminar el video?')\"><i class='fas fa-trash-alt'></i></a></div>";
                     echo " </div>";
                 }
                 // cerramos conexión
@@ -105,18 +107,15 @@ require '../global.php';
     <script>
         function showVideo(vid_url) {
             var url = "https://www.youtube.com/watch?v=" + vid_url;
-            console.log(url);
             window.open(url, "_blank");
         }
 
         function contView(user_id, vid_id) {
-            alert("user " + user_id + "video id " + vid_id);
             $.ajax({
 
                 type: "GET",
-                url: "http://localhost/Desarrollo-web-en-entorno-servidor/ejer_05_intranet/videos/ws_contar_visita.php?user_id=" + user_id + "&vid_id=" + vid_id,
+                url: "./ws_contar_visita.php?user_id=" + user_id + "&vid_id=" + vid_id,
                 success: function(data) {
-                    console.log(data);
                 },
                 error: function(data) {
                     alert(" Error");

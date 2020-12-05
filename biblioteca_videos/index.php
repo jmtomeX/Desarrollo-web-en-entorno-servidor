@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -47,8 +48,7 @@
                     </div>
                     <div class="pure-control-group">
                         <button type="submit" value="Acceder" class="button-error">Entrar</i></button>
-
-                        <span class="pure-form-message">¿No estás registrado?</span>  <a href="./usuarios/registro.php" class="button-success">Registro <i class="fas fa-user"></i></a>
+                        <span class="pure-form-message">¿No estás registrado?</span> <a href="./usuarios/registro.php" class="button-success">Registro <i class="fas fa-user"></i></a>
                     </div>
         </article>
         </fieldset>

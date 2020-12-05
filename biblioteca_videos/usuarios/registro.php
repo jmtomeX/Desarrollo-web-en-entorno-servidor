@@ -51,6 +51,7 @@
                     </div>
                     <button type='submit' class=' pure-button margin ' value='Registro usuario'>Enviar</button>
                     <a type="button" href="../index.php" class=" pure-button margin ">Cancelar</a>
+                    
                 </form>
         </article>
         </fieldset>

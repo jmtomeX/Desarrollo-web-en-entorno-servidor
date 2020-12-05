@@ -6,7 +6,7 @@ $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM apuestas WHERE bet_user_id='$user_id'";
 require "../conection.php";
 $datos = mysqli_query($conx, $sql);
-//Vamos a crear un array (dictionary) donde el indice es el ID de partido, y el contenido en esa posición es minuto y apuesta:
+//array (dictionary) donde el indice es el ID de partido, y el contenido en esa posición es minuto y apuesta:
 $apuestas = array();
 while ($fila = mysqli_fetch_assoc($datos)) {
     $game_id_apostado = $fila['bet_game_id'];
